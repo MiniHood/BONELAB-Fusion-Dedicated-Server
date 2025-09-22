@@ -124,7 +124,7 @@ public class LobbyInfo
         LobbyId = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
         LobbyName = $"[{uptime:hh}h:{uptime:mm}m:{uptime:ss}s] " + "Dedicated Server Test";
-        LobbyDescription = "This is a test using a modified version of FusionLab. Join the dedicated server development discord: https://discord.gg/jSw8Qrkmwn\nThis server cleans every 5 minutes.\n- HowNiceOfYou";
+        LobbyDescription = "This is a test using a modified version of FusionLab. Join the dedicated server development discord: https://discord.gg/MV3PDGaqfx\nThis server cleans every 5 minutes.\n- HowNiceOfYou";
         LobbyVersion = FusionMod.Version;
         LobbyHostName = FusionMod.ServerName;
 
