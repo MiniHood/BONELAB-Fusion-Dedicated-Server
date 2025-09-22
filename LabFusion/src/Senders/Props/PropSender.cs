@@ -1,11 +1,10 @@
-﻿using LabFusion.Network;
+﻿using Il2CppSLZ.Marrow.Interaction;
+using LabFusion.Entities;
+using LabFusion.Marrow;
+using LabFusion.MonoBehaviours;
+using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Scene;
-using LabFusion.Entities;
-using LabFusion.MonoBehaviours;
-using LabFusion.Marrow;
-
-using Il2CppSLZ.Marrow.Interaction;
 
 namespace LabFusion.Senders;
 

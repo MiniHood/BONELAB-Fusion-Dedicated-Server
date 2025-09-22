@@ -1,10 +1,7 @@
-﻿using LabFusion.Extensions;
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Extensions;
 using LabFusion.Marrow.Integration;
-
-using Il2CppSLZ.Marrow;
-
 using UnityEngine;
-
 using Avatar = Il2CppSLZ.VRMK.Avatar;
 
 namespace LabFusion.SDK.Cosmetics;

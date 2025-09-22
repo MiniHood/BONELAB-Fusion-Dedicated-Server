@@ -1,14 +1,12 @@
-﻿using LabFusion.Network;
-using LabFusion.Utilities;
-using LabFusion.Senders;
-using LabFusion.Entities;
-using LabFusion.Player;
-
+﻿using HarmonyLib;
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.AI;
 using Il2CppSLZ.Marrow.Combat;
-
-using HarmonyLib;
+using LabFusion.Entities;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 
 namespace LabFusion.Patching;
 
@@ -22,7 +20,7 @@ public static class PlayerDamageReceiverPatches
         if (!NetworkInfo.HasServer)
         {
             return true;
-        } 
+        }
 
         var rm = __instance.health._rigManager;
 

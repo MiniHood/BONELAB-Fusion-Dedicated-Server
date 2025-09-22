@@ -1,13 +1,10 @@
-﻿using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.Preferences;
-using LabFusion.SDK.Points;
-using LabFusion.SDK.Achievements;
-using LabFusion.SDK.Modules;
-using LabFusion.UI.Popups;
+﻿using Il2CppSLZ.Marrow.SceneStreaming;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Marrow.SceneStreaming;
+using LabFusion.Player;
+using LabFusion.Preferences;
+using LabFusion.SDK.Achievements;
+using LabFusion.SDK.Points;
+using LabFusion.Utilities;
 
 namespace LabFusion.Network;
 

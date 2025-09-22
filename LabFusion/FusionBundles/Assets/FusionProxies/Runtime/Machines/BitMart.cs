@@ -15,10 +15,8 @@ using LabFusion.Marrow.Pool;
 using Il2CppInterop.Runtime.Attributes;
 
 using Il2CppSLZ.Marrow.Audio;
-using Il2CppSLZ.Marrow.Data;
 using Il2CppSLZ.Marrow.Warehouse;
 using Il2CppSLZ.Props;
-using Il2CppSLZ.Marrow.Pool;
 using Il2CppSLZ.Marrow;
 #endif
 

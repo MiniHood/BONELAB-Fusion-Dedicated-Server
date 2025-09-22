@@ -1,9 +1,6 @@
-﻿using System.Collections;
-
+﻿using LabFusion.Utilities;
 using MelonLoader;
-
-using LabFusion.Utilities;
-
+using System.Collections;
 using System.Net;
 
 namespace LabFusion.Safety;
@@ -24,7 +21,7 @@ public static class ListFetcher
 
         MelonCoroutines.Start(CoFetchFile(url, callback));
     }
-    
+
     private static IEnumerator CoFetchFile(string url, Action<string> callback)
     {
         var handler = new HttpClientHandler()

@@ -1,6 +1,4 @@
-﻿using LabFusion.Utilities;
-
-namespace LabFusion.Extensions;
+﻿namespace LabFusion.Extensions;
 
 public static class IEnumerableExtensions
 {

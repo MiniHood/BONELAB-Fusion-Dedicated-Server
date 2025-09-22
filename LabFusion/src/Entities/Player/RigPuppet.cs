@@ -1,16 +1,12 @@
-﻿using System.Collections;
-
-using Il2CppSLZ.Marrow;
+﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow.Pool;
 using Il2CppSLZ.Marrow.VFX;
-
 using LabFusion.Extensions;
 using LabFusion.Representation;
 using LabFusion.Utilities;
-
 using MelonLoader;
-
+using System.Collections;
 using UnityEngine;
 
 namespace LabFusion.Entities;

@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Entities;
-
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Interaction;
-
+using LabFusion.Entities;
+using LabFusion.Network;
 using UnityEngine;
 
 namespace LabFusion.Bonelab.Patching;

@@ -1,18 +1,13 @@
 ﻿using HarmonyLib;
-
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Interaction;
-
-using LabFusion.Entities;
+using LabFusion.Bonelab.Extenders;
+using LabFusion.Bonelab.Messages;
+using LabFusion.Marrow.Extenders;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.RPC;
-using LabFusion.Bonelab.Messages;
-using LabFusion.Bonelab.Extenders;
-using LabFusion.Marrow.Extenders;
-
 using UnityEngine;
-
 using Random = UnityEngine.Random;
 
 namespace LabFusion.Bonelab.Patching;

@@ -68,8 +68,8 @@ public static class NetSerializerExtensions
     public static void SerializeValue(this INetSerializer serializer, ref object value)
     {
         if (!SerializeNullable(serializer, ref value))
-        { 
-            return; 
+        {
+            return;
         }
 
         var type = SerializeType(serializer, ref value);

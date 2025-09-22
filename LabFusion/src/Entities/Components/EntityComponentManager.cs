@@ -1,8 +1,6 @@
-﻿using System.Linq.Expressions;
+﻿using LabFusion.Utilities;
+using System.Linq.Expressions;
 using System.Reflection;
-
-using LabFusion.Utilities;
-
 using UnityEngine;
 
 namespace LabFusion.Entities;

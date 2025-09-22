@@ -82,7 +82,7 @@ namespace GroovyCodecs.G711.aLaw
             for (var i = 0; i < sourceLen; i++)
                 res[i] = _aLawDecompressTable[frame[i] & 0xff];
 
-           return res;
+            return res;
         }
     }
 }

@@ -79,7 +79,7 @@ public class TeamManager
 
         // Invoke team change event
         var team = GetTeamByName(value);
-        
+
         if (team != null)
         {
             if (playerID != null)
@@ -288,7 +288,7 @@ public class TeamManager
     {
         return GetPlayerTeam(PlayerIDManager.LocalID);
     }
-    
+
     /// <summary>
     /// Gets a random team.
     /// </summary>

@@ -1,14 +1,12 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Utilities;
-using LabFusion.Marrow.Messages;
+using Il2CppSLZ.Marrow;
 using LabFusion.Entities;
-using LabFusion.Scene;
 using LabFusion.Marrow.Combat;
 using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow;
+using LabFusion.Marrow.Messages;
+using LabFusion.Network;
+using LabFusion.Scene;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Patching;
 
@@ -57,7 +55,7 @@ public static class GunPatches
 
         var hand = grip.GetHand();
 
-        if (hand == null) 
+        if (hand == null)
         {
             return true;
         }

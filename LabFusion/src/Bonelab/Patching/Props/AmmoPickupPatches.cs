@@ -1,12 +1,9 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Scene;
-using LabFusion.Utilities;
-
-using UnityEngine;
-
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow;
+using LabFusion.Scene;
+using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.Bonelab.Patching;
 

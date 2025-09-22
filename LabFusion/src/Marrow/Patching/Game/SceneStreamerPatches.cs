@@ -1,9 +1,7 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-
 using Il2CppSLZ.Marrow.SceneStreaming;
 using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Network;
 
 namespace LabFusion.Marrow.Patching;
 

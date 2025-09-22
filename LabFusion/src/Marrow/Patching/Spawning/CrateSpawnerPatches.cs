@@ -1,19 +1,15 @@
 ﻿using HarmonyLib;
-
+using Il2CppCysharp.Threading.Tasks;
+using Il2CppSLZ.Marrow.Pool;
+using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Data;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Marrow.Integration;
+using LabFusion.Marrow.Messages;
 using LabFusion.RPC;
 using LabFusion.Scene;
-using LabFusion.Marrow.Integration;
-using LabFusion.Data;
 using LabFusion.Utilities;
-using LabFusion.Marrow.Messages;
-using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow.Pool;
-
 using UnityEngine;
-
-using Il2CppCysharp.Threading.Tasks;
 
 namespace LabFusion.Marrow.Patching;
 

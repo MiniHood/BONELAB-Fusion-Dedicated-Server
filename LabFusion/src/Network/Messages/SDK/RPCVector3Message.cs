@@ -1,5 +1,4 @@
-﻿using LabFusion.Entities;
-using LabFusion.Marrow.Integration;
+﻿using LabFusion.Marrow.Integration;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
 using LabFusion.Scene;
@@ -11,7 +10,7 @@ namespace LabFusion.Network;
 
 public static class RPCVector3Sender
 {
-    public static bool SetValue(RPCVector3 rpcVector3, Vector3 value) 
+    public static bool SetValue(RPCVector3 rpcVector3, Vector3 value)
     {
         // Make sure we have a server
         if (!NetworkSceneManager.IsLevelNetworked)

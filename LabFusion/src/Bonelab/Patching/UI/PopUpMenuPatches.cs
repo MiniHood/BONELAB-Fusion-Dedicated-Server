@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-
+using Il2CppSLZ.Bonelab;
+using Il2CppSLZ.Marrow.Data;
 using LabFusion.RPC;
 using LabFusion.Scene;
-
-using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Bonelab;
-
 using Action = Il2CppSystem.Action;
 
 namespace LabFusion.Bonelab.Patching;

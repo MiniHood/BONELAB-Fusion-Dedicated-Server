@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-
-using LabFusion.Utilities;
-using LabFusion.Scene;
-using LabFusion.Network;
+﻿using LabFusion.Network;
 using LabFusion.Player;
+using LabFusion.Scene;
+using LabFusion.Utilities;
+using System.Reflection;
 
 namespace LabFusion.Marrow.Scene;
 
@@ -84,9 +83,9 @@ public abstract class LevelEventHandler
 
     public static void LoadHandlers(Assembly assembly)
     {
-        if (assembly == null) 
-        { 
-            throw new NullReferenceException("Can't register from a null assembly!"); 
+        if (assembly == null)
+        {
+            throw new NullReferenceException("Can't register from a null assembly!");
         }
 
 #if DEBUG

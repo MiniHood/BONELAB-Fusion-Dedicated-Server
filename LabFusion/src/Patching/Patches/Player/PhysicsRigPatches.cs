@@ -1,12 +1,10 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.Scene;
-
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.VRMK;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Scene;
+using LabFusion.Utilities;
 
 namespace LabFusion.Patching;
 

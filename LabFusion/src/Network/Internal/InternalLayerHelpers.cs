@@ -1,5 +1,4 @@
-﻿using LabFusion.Preferences.Client;
-using LabFusion.Player;
+﻿using LabFusion.Player;
 
 namespace LabFusion.Network;
 

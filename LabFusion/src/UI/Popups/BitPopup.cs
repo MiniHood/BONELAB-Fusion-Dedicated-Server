@@ -1,16 +1,11 @@
-﻿using LabFusion.Data;
+﻿using Il2CppTMPro;
+using LabFusion.Data;
 using LabFusion.Marrow;
+using LabFusion.Marrow.Pool;
 using LabFusion.Scene;
 using LabFusion.Utilities;
-using LabFusion.Marrow.Pool;
-
 using UnityEngine;
 using UnityEngine.UI;
-
-using Il2CppTMPro;
-
-using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Marrow.Pool;
 
 namespace LabFusion.UI.Popups;
 

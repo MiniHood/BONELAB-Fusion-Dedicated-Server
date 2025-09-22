@@ -1,15 +1,12 @@
-﻿using LabFusion.Utilities;
+﻿using HarmonyLib;
+using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.AI;
+using Il2CppSLZ.Marrow.Combat;
+using Il2CppSLZ.Marrow.Data;
 using LabFusion.Data;
 using LabFusion.Scene;
-
-using Il2CppSLZ.Marrow.Combat;
-using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Marrow.AI;
-
+using LabFusion.Utilities;
 using UnityEngine;
-
-using HarmonyLib;
 
 namespace LabFusion.Marrow.Patching;
 

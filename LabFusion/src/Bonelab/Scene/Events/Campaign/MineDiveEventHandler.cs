@@ -1,16 +1,13 @@
-﻿using LabFusion.Network;
-using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.Bonelab.Messages;
-using LabFusion.SDK.Scene;
-
-using Il2CppSLZ.Bonelab;
+﻿using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow;
-
+using LabFusion.Bonelab.Messages;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.SDK.Scene;
+using LabFusion.Utilities;
+using MelonLoader;
 using UnityEngine;
 using UnityEngine.Events;
-
-using MelonLoader;
 
 namespace LabFusion.Bonelab.Scene;
 

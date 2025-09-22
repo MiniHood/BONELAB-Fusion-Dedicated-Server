@@ -50,7 +50,7 @@ public static class URLWhitelistManager
 
         var domain = uri.Host;
 
-        foreach(var whitelist in List.Whitelist)
+        foreach (var whitelist in List.Whitelist)
         {
             if (domain == whitelist.Domain)
             {

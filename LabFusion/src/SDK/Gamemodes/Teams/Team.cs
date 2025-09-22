@@ -7,7 +7,7 @@ public class Team
     public string TeamName { get; set; }
 
     private string _displayName = null;
-    public string DisplayName 
+    public string DisplayName
     {
         get
         {

@@ -1,9 +1,7 @@
 ﻿using Il2CppTMPro;
-
 using LabFusion.Marrow.Proxies;
-using LabFusion.Utilities;
 using LabFusion.UI.Popups;
-
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.Menu;

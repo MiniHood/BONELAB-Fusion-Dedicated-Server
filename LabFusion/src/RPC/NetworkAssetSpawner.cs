@@ -1,9 +1,7 @@
-﻿using LabFusion.Data;
-using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow.Data;
+using LabFusion.Data;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Marrow.Data;
-
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.RPC;
@@ -38,7 +36,7 @@ public static class NetworkAssetSpawner
     }
 
     private static uint _lastTrackedSpawnable = 0;
-    
+
     private static readonly Dictionary<uint, Action<SpawnCallbackInfo>> _callbackQueue = new();
 
     public static void OnSpawnComplete(uint trackerId, SpawnCallbackInfo info)

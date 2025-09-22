@@ -2,8 +2,6 @@
 
 using LabFusion.Utilities;
 
-using MelonLoader;
-
 using Newtonsoft.Json.Linq;
 
 using System.Collections;

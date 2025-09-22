@@ -1,7 +1,6 @@
-﻿using LabFusion.SDK.Points;
+﻿using LabFusion.Network.Serialization;
 using LabFusion.Player;
-using LabFusion.Extensions;
-using LabFusion.Network.Serialization;
+using LabFusion.SDK.Points;
 
 namespace LabFusion.Network;
 

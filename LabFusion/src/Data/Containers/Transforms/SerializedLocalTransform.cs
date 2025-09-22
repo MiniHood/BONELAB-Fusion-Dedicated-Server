@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-
-using LabFusion.Extensions;
+﻿using LabFusion.Extensions;
 using LabFusion.Network.Serialization;
+using UnityEngine;
 
 namespace LabFusion.Data;
 

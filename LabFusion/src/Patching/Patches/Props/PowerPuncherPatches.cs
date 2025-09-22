@@ -1,19 +1,11 @@
 ﻿using HarmonyLib;
-
 using Il2CppSLZ.Interaction;
-using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow;
-
-using LabFusion.Network;
-using LabFusion.Utilities;
+using Il2CppSLZ.Marrow.Interaction;
 using LabFusion.Entities;
-
-using UnityEngine;
-
-using System.Collections;
-
-using MelonLoader;
+using LabFusion.Network;
 using LabFusion.Player;
+using UnityEngine;
 
 namespace LabFusion.Patching;
 

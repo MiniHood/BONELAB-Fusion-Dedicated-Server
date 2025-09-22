@@ -57,7 +57,7 @@ public struct LobbyMetadataInfo
             Game = lobby.GetMetadata(LobbyKeys.GameKey),
         };
 
-        if (lobby.TryGetMetadata(LobbyKeys.PrivacyKey, out var rawPrivacy) && int.TryParse(rawPrivacy, out var privacyInt)) 
+        if (lobby.TryGetMetadata(LobbyKeys.PrivacyKey, out var rawPrivacy) && int.TryParse(rawPrivacy, out var privacyInt))
         {
             info.Privacy = (ServerPrivacy)privacyInt;
         }

@@ -1,7 +1,6 @@
 ﻿using Il2CppSLZ.Marrow.Warehouse;
 
 using LabFusion.Downloading.ModIO;
-using LabFusion.Extensions;
 using LabFusion.Marrow;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
@@ -72,7 +71,7 @@ public class ModInfoRequestMessage : NativeMessageHandler
         }
 
         var modListing = manifest.ModListing;
-        
+
         var modTarget = ModIOManager.GetTargetFromListing(modListing);
 
         if (modTarget == null)

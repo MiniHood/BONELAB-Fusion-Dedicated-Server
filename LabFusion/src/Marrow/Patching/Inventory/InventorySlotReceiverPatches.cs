@@ -1,21 +1,18 @@
 ﻿using HarmonyLib;
-
+using Il2CppCysharp.Threading.Tasks;
+using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Data;
+using Il2CppSLZ.Marrow.Interaction;
+using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Marrow.Messages;
 using LabFusion.Network;
 using LabFusion.Player;
-using LabFusion.SDK.Achievements;
-using LabFusion.Entities;
-using LabFusion.Scene;
-using LabFusion.Utilities;
 using LabFusion.RPC;
-using LabFusion.Marrow.Messages;
-using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow.Interaction;
-using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow.Data;
-
-using Il2CppCysharp.Threading.Tasks;
+using LabFusion.Scene;
+using LabFusion.SDK.Achievements;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Patching;
 
@@ -91,7 +88,7 @@ public class InventorySlotReceiverPatches
 
     [HarmonyPrefix]
     [HarmonyPatch(nameof(InventorySlotReceiver.OnHandDrop))]
-    public static bool OnHandDropPrefix() 
+    public static bool OnHandDropPrefix()
     {
         if (IgnorePatches)
         {

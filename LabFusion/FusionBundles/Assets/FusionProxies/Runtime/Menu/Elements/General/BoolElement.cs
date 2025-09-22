@@ -59,7 +59,7 @@ namespace LabFusion.Marrow.Proxies
             }
         }
 
-        public void Toggle() 
+        public void Toggle()
         {
             Value = !Value;
         }

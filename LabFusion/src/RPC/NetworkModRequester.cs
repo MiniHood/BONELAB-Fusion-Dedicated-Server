@@ -1,12 +1,10 @@
-﻿using System.Collections;
-
-using LabFusion.Downloading;
+﻿using LabFusion.Downloading;
 using LabFusion.Downloading.ModIO;
 using LabFusion.Network;
 using LabFusion.Preferences.Client;
 using LabFusion.Utilities;
-
 using MelonLoader;
+using System.Collections;
 
 namespace LabFusion.RPC;
 

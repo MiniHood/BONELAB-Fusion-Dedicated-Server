@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-
 using Il2CppSLZ.Bonelab;
-
 using LabFusion.Bonelab.Extenders;
-using LabFusion.Network;
 using LabFusion.Bonelab.Messages;
-
+using LabFusion.Network;
 using Random = UnityEngine.Random;
 
 namespace LabFusion.Bonelab.Patching;

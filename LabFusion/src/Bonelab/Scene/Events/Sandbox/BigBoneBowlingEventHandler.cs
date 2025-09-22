@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-
-using LabFusion.SDK.Points;
+﻿using LabFusion.SDK.Points;
 using LabFusion.SDK.Scene;
+using UnityEngine;
 
 namespace LabFusion.Bonelab.Scene;
 

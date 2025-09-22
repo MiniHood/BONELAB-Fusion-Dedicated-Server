@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Utilities;
-using LabFusion.Scene;
-
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Props;
-
+using LabFusion.Scene;
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.Bonelab.Patching;
@@ -23,7 +20,7 @@ public static class GachaPlacerPatches
         {
             return true;
         }
-        
+
         if (!NetworkSceneManager.IsLevelNetworked)
         {
             return true;

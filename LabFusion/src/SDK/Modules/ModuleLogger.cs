@@ -3,8 +3,8 @@
 namespace LabFusion.SDK.Modules;
 
 /// <summary>
-    /// Logger for Fusion modules.
-    /// </summary>
+/// Logger for Fusion modules.
+/// </summary>
 public class ModuleLogger
 {
     private string _moduleName;

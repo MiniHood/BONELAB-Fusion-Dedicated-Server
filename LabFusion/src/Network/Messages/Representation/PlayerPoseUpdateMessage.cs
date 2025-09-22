@@ -1,7 +1,7 @@
-﻿using LabFusion.Player;
-using LabFusion.Entities;
-using LabFusion.Utilities;
+﻿using LabFusion.Entities;
 using LabFusion.Network.Serialization;
+using LabFusion.Player;
+using LabFusion.Utilities;
 
 namespace LabFusion.Network;
 
@@ -42,7 +42,7 @@ public class PlayerPoseUpdateMessage : NativeMessageHandler
 
         if (playerId == PlayerIDManager.HostSmallID)
             return;
-            
+
         // Make sure this isn't us
         if (playerId == PlayerIDManager.LocalSmallID)
         {

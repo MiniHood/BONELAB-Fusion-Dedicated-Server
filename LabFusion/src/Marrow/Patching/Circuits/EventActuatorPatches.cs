@@ -1,15 +1,12 @@
 ﻿using HarmonyLib;
-
 using Il2CppSLZ.Marrow.Circuits;
 using Il2CppUltEvents;
-
 using LabFusion.Data;
 using LabFusion.Marrow.Circuits;
+using LabFusion.Marrow.Messages;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Scene;
-using LabFusion.Utilities;
-using LabFusion.Marrow.Messages;
 
 namespace LabFusion.Marrow.Patching;
 

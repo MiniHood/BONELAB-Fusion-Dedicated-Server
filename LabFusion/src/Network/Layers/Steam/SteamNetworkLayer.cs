@@ -1,14 +1,12 @@
 ﻿using LabFusion.Data;
 using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.UI.Popups;
-
-using Steamworks;
-using Steamworks.Data;
-
 using LabFusion.Senders;
+using LabFusion.UI.Popups;
+using LabFusion.Utilities;
 using LabFusion.Voice;
 using LabFusion.Voice.Unity;
+using Steamworks;
+using Steamworks.Data;
 
 namespace LabFusion.Network;
 
@@ -363,9 +361,9 @@ public abstract class SteamNetworkLayer : NetworkLayer
     private void OnPlayerJoin(PlayerID id)
     {
 
-        if(id.TryGetDisplayName(out var name))
+        if (id.TryGetDisplayName(out var name))
             FusionLogger.Log($"Player {name} has joined the server.");
-    
+
         if (VoiceManager == null)
         {
             return;

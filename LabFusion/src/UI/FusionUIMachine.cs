@@ -1,9 +1,7 @@
-﻿using LabFusion.Utilities;
-
-using UnityEngine;
-
+﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Audio;
-using Il2CppSLZ.Marrow;
+using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.UI
 {

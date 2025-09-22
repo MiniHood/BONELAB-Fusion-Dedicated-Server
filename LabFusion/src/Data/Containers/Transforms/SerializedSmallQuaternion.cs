@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-
-using LabFusion.Network;
-using LabFusion.Extensions;
+﻿using LabFusion.Extensions;
 using LabFusion.Network.Serialization;
+using UnityEngine;
 
 namespace LabFusion.Data;
 
@@ -23,7 +21,7 @@ public class SerializedSmallQuaternion : INetSerializable
 
     public static SerializedSmallQuaternion Compress(Quaternion quat)
     {
-        return new SerializedSmallQuaternion() 
+        return new SerializedSmallQuaternion()
         {
             c1 = quat.x.ToSByte(),
             c2 = quat.y.ToSByte(),

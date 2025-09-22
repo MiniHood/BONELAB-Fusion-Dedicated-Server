@@ -1,8 +1,6 @@
 ﻿using HarmonyLib;
 
 using Il2CppSLZ.Marrow.Zones;
-
-using LabFusion.Data;
 using LabFusion.Extensions;
 using LabFusion.Marrow;
 using LabFusion.Utilities;

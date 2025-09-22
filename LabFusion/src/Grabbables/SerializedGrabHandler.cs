@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-
-using LabFusion.Utilities;
-using LabFusion.Data;
+﻿using LabFusion.Data;
 using LabFusion.Network;
 using LabFusion.Network.Serialization;
+using LabFusion.Utilities;
+using System.Reflection;
 
 namespace LabFusion.Grabbables;
 

@@ -1,5 +1,5 @@
-﻿using LabFusion.SDK.Modules;
-using LabFusion.Bonelab.Messages;
+﻿using LabFusion.Bonelab.Messages;
+using LabFusion.SDK.Modules;
 
 namespace LabFusion.Bonelab;
 
@@ -48,6 +48,6 @@ public class BonelabModule : Module
 
     protected override void OnModuleUnregistered()
     {
-        
+
     }
 }

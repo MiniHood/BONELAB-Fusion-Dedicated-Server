@@ -1,20 +1,16 @@
-﻿using UnityEngine;
-using UnityEngine.Rendering.Universal;
-
-using LabFusion.Utilities;
-using LabFusion.Data;
-using LabFusion.Marrow;
-using LabFusion.Entities;
-using LabFusion.MonoBehaviours;
-
-using Il2Cpp;
-
+﻿using Il2Cpp;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow.Warehouse;
-
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using LabFusion.Data;
+using LabFusion.Entities;
+using LabFusion.Marrow;
+using LabFusion.MonoBehaviours;
+using LabFusion.Utilities;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace LabFusion.Representation;
 
@@ -99,7 +95,7 @@ public static class PlayerRepUtilities
         var entity = rigManager.physicsRig.marrowEntity;
 
         entity.Tags.Tags.RemoveAll((Il2CppSystem.Predicate<BoneTagReference>)((tag) => tag.Barcode == MarrowBoneTagReferences.PlayerReference.Barcode));
-        
+
         entity.Tags.Tags.Add(FusionBoneTagReferences.FusionPlayerReference);
 
         // Clear the controller rig of its observer, bodies, and entity

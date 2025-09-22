@@ -52,7 +52,7 @@ public class PlayerID : INetSerializable, IEquatable<PlayerID>
     private List<string> _equippedItems = new();
     public List<string> EquippedItems => _equippedItems;
 
-    public PlayerID() 
+    public PlayerID()
     {
         _isValid = false;
     }

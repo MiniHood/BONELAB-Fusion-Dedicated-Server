@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-
-using LabFusion.Player;
+﻿using LabFusion.Player;
 using LabFusion.Utilities;
 using LabFusion.Voice;
+using System.Reflection;
 
 namespace LabFusion.Network;
 

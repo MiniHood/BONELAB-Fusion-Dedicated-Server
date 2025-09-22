@@ -1,9 +1,8 @@
-﻿using LabFusion.Utilities;
-using LabFusion.Player;
-using LabFusion.Network;
+﻿using Il2CppSLZ.Marrow;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Marrow;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Extenders;
 

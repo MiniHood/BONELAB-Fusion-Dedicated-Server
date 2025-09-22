@@ -1,22 +1,18 @@
-﻿using Il2CppSLZ.Marrow.Interaction;
-using Il2CppSLZ.Marrow;
-
+﻿using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Interaction;
 using LabFusion.Data;
+using LabFusion.Extensions;
+using LabFusion.Math;
 using LabFusion.Network;
 using LabFusion.Player;
-using LabFusion.Representation;
-using LabFusion.Utilities;
-using LabFusion.Scene;
 using LabFusion.Preferences;
+using LabFusion.Representation;
+using LabFusion.Scene;
+using LabFusion.Utilities;
 using LabFusion.Voice;
-using LabFusion.Math;
-using LabFusion.Extensions;
-
 using MelonLoader;
-
-using UnityEngine;
-
 using System.Collections;
+using UnityEngine;
 
 namespace LabFusion.Entities;
 
@@ -729,7 +725,7 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
             return;
 
         var data = PlayerPoseUpdateData.Create(RigPose);
-        
+
         MessageRelay.RelayNative(data, NativeMessageTag.PlayerPoseUpdate, CommonMessageRoutes.UnreliableToOtherClients);
     }
 

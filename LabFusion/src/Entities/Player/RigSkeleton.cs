@@ -37,5 +37,5 @@ public class RigSkeleton
         remapRig = rigManager.remapHeptaRig;
 
         health = rigManager.health;
-    } 
+    }
 }

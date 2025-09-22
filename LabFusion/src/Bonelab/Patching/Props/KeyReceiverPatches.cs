@@ -1,15 +1,12 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Bonelab.Extenders;
-using LabFusion.MonoBehaviours;
-using LabFusion.Data;
-using LabFusion.Marrow;
-using LabFusion.Utilities;
-using LabFusion.Bonelab.Messages;
-
 using Il2CppSLZ.Interaction;
 using Il2CppSLZ.Marrow;
+using LabFusion.Bonelab.Extenders;
+using LabFusion.Bonelab.Messages;
+using LabFusion.Data;
+using LabFusion.Marrow;
+using LabFusion.MonoBehaviours;
+using LabFusion.Network;
 
 namespace LabFusion.Bonelab.Patching;
 

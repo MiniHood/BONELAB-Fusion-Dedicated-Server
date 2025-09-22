@@ -1,13 +1,8 @@
-﻿using LabFusion.Data;
-
-using Il2CppTMPro;
-
-using UnityEngine;
-
+﻿using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Warehouse;
-
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using Il2CppTMPro;
+using LabFusion.Data;
+using UnityEngine;
 
 namespace LabFusion.Utilities;
 
@@ -117,7 +112,7 @@ internal static class PersistentAssetCreator
             {
                 continue;
             }
-        
+
             var properties = go.AddComponent<ImpactProperties>();
             properties.surfaceData = surfaceData;
             properties.decalType = ImpactProperties.DecalType.None;

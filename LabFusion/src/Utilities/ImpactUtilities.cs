@@ -1,9 +1,7 @@
 ﻿using Il2CppSLZ.Marrow.Interaction;
-
 using LabFusion.Entities;
-using LabFusion.Senders;
 using LabFusion.Marrow.Extenders;
-
+using LabFusion.Senders;
 using UnityEngine;
 
 namespace LabFusion.Utilities;

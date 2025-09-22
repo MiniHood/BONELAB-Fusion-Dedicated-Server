@@ -1,9 +1,9 @@
 ﻿using LabFusion.Data;
-using LabFusion.Senders;
 using LabFusion.Entities;
-using LabFusion.Player;
 using LabFusion.Marrow;
 using LabFusion.Network.Serialization;
+using LabFusion.Player;
+using LabFusion.Senders;
 
 namespace LabFusion.Network;
 

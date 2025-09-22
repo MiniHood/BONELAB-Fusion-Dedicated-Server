@@ -1,12 +1,9 @@
 ﻿using HarmonyLib;
-
+using Il2CppSLZ.Marrow;
+using LabFusion.Entities;
 using LabFusion.Network;
 using LabFusion.Utilities;
-using LabFusion.Entities;
-
 using Avatar = Il2CppSLZ.VRMK.Avatar;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.Patching;
 

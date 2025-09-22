@@ -1,5 +1,4 @@
-﻿using System;
-using LiteNetLib.Utils;
+﻿using LiteNetLib.Utils;
 
 namespace LiteNetLib
 {
@@ -73,7 +72,7 @@ namespace LiteNetLib
         public byte ConnectionNumber
         {
             get => (byte)((RawData[0] & 0x60) >> 5);
-            set => RawData[0] = (byte) ((RawData[0] & 0x9F) | (value << 5));
+            set => RawData[0] = (byte)((RawData[0] & 0x9F) | (value << 5));
         }
 
         public ushort Sequence
@@ -157,8 +156,8 @@ namespace LiteNetLib
             return Size >= headerSize && (!fragmented || Size >= headerSize + NetConstants.FragmentHeaderSize);
         }
 
-        #if LITENETLIB_SPANS || NETCOREAPP2_1_OR_GREATER || NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1 || NETCOREAPP3_1 || NET5_0 || NETSTANDARD2_1
+#if LITENETLIB_SPANS || NETCOREAPP2_1_OR_GREATER || NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1 || NETCOREAPP3_1 || NET5_0 || NETSTANDARD2_1
         public static implicit operator Span<byte>(NetPacket p) => new Span<byte>(p.RawData, 0, p.Size);
-        #endif
+#endif
     }
 }

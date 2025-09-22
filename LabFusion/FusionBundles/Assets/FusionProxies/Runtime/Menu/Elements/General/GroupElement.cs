@@ -57,7 +57,7 @@ namespace LabFusion.Marrow.Proxies
         }
 
         [HideFromIl2Cpp]
-        protected virtual void OnElementAdded(MenuElement element) 
+        protected virtual void OnElementAdded(MenuElement element)
         {
             element.gameObject.SetActive(true);
         }
@@ -143,7 +143,7 @@ namespace LabFusion.Marrow.Proxies
         public int RemoveElements<TElement>() where TElement : MenuElement
         {
             var elementsToRemove = new List<TElement>();
-            
+
             foreach (var element in Elements)
             {
                 var casted = element.TryCast<TElement>();

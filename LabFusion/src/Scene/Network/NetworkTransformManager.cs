@@ -19,9 +19,9 @@ public static class NetworkTransformManager
         return position - FloatingOrigin;
     }
 
-    public static Vector3 DecodePosition(Vector3 position) 
-    { 
-        return position + FloatingOrigin; 
+    public static Vector3 DecodePosition(Vector3 position)
+    {
+        return position + FloatingOrigin;
     }
 
     public static bool IsInBounds(Vector3 position)

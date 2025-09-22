@@ -1,9 +1,4 @@
-﻿using LabFusion.Data;
-using LabFusion.Preferences.Client;
-using LabFusion.Safety;
-using LabFusion.Utilities;
-
-using MelonLoader;
+﻿using LabFusion.Utilities;
 
 using System.Collections;
 
@@ -15,7 +10,7 @@ public static class ModIODownloader
     private static bool _isDownloading = false;
 
     public static ModTransaction CurrentTransaction => _currentTransaction;
-    
+
     public static bool IsDownloading => _isDownloading;
 
     private static readonly Queue<ModTransaction> _queuedTransactions = new();

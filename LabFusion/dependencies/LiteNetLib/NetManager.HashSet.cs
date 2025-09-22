@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Threading;
+﻿using System.Net;
 
 namespace LiteNetLib
 {
@@ -152,11 +150,11 @@ namespace LiteNetLib
 
         private void RemovePeer(NetPeer peer, bool enableWriteLock)
         {
-            if(enableWriteLock)
+            if (enableWriteLock)
                 _peersLock.EnterWriteLock();
             if (!RemovePeerFromSet(peer))
             {
-                if(enableWriteLock)
+                if (enableWriteLock)
                     _peersLock.ExitWriteLock();
                 return;
             }
@@ -172,7 +170,7 @@ namespace LiteNetLib
             _peersArray[peer.Id] = null;
             _peerIds.Enqueue(peer.Id);
 
-            if(enableWriteLock)
+            if (enableWriteLock)
                 _peersLock.ExitWriteLock();
         }
 

@@ -39,7 +39,7 @@ public class EmptyNetworkLayer : NetworkLayer
 #endif
     }
 
-    public override void OnDeinitializeLayer() 
+    public override void OnDeinitializeLayer()
     {
     }
 

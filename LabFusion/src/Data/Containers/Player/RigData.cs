@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-
-using LabFusion.Utilities;
+﻿using Il2CppSLZ.Bonelab;
+using LabFusion.Entities;
+using LabFusion.Marrow;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Senders;
-using LabFusion.Entities;
-using LabFusion.Marrow;
-
-using Il2CppSLZ.Bonelab;
+using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.Data;
 

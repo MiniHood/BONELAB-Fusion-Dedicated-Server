@@ -4,7 +4,6 @@ using Il2CppTMPro;
 
 using LabFusion.Menu;
 using LabFusion.SDK.Points;
-using LabFusion.Utilities;
 
 using MelonLoader;
 
@@ -106,9 +105,9 @@ namespace LabFusion.Marrow.Proxies
 
         public void GetElements()
         {
-            if (_hasElements) 
-            { 
-                return; 
+            if (_hasElements)
+            {
+                return;
             }
 
             CatalogPage = GetComponent<MenuPage>();
@@ -568,7 +567,7 @@ namespace LabFusion.Marrow.Proxies
             var elementCount = BitPalletElements.Length;
             var startIndex = page * elementCount;
 
-            for (var i = 0; i < elementCount && i + startIndex < _pallets.Count; i++) 
+            for (var i = 0; i < elementCount && i + startIndex < _pallets.Count; i++)
             {
                 BitPalletElements[i].Title = _pallets[i + startIndex];
                 BitPalletElements[i].gameObject.SetActive(true);

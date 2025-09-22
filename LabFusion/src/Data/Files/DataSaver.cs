@@ -1,6 +1,5 @@
-﻿using System.Text.Json;
-
-using LabFusion.Utilities;
+﻿using LabFusion.Utilities;
+using System.Text.Json;
 
 namespace LabFusion.Data;
 

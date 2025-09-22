@@ -1,9 +1,8 @@
-﻿using LabFusion.Grabbables;
+﻿using Il2CppSLZ.Marrow;
 using LabFusion.Entities;
+using LabFusion.Grabbables;
 using LabFusion.Marrow.Extenders;
 using LabFusion.Network.Serialization;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.Data;
 

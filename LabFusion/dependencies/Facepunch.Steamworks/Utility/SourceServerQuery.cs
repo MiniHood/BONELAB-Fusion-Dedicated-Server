@@ -1,6 +1,6 @@
-﻿using System.Net;
+﻿using Steamworks.Data;
+using System.Net;
 using System.Net.Sockets;
-using Steamworks.Data;
 
 namespace Steamworks
 {

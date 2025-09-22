@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-
-using LabFusion.Marrow;
+﻿using LabFusion.Marrow;
 using LabFusion.Marrow.Pool;
+using UnityEngine;
 
 namespace LabFusion.UI;
 

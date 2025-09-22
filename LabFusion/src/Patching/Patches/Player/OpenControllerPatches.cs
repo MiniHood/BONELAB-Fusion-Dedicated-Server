@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-
-using UnityEngine;
-
 using Il2CppSLZ.Marrow;
-
 using LabFusion.Player;
 using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.Patching;
 

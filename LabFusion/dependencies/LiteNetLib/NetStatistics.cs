@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace LiteNetLib
+﻿namespace LiteNetLib
 {
     public sealed class NetStatistics
     {

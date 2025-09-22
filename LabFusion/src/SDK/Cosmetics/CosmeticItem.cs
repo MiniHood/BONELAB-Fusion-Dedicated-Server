@@ -1,10 +1,8 @@
-﻿using LabFusion.Extensions;
-using LabFusion.SDK.Points;
-using LabFusion.Marrow.Integration;
-
-using Il2CppSLZ.Marrow;
+﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Warehouse;
-
+using LabFusion.Extensions;
+using LabFusion.Marrow.Integration;
+using LabFusion.SDK.Points;
 using UnityEngine;
 
 namespace LabFusion.SDK.Cosmetics;

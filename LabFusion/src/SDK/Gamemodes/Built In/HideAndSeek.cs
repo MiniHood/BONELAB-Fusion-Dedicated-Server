@@ -1,6 +1,5 @@
 ﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Warehouse;
-
 using LabFusion.Bonelab;
 using LabFusion.Entities;
 using LabFusion.Extensions;
@@ -11,13 +10,10 @@ using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.SDK.Points;
 using LabFusion.SDK.Triggers;
-using LabFusion.Utilities;
 using LabFusion.UI.Popups;
-
+using LabFusion.Utilities;
 using MelonLoader;
-
 using System.Collections;
-
 using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;
@@ -597,7 +593,7 @@ public class HideAndSeek : Gamemode
         {
             return;
         }
-        
+
         // Check if the grabbed object is a player
         if (!grip._marrowEntity)
         {

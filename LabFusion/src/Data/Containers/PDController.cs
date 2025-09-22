@@ -1,8 +1,7 @@
 ﻿using LabFusion.Extensions;
+using LabFusion.Math;
 using LabFusion.Scene;
 using LabFusion.Utilities;
-using LabFusion.Math;
-
 using UnityEngine;
 
 namespace LabFusion.Data;

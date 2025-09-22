@@ -1,10 +1,9 @@
-﻿using Il2CppSLZ.Marrow.Data;
+﻿using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Data;
 using Il2CppSLZ.Marrow.Interaction;
-using Il2CppSLZ.Marrow;
-
-using LabFusion.Marrow;
-using LabFusion.Extensions;
 using LabFusion.Entities;
+using LabFusion.Extensions;
+using LabFusion.Marrow;
 
 namespace LabFusion.Utilities;
 

@@ -1,7 +1,7 @@
-﻿using LabFusion.Bonelab.Scene;
-using LabFusion.Network;
-using LabFusion.Bonelab.Patching;
+﻿using LabFusion.Bonelab.Patching;
+using LabFusion.Bonelab.Scene;
 using LabFusion.Entities;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
 using LabFusion.Utilities;

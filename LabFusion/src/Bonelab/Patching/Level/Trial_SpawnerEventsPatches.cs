@@ -1,13 +1,10 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
+using Il2CppSLZ.Bonelab;
+using LabFusion.Bonelab.Messages;
 using LabFusion.Data;
 using LabFusion.Marrow;
-using LabFusion.Utilities;
-using LabFusion.Bonelab.Messages;
+using LabFusion.Network;
 using LabFusion.Scene;
-
-using Il2CppSLZ.Bonelab;
 
 namespace LabFusion.Bonelab.Patching;
 

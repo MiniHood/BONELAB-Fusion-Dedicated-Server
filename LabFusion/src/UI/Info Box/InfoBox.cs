@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-using MelonLoader;
+﻿using MelonLoader;
+using UnityEngine;
 
 namespace LabFusion.UI
 {

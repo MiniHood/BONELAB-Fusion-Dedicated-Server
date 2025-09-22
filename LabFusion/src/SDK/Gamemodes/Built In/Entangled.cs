@@ -1,14 +1,13 @@
 ﻿using LabFusion.Entities;
 using LabFusion.Extensions;
 using LabFusion.Marrow;
+using LabFusion.Menu;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Representation;
-using LabFusion.Senders;
 using LabFusion.Scene;
+using LabFusion.Senders;
 using LabFusion.UI.Popups;
-using LabFusion.Menu;
-
 using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;

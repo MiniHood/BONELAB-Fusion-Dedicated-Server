@@ -1,14 +1,14 @@
-﻿using LabFusion.SDK.Extenders;
-using LabFusion.Marrow.Integration;
+﻿using LabFusion.Marrow.Integration;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
 using LabFusion.Scene;
+using LabFusion.SDK.Extenders;
 
 namespace LabFusion.Network;
 
 public static class RPCFloatSender
 {
-    public static bool SetValue(RPCFloat rpcFloat, float value) 
+    public static bool SetValue(RPCFloat rpcFloat, float value)
     {
         // Make sure we have a server
         if (!NetworkSceneManager.IsLevelNetworked)

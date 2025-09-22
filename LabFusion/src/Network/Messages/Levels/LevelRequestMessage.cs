@@ -1,13 +1,10 @@
-﻿using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.UI.Popups;
-
-using Il2CppSLZ.Marrow.SceneStreaming;
+﻿using Il2CppSLZ.Marrow.SceneStreaming;
 using Il2CppSLZ.Marrow.Warehouse;
-
-using UnityEngine;
-
 using LabFusion.Network.Serialization;
+using LabFusion.Player;
+using LabFusion.UI.Popups;
+using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.Network;
 

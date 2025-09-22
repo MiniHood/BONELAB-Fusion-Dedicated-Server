@@ -1,13 +1,10 @@
 ﻿using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Data;
 using Il2CppSLZ.Marrow.Pool;
-
 using LabFusion.Data;
 using LabFusion.Extensions;
 using LabFusion.Marrow;
-using LabFusion.UI;
 using LabFusion.Marrow.Pool;
-
+using LabFusion.UI;
 using UnityEngine;
 
 namespace LabFusion.Entities;
@@ -128,7 +125,7 @@ public class RigHeadUI
         // Apply visibility
         _layoutPoolee.gameObject.SetActive(Visible);
     }
-    
+
     private void SpawnElements()
     {
         foreach (var element in _elements)
@@ -139,7 +136,7 @@ public class RigHeadUI
         // After all elements are spawned, resort them
         SortElements();
     }
-    
+
     private void DespawnElements()
     {
         foreach (var element in _elements)

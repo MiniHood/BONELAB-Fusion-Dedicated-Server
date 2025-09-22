@@ -35,7 +35,7 @@ namespace LabFusion.Marrow.Proxies
         {
             GetReferences();
         }
-        
+
         public void Highlight(bool highlighted)
         {
             GetReferences();
@@ -45,9 +45,9 @@ namespace LabFusion.Marrow.Proxies
 
         public void GetReferences()
         {
-            if (_hasReferences) 
-            { 
-                return; 
+            if (_hasReferences)
+            {
+                return;
             }
 
             // Level rotation name

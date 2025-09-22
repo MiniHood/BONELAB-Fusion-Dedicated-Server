@@ -54,7 +54,7 @@ public static class MenuMatchmakingGamemodes
 
         SearchingLabel.Title = searchingText;
 
-       var matchmaker = NetworkLayerManager.Layer.Matchmaker;
+        var matchmaker = NetworkLayerManager.Layer.Matchmaker;
 
         if (matchmaker != null)
         {

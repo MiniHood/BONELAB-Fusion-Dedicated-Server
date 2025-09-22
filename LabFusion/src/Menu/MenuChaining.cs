@@ -15,7 +15,8 @@ public static class MenuChaining
         void OnButtonChanged(Enum value)
         {
             pref.Value = (TEnum)value;
-        };
+        }
+        ;
 
         element.OnValueChanged += OnButtonChanged;
 
@@ -48,7 +49,8 @@ public static class MenuChaining
         void OnButtonChanged(string value)
         {
             pref.Value = value;
-        };
+        }
+        ;
 
         element.OnValueChanged += OnButtonChanged;
 
@@ -81,7 +83,8 @@ public static class MenuChaining
         void OnButtonChanged(float value)
         {
             pref.Value = value;
-        };
+        }
+        ;
 
         element.OnValueChanged += OnButtonChanged;
 
@@ -114,7 +117,8 @@ public static class MenuChaining
         void OnButtonChanged(int value)
         {
             pref.Value = value;
-        };
+        }
+        ;
 
         element.OnValueChanged += OnButtonChanged;
 
@@ -147,7 +151,8 @@ public static class MenuChaining
         void OnButtonChanged(bool value)
         {
             pref.Value = value;
-        };
+        }
+        ;
 
         element.OnValueChanged += OnButtonChanged;
 
@@ -187,7 +192,7 @@ public static class MenuChaining
         return element;
     }
 
-    public static IntElement WithLimits(this IntElement element, int minValue, int maxValue) 
+    public static IntElement WithLimits(this IntElement element, int minValue, int maxValue)
     {
         element.MinValue = minValue;
         element.MaxValue = maxValue;

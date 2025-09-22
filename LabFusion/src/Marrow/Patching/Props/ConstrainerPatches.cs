@@ -1,17 +1,14 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Player;
-using LabFusion.Entities;
-using LabFusion.Utilities;
-using LabFusion.Scene;
-using LabFusion.Marrow.Messages;
-using LabFusion.Marrow.Extenders;
-
-using UnityEngine;
-
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
+using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Marrow.Messages;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Scene;
+using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.Marrow.Patching;
 
@@ -162,7 +159,7 @@ public static class ConstrainerPatches
             // Register first tracker
             var firstEntity = new NetworkEntity();
             _ = new NetworkConstraint(firstEntity, firstTracker) { PointPair = pointPair, IsFirst = true, OtherId = SecondId, };
-            
+
             NetworkEntityManager.IDManager.RegisterEntity(FirstId, firstEntity);
 
             // Register second tracker

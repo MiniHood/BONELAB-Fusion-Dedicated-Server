@@ -1,20 +1,15 @@
-﻿using System.Collections;
-
-using LabFusion.Player;
-using LabFusion.Utilities;
+﻿using LabFusion.Player;
 using LabFusion.Preferences.Client;
+using LabFusion.Senders;
+using LabFusion.UI.Popups;
+using LabFusion.Utilities;
 using LabFusion.Voice;
 using LabFusion.Voice.Unity;
-using LabFusion.UI.Popups;
-
-using MelonLoader;
-
-using LabFusion.Senders;
-
-using Steamworks;
-
 using LiteNetLib;
 using LiteNetLib.Utils;
+using MelonLoader;
+using Steamworks;
+using System.Collections;
 
 namespace LabFusion.Network.Proxy;
 

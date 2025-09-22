@@ -1,6 +1,6 @@
-﻿using System.Net;
+﻿using LiteNetLib.Utils;
+using System.Net;
 using System.Net.Sockets;
-using LiteNetLib.Utils;
 
 namespace LiteNetLib
 {

@@ -76,13 +76,13 @@ public static class MenuMatchmaking
 
         PopulateBrowser(browserTransform);
     }
-    
+
     private static void OnMatchmakingPageShown()
     {
         var networkLayer = NetworkLayerManager.Layer;
 
         bool supportsMatchmaking = networkLayer.Matchmaker != null;
-        
+
         GamemodeOptionElement.gameObject.SetActive(supportsMatchmaking);
         SandboxOptionElement.gameObject.SetActive(supportsMatchmaking);
         BrowseOptionElement.gameObject.SetActive(supportsMatchmaking);
@@ -304,7 +304,7 @@ public static class MenuMatchmaking
             .Where(CheckLobbyVisibility);
     }
 
-    public static bool LoadLobbiesIntoBrowser(IEnumerable<IMatchmaker.LobbyInfo> lobbies) 
+    public static bool LoadLobbiesIntoBrowser(IEnumerable<IMatchmaker.LobbyInfo> lobbies)
     {
         MatchmakingPage.SelectSubPage(4);
 

@@ -10,7 +10,7 @@ namespace LabFusion.Marrow.Serialization;
 
 public class SerializableAttack : INetSerializable
 {
-    public const int Size = + sizeof(float) * 10 + sizeof(int);
+    public const int Size = +sizeof(float) * 10 + sizeof(int);
 
     public Attack Attack;
 

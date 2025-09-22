@@ -104,7 +104,7 @@ public static class CrateFilterer
         var crates = AssetWarehouse.Instance.GetCrates<TCrate>();
         List<TCrate> filtered = new();
 
-        foreach (var crate in crates) 
+        foreach (var crate in crates)
         {
             if (!HasTags(crate, tags))
             {

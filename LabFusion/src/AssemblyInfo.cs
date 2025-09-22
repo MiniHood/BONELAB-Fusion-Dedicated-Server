@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-
+﻿using LabFusion;
 using MelonLoader;
-
-using LabFusion;
+using System.Reflection;
 
 [assembly: AssemblyTitle(FusionMod.ModName)]
 [assembly: AssemblyVersion(FusionVersion.VersionString)]

@@ -6,7 +6,7 @@ namespace LabFusion.Voice.Unity;
 
 public sealed class UnityVoiceManager : VoiceManager
 {
-    public override bool CanTalk 
+    public override bool CanTalk
     {
         get
         {

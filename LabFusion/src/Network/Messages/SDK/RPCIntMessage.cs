@@ -1,15 +1,14 @@
-﻿using LabFusion.Entities;
-using LabFusion.Marrow.Integration;
+﻿using LabFusion.Marrow.Integration;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
-using LabFusion.SDK.Extenders;
 using LabFusion.Scene;
+using LabFusion.SDK.Extenders;
 
 namespace LabFusion.Network;
 
 public static class RPCIntSender
 {
-    public static bool SetValue(RPCInt rpcInt, int value) 
+    public static bool SetValue(RPCInt rpcInt, int value)
     {
         // Make sure we have a server
         if (!NetworkSceneManager.IsLevelNetworked)

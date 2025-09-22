@@ -50,6 +50,6 @@ public class ModInfoResponseMessage : NativeMessageHandler
             ModFile = data.ModFile.File,
             HasFile = data.ModFile.HasFile,
             Platform = data.ModFile.Platform,
-        });;
+        }); ;
     }
 }

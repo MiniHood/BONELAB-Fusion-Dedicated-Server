@@ -1,5 +1,4 @@
 ﻿using LabFusion.Network;
-using LabFusion.Player;
 using LabFusion.Senders;
 
 using MelonLoader;

@@ -1,8 +1,6 @@
-﻿using UnityEngine;
+﻿using LabFusion.Extensions;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-
-using LabFusion.Extensions;
-
 using IL2GoList = Il2CppSystem.Collections.Generic.List<UnityEngine.GameObject>;
 
 namespace LabFusion.Utilities;
@@ -99,7 +97,8 @@ public static partial class GameObjectUtilities
 #if DEBUG
             FusionLogger.LogException("finding GameObject by path", e);
 #endif
-        };
+        }
+        ;
 
         return null;
     }

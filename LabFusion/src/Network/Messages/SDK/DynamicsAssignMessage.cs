@@ -1,8 +1,6 @@
-﻿using LabFusion.Extensions;
-using LabFusion.Network.Serialization;
+﻿using LabFusion.Network.Serialization;
 
 using LabFusion.SDK.Gamemodes;
-using LabFusion.SDK.Modules;
 
 namespace LabFusion.Network;
 

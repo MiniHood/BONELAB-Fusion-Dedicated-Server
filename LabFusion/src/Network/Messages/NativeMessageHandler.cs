@@ -1,8 +1,7 @@
-﻿using System.Reflection;
-
-using LabFusion.Exceptions;
+﻿using LabFusion.Exceptions;
 using LabFusion.Network.Serialization;
 using LabFusion.Utilities;
+using System.Reflection;
 
 namespace LabFusion.Network;
 
@@ -32,9 +31,9 @@ public abstract class NativeMessageHandler : MessageHandler
 
         byte index = handler.Tag;
 
-        if (Handlers[index] != null) 
-        { 
-            throw new Exception($"{type.Name} has the same index as {Handlers[index].GetType().Name}, we can't replace handlers!"); 
+        if (Handlers[index] != null)
+        {
+            throw new Exception($"{type.Name} has the same index as {Handlers[index].GetType().Name}, we can't replace handlers!");
         }
 
 #if DEBUG

@@ -1,14 +1,12 @@
-﻿using LabFusion.Network.Serialization;
+﻿using Il2CppSLZ.Interaction;
+using Il2CppSLZ.Marrow;
+using LabFusion.Bonelab.Extenders;
 using LabFusion.Bonelab.Patching;
 using LabFusion.Entities;
-using LabFusion.Bonelab.Extenders;
 using LabFusion.Extensions;
 using LabFusion.Network;
+using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
-
-using Il2CppSLZ.Interaction;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.Bonelab.Messages;
 

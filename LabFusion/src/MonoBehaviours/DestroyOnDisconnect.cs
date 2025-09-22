@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-
+﻿using LabFusion.Utilities;
 using MelonLoader;
-using LabFusion.Utilities;
+using UnityEngine;
 
 namespace LabFusion.MonoBehaviours
 {

@@ -1,6 +1,5 @@
-﻿using LabFusion.Senders;
-using LabFusion.Extensions;
-using LabFusion.Network.Serialization;
+﻿using LabFusion.Network.Serialization;
+using LabFusion.Senders;
 
 namespace LabFusion.Network;
 

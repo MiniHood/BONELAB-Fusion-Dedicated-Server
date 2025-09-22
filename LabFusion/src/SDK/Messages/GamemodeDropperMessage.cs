@@ -1,7 +1,7 @@
-﻿using LabFusion.SDK.Modules;
+﻿using LabFusion.Entities;
 using LabFusion.Network;
 using LabFusion.Network.Serialization;
-using LabFusion.Entities;
+using LabFusion.SDK.Modules;
 using LabFusion.SDK.MonoBehaviours;
 
 namespace LabFusion.SDK.Messages;

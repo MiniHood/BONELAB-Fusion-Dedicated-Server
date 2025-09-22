@@ -1,16 +1,13 @@
-﻿using LabFusion.Data;
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Data;
+using LabFusion.Entities;
 using LabFusion.Extensions;
 using LabFusion.Player;
 using LabFusion.Senders;
-using LabFusion.Utilities;
-using LabFusion.Entities;
 using LabFusion.UI.Popups;
-
+using LabFusion.Utilities;
 using System.Reflection;
-
 using UnityEngine;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.SDK.Points;
 

@@ -16,7 +16,7 @@ public static class LocalControls
 
     private static bool _disableInteraction = false;
     public static bool DisableInteraction
-    { 
+    {
         get
         {
             return _disableInteraction;
@@ -89,7 +89,7 @@ public static class LocalControls
         OnOverrideSlowMo();
     }
 
-    internal static void OnFixedUpdate() 
+    internal static void OnFixedUpdate()
     {
         UpdateSlowMo();
     }

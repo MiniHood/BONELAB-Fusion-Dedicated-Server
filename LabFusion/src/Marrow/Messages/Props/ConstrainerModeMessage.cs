@@ -1,9 +1,8 @@
-﻿using LabFusion.Entities;
-using LabFusion.SDK.Modules;
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Entities;
 using LabFusion.Network;
 using LabFusion.Network.Serialization;
-
-using Il2CppSLZ.Marrow;
+using LabFusion.SDK.Modules;
 
 namespace LabFusion.Marrow.Messages;
 

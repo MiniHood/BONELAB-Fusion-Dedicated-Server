@@ -1,13 +1,11 @@
 ﻿using Il2CppSLZ.Marrow;
-
+using LabFusion.Entities;
+using LabFusion.Marrow.Messages;
+using LabFusion.Marrow.Patching;
 using LabFusion.MonoBehaviours;
 using LabFusion.Network;
-using LabFusion.Entities;
-using LabFusion.Marrow.Patching;
-using LabFusion.Marrow.Messages;
 using LabFusion.Player;
 using LabFusion.Utilities;
-
 using UnityEngine;
 
 namespace LabFusion.Marrow.Extenders;

@@ -1,16 +1,13 @@
 ﻿#if UNITY_2018_3_OR_NEWER
 #define UNITY_SOCKET_FIX
 #endif
-using System;
+using LiteNetLib.Layers;
+using LiteNetLib.Utils;
 using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using LiteNetLib.Layers;
-using LiteNetLib.Utils;
 
 namespace LiteNetLib
 {
@@ -703,27 +700,27 @@ namespace LiteNetLib
                     _requestsDict.Remove(request.RemoteEndPoint);
             }
             else lock (_requestsDict)
-            {
-                if (TryGetPeer(request.RemoteEndPoint, out netPeer))
                 {
-                    //already have peer
+                    if (TryGetPeer(request.RemoteEndPoint, out netPeer))
+                    {
+                        //already have peer
+                    }
+                    else if (request.Result == ConnectionRequestResult.Reject)
+                    {
+                        netPeer = new NetPeer(this, request.RemoteEndPoint, GetNextPeerId());
+                        netPeer.Reject(request.InternalPacket, rejectData, start, length);
+                        AddPeer(netPeer);
+                        NetDebug.Write(NetLogLevel.Trace, "[NM] Peer connect reject.");
+                    }
+                    else //Accept
+                    {
+                        netPeer = new NetPeer(this, request, GetNextPeerId());
+                        AddPeer(netPeer);
+                        CreateEvent(NetEvent.EType.Connect, netPeer);
+                        NetDebug.Write(NetLogLevel.Trace, $"[NM] Received peer connection Id: {netPeer.ConnectTime}, EP: {netPeer}");
+                    }
+                    _requestsDict.Remove(request.RemoteEndPoint);
                 }
-                else if (request.Result == ConnectionRequestResult.Reject)
-                {
-                    netPeer = new NetPeer(this, request.RemoteEndPoint, GetNextPeerId());
-                    netPeer.Reject(request.InternalPacket, rejectData, start, length);
-                    AddPeer(netPeer);
-                    NetDebug.Write(NetLogLevel.Trace, "[NM] Peer connect reject.");
-                }
-                else //Accept
-                {
-                    netPeer = new NetPeer(this, request, GetNextPeerId());
-                    AddPeer(netPeer);
-                    CreateEvent(NetEvent.EType.Connect, netPeer);
-                    NetDebug.Write(NetLogLevel.Trace, $"[NM] Received peer connection Id: {netPeer.ConnectTime}, EP: {netPeer}");
-                }
-                _requestsDict.Remove(request.RemoteEndPoint);
-            }
 
             return netPeer;
         }
@@ -1609,7 +1606,7 @@ namespace LiteNetLib
 
             //Stop
             CloseSocket();
-            
+
 #if UNITY_SOCKET_FIX
             if (_useSocketFix)
             {
@@ -1617,7 +1614,7 @@ namespace LiteNetLib
                 _pausedSocketFix = null;
             }
 #endif
-            
+
             _updateTriggerEvent.Set();
             if (!_manualMode)
             {

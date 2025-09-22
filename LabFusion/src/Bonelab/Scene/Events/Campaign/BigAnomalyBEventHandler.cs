@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-using LabFusion.SDK.Scene;
+﻿using LabFusion.SDK.Scene;
+using UnityEngine;
 
 namespace LabFusion.Bonelab.Scene;
 

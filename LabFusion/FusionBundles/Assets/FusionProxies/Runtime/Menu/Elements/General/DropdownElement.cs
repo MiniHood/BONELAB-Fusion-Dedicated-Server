@@ -16,7 +16,7 @@ namespace LabFusion.Marrow.Proxies
     {
 #if MELONLOADER
         public DropdownElement(IntPtr intPtr) : base(intPtr) { }
-        
+
         private bool _expanded = false;
         public bool Expanded => _expanded;
 

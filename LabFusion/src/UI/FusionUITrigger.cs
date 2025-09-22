@@ -1,13 +1,9 @@
-﻿using LabFusion.Utilities;
-using LabFusion.Marrow;
-
+﻿using LabFusion.Marrow;
 using MelonLoader;
-
 using UnityEngine;
-using UnityEngine.UI;
-
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace LabFusion.UI
 {
@@ -28,10 +24,10 @@ namespace LabFusion.UI
                 eventID = EventTriggerType.PointerClick
             };
             click.callback.AddListener((UnityAction<BaseEventData>)((eventData) =>
-            { 
+            {
                 LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UIConfirmReference), transform.position, LocalAudioPlayer.SFXSettings);
 
-                button.onClick?.Invoke(); 
+                button.onClick?.Invoke();
             }));
 
             // Hovering
@@ -40,8 +36,8 @@ namespace LabFusion.UI
                 eventID = EventTriggerType.PointerEnter
             };
 
-            hover.callback.AddListener((UnityAction<BaseEventData>)((eventData) => 
-            { 
+            hover.callback.AddListener((UnityAction<BaseEventData>)((eventData) =>
+            {
                 LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UISelectReference), transform.position, LocalAudioPlayer.SFXSettings);
             }));
 

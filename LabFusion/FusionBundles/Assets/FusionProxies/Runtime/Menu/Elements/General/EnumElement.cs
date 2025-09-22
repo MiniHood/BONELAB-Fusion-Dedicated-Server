@@ -71,7 +71,7 @@ namespace LabFusion.Marrow.Proxies
             return Value;
         }
 
-        public void NextValue() 
+        public void NextValue()
         {
             if (_enumValues == null)
             {
@@ -113,7 +113,7 @@ namespace LabFusion.Marrow.Proxies
             for (var i = 0; i < _enumValues.Length; i++)
             {
                 var enumValue = _enumValues.GetValue(i);
-            
+
                 if (enumValue.ToString() == _value.ToString())
                 {
                     _enumIndex = i;

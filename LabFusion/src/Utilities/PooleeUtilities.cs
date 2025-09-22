@@ -1,8 +1,7 @@
 ﻿using LabFusion.Data;
+using LabFusion.Entities;
 using LabFusion.Network;
 using LabFusion.Player;
-
-using LabFusion.Entities;
 
 namespace LabFusion.Utilities;
 

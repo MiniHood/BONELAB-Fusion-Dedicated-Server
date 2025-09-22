@@ -1,7 +1,5 @@
-﻿using LabFusion.Data;
+﻿using Il2CppSLZ.Bonelab;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Bonelab;
 using LabFusion.Network.Serialization;
 
 namespace LabFusion.Network;

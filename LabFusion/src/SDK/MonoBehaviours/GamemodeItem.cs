@@ -1,19 +1,15 @@
 ﻿using Il2CppInterop.Runtime.Attributes;
-
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow.Pool;
-
 using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
 using LabFusion.Marrow.Integration;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.RPC;
 using LabFusion.Utilities;
-using LabFusion.Marrow.Extenders;
-
 using MelonLoader;
-
 using UnityEngine;
 
 namespace LabFusion.SDK.MonoBehaviours;

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-
 #if MELONLOADER
 using Il2CppInterop.Runtime.InteropTypes.Fields;
 

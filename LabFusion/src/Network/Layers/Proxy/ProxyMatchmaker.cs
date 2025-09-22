@@ -1,8 +1,6 @@
-﻿using LabFusion.Utilities;
-using LabFusion.UI.Popups;
-
+﻿using LabFusion.UI.Popups;
+using LabFusion.Utilities;
 using MelonLoader;
-
 using System.Collections;
 
 namespace LabFusion.Network.Proxy;

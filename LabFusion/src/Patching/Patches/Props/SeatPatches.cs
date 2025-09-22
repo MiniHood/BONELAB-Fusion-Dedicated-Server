@@ -1,20 +1,15 @@
-﻿using System.Collections;
-
-using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Player;
-using LabFusion.Entities;
-using LabFusion.Utilities;
-using LabFusion.Senders;
-using LabFusion.Marrow.Extenders;
-
+﻿using HarmonyLib;
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
-
-using UnityEngine;
-
+using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 using MelonLoader;
+using System.Collections;
+using UnityEngine;
 
 namespace LabFusion.Patching;
 

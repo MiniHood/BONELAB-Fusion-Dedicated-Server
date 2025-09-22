@@ -103,7 +103,7 @@ public static class RpcManager
 
         return false;
     }
-    
+
     public static void InvokeMethod(RPCMethodData data)
     {
         if (!HashToMethod.TryGetValue(data.MethodHash, out var method))

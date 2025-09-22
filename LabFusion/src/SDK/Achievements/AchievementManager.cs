@@ -1,10 +1,8 @@
 ﻿using LabFusion.Marrow;
+using LabFusion.Math;
 using LabFusion.SDK.Points;
 using LabFusion.Utilities;
-using LabFusion.Math;
-
 using System.Reflection;
-
 using System.Xml.Linq;
 
 namespace LabFusion.SDK.Achievements;

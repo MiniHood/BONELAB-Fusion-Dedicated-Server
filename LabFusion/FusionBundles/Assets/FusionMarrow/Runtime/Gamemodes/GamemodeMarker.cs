@@ -36,7 +36,7 @@ namespace LabFusion.Marrow.Integration
         private readonly HashSet<string> _teamBarcodes = new();
 
         [HideFromIl2Cpp]
-        public HashSet<string> TeamBarcodes => _teamBarcodes; 
+        public HashSet<string> TeamBarcodes => _teamBarcodes;
 
         private void Awake()
         {
@@ -85,7 +85,7 @@ namespace LabFusion.Marrow.Integration
                 bool markerHasTeam = marker.TeamBarcodes != null && marker.TeamBarcodes.Count > 0;
 
                 // If filtering for a null tag and the marker has no teams, the marker should be valid
-                if (!tagIsValid && !markerHasTeam) 
+                if (!tagIsValid && !markerHasTeam)
                 {
                     markers.Add(marker);
                     continue;

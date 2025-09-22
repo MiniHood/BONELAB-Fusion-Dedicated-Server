@@ -1,12 +1,11 @@
-﻿using LabFusion.Marrow.Patching;
-using LabFusion.Extensions;
+﻿using Il2CppSLZ.Marrow.Interaction;
 using LabFusion.Entities;
+using LabFusion.Extensions;
+using LabFusion.Marrow.Patching;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
-using LabFusion.Network;
 using LabFusion.Utilities;
-
-using Il2CppSLZ.Marrow.Interaction;
 
 namespace LabFusion.Marrow.Messages;
 

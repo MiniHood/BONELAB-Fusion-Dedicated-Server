@@ -1,10 +1,8 @@
-﻿using LabFusion.Player;
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Player;
 using LabFusion.Senders;
 using LabFusion.Utilities;
-
 using UnityEngine;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.SDK.Points;
 
@@ -210,7 +208,7 @@ public abstract class PointItem
     public virtual bool IsUnlocked => PointSaveManager.IsUnlocked(Barcode);
 
     public bool IsEquipped => PointSaveManager.IsEquipped(Barcode);
-    
+
     /// <summary>
     /// The main tag of this item. Either the first tag from <see cref="Tags"/>, or Misc if there are no tags.
     /// </summary>

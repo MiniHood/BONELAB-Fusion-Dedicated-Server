@@ -1,6 +1,6 @@
-﻿using LabFusion.Player;
+﻿using LabFusion.Marrow.Extenders;
+using LabFusion.Player;
 using LabFusion.Senders;
-using LabFusion.Marrow.Extenders;
 using LabFusion.Utilities;
 
 namespace LabFusion.SDK.Achievements;

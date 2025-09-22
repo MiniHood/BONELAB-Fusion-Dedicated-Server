@@ -1,10 +1,9 @@
-﻿using System.Buffers.Binary;
-using System.Reflection;
-
-using LabFusion.Extensions;
+﻿using LabFusion.Extensions;
 using LabFusion.Math;
 using LabFusion.Network;
 using LabFusion.Utilities;
+using System.Buffers.Binary;
+using System.Reflection;
 
 namespace LabFusion.SDK.Modules;
 

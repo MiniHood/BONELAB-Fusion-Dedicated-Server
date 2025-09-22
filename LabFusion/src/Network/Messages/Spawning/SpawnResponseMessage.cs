@@ -1,23 +1,19 @@
-﻿using LabFusion.Data;
-using LabFusion.Player;
-using LabFusion.Utilities;
-using LabFusion.Senders;
-using LabFusion.RPC;
-using LabFusion.Marrow;
-using LabFusion.Entities;
-using LabFusion.Downloading;
-using LabFusion.Preferences.Client;
-using LabFusion.Network.Serialization;
-using LabFusion.Safety;
-using LabFusion.Marrow.Pool;
-
+﻿using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow.Pool;
-using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Marrow.Interaction;
-
 using Il2CppSLZ.Marrow.VFX;
-
+using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Data;
+using LabFusion.Downloading;
+using LabFusion.Entities;
+using LabFusion.Marrow;
+using LabFusion.Marrow.Pool;
+using LabFusion.Network.Serialization;
+using LabFusion.Player;
+using LabFusion.Preferences.Client;
+using LabFusion.RPC;
+using LabFusion.Safety;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.Network;
@@ -104,7 +100,7 @@ public class SpawnResponseMessage : NativeMessageHandler
             long maxBytes = DataConversions.ConvertMegabytesToBytes(ClientSettings.Downloading.MaxFileSize.Value);
 
             NetworkModRequester.RequestAndInstallMod(new NetworkModRequester.ModInstallInfo()
-            { 
+            {
                 Target = owner,
                 Barcode = barcode,
                 FinishDownloadCallback = OnModDownloaded,

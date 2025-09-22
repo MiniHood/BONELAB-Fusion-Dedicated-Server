@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-
-namespace LiteNetLib
+﻿namespace LiteNetLib
 {
     internal abstract class BaseChannel
     {

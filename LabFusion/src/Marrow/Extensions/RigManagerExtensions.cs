@@ -1,18 +1,13 @@
-﻿using MelonLoader;
-
-using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Utilities;
+﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
-
-using System.Collections;
-
-using UnityEngine;
-
-using Avatar = Il2CppSLZ.VRMK.Avatar;
-
+using Il2CppSLZ.Marrow.Utilities;
+using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Entities;
 using LabFusion.Marrow.Extensions;
+using MelonLoader;
+using System.Collections;
+using UnityEngine;
+using Avatar = Il2CppSLZ.VRMK.Avatar;
 
 namespace LabFusion.Extensions;
 

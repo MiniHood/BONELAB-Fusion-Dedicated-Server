@@ -1,5 +1,4 @@
 ﻿using Il2CppSLZ.Marrow.Warehouse;
-
 using LabFusion.Entities;
 using LabFusion.Extensions;
 using LabFusion.Marrow;
@@ -8,11 +7,10 @@ using LabFusion.Menu;
 using LabFusion.Menu.Data;
 using LabFusion.Network;
 using LabFusion.Player;
-using LabFusion.UI.Popups;
 using LabFusion.SDK.Points;
 using LabFusion.Senders;
+using LabFusion.UI.Popups;
 using LabFusion.Utilities;
-
 using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;
@@ -23,7 +21,7 @@ public class Juggernaut : Gamemode
 
     public override string Author => FusionMod.ModAuthor;
 
-    public override string Description => 
+    public override string Description =>
         "One player becomes the Juggernaut, a massive beast with copious amounts of health! " +
         "Defeat the Juggernaut to gain their power, and kill the remaining survivors! " +
         "First Juggernaut to reach 20 kills wins. More Bits are given for each kill.";

@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using Steamworks.Data;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Steamworks.Data;
 
 namespace Steamworks
 {

@@ -1,13 +1,10 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.RPC;
+using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Data;
 using LabFusion.Marrow.Extenders;
 using LabFusion.Marrow.Messages;
-
-using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Marrow;
-
+using LabFusion.Network;
+using LabFusion.RPC;
 using UnityEngine;
 using UnityEngine.Events;
 

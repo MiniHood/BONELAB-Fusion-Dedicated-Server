@@ -96,7 +96,7 @@ namespace LabFusion.Marrow.Integration
                 return false;
             }
 
-            foreach (var item in DroppedItems.ToArray()) 
+            foreach (var item in DroppedItems.ToArray())
             {
                 if (item == null)
                 {

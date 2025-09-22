@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-
+﻿using LabFusion.Utilities;
+using System.Reflection;
 using UnityEngine;
-
-using LabFusion.Utilities;
 
 namespace LabFusion.Data
 {

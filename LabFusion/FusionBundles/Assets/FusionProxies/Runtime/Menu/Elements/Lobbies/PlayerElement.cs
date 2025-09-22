@@ -57,12 +57,12 @@ namespace LabFusion.Marrow.Proxies
         {
             GetElements();
         }
-        
+
         public void GetElements()
         {
-            if (_hasElements) 
-            { 
-                return; 
+            if (_hasElements)
+            {
+                return;
             }
 
             PlayerPage = GetComponent<MenuPage>();

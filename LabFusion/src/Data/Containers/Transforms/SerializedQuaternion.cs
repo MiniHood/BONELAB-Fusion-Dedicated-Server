@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-
-using LabFusion.Network;
-using LabFusion.Extensions;
+﻿using LabFusion.Extensions;
+using UnityEngine;
 
 namespace LabFusion.Data;
 

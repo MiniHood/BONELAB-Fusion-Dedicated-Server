@@ -1,7 +1,7 @@
 ﻿using LabFusion.Data;
 using LabFusion.Player;
-using LabFusion.Senders;
 using LabFusion.Representation;
+using LabFusion.Senders;
 using LabFusion.UI.Popups;
 
 namespace LabFusion.Network;
@@ -11,7 +11,7 @@ namespace LabFusion.Network;
 /// </summary>
 public static class NetworkHelper
 {
-        /// <summary>
+    /// <summary>
     /// Checks if the player is currently a host.
     /// </summary>
     public static bool IsHost()
@@ -25,7 +25,7 @@ public static class NetworkHelper
 
         return layer.IsHost;
     }
-    
+
     /// <summary>
     /// Starts a server if there is currently none active.
     /// </summary>

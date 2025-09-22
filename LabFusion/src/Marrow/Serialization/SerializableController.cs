@@ -1,11 +1,9 @@
-﻿using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Input;
+using LabFusion.Data;
 using LabFusion.Math;
 using LabFusion.Network.Serialization;
-using LabFusion.Data;
-
-using Il2CppSLZ.Marrow.Input;
-using Il2CppSLZ.Marrow;
-
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.Marrow.Serialization;

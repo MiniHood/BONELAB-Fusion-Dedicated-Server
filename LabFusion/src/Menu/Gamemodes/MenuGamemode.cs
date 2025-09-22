@@ -1,6 +1,4 @@
-﻿using Il2CppTMPro;
-
-using LabFusion.Marrow.Proxies;
+﻿using LabFusion.Marrow.Proxies;
 using LabFusion.Menu.Data;
 using LabFusion.Network;
 using LabFusion.SDK.Gamemodes;

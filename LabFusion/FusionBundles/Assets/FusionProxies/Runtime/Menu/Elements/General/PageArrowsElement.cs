@@ -94,7 +94,7 @@ namespace LabFusion.Marrow.Proxies
 
         public void NextPage()
         {
-            if (PageIndex + 1 < PageCount) 
+            if (PageIndex + 1 < PageCount)
             {
                 PageIndex++;
             }

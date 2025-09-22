@@ -25,7 +25,7 @@ public static class RPCEventSender
         };
     }
 
-    public static bool Invoke(RPCEvent rpcEvent) 
+    public static bool Invoke(RPCEvent rpcEvent)
     {
         // Make sure we have a server
         if (!NetworkSceneManager.IsLevelNetworked)

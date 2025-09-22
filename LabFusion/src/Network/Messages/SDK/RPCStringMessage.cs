@@ -1,15 +1,14 @@
-﻿using LabFusion.Entities;
-using LabFusion.SDK.Extenders;
-using LabFusion.Marrow.Integration;
+﻿using LabFusion.Marrow.Integration;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
 using LabFusion.Scene;
+using LabFusion.SDK.Extenders;
 
 namespace LabFusion.Network;
 
 public static class RPCStringSender
 {
-    public static bool SetValue(RPCString rpcString, string value) 
+    public static bool SetValue(RPCString rpcString, string value)
     {
         // Make sure we have a server
         if (!NetworkSceneManager.IsLevelNetworked)

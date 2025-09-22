@@ -14,7 +14,7 @@ public static class CrateSpawnerAndroidPatches
 
         FusionMod.Instance.HarmonyInstance.Patch(original, prefix);
     }
-    
+
     public static bool MoveNextPrefix(CrateSpawner._SpawnSpawnableAsync_d__26 __instance)
     {
         var spawner = __instance.__4__this;

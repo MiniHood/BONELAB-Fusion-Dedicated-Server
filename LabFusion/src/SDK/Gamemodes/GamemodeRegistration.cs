@@ -1,5 +1,4 @@
-﻿using LabFusion.Data;
-using LabFusion.Utilities;
+﻿using LabFusion.Utilities;
 
 using System.Reflection;
 

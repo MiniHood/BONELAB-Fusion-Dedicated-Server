@@ -35,7 +35,7 @@ public abstract class EntityComponentExtender<TComponent> : IEntityComponentExte
 
         OnRegister(NetworkEntity, Component);
     }
-    
+
     public void Unregister()
     {
         if (NetworkEntity != null)

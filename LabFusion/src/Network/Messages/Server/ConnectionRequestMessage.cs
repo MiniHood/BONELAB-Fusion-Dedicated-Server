@@ -1,13 +1,13 @@
 ﻿using LabFusion.Data;
-using LabFusion.Player;
-using LabFusion.Representation;
-using LabFusion.Utilities;
-using LabFusion.Scene;
-using LabFusion.Preferences.Server;
-using LabFusion.Senders;
 using LabFusion.Entities;
 using LabFusion.Network.Serialization;
+using LabFusion.Player;
+using LabFusion.Preferences.Server;
+using LabFusion.Representation;
 using LabFusion.Safety;
+using LabFusion.Scene;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 
 namespace LabFusion.Network;
 

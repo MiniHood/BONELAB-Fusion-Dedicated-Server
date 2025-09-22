@@ -1,13 +1,12 @@
-﻿using LabFusion.Network;
-using LabFusion.Senders;
-using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow.SceneStreaming;
+using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Marrow;
+using LabFusion.Marrow.Patching;
+using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Preferences.Client;
-using LabFusion.Marrow.Patching;
-
-using Il2CppSLZ.Marrow.SceneStreaming;
-using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 
 namespace LabFusion.Scene;
 
@@ -170,7 +169,7 @@ public static partial class FusionSceneManager
         }
     }
 
-    private static void OnDownloadSucceeded() 
+    private static void OnDownloadSucceeded()
     {
         // We can now load the level
         // Hook the level load incase we're in the loading screen

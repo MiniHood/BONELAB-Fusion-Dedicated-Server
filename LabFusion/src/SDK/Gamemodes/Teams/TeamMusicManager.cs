@@ -5,7 +5,7 @@ namespace LabFusion.SDK.Gamemodes;
 public class TeamMusicManager
 {
     private readonly Dictionary<Team, TeamMusic> _teamToMusic = new();
-    
+
     public AudioReference TieMusic { get; set; }
 
     public void ClearTeams()

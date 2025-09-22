@@ -1,13 +1,12 @@
 ﻿using Il2CppSLZ.Marrow.SceneStreaming;
 using Il2CppSLZ.Marrow.Warehouse;
-
 using LabFusion.Data;
 using LabFusion.Downloading;
 using LabFusion.Downloading.ModIO;
 using LabFusion.Marrow;
+using LabFusion.Marrow.Patching;
 using LabFusion.Marrow.Proxies;
 using LabFusion.Menu;
-using LabFusion.Marrow.Patching;
 using LabFusion.Preferences.Client;
 using LabFusion.RPC;
 using LabFusion.Utilities;
@@ -141,7 +140,7 @@ public static class LevelDownloaderManager
         }
     }
 
-    private static void SetUIIcon(LevelDownloadUI ui) 
+    private static void SetUIIcon(LevelDownloadUI ui)
     {
         var levelIcon = MenuResources.GetLevelIcon(MenuResources.ModsIconTitle);
 

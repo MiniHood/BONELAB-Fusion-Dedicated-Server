@@ -1,10 +1,8 @@
 ﻿using Il2CppInterop.Runtime.InteropTypes.Arrays;
-
-using LabFusion.Preferences.Client;
-using LabFusion.Utilities;
 using LabFusion.Audio;
 using LabFusion.Player;
-
+using LabFusion.Preferences.Client;
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.Voice.Unity;

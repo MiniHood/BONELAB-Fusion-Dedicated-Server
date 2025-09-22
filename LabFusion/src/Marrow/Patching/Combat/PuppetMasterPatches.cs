@@ -1,12 +1,10 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
+using Il2CppSLZ.Marrow.PuppetMasta;
 using LabFusion.Entities;
 using LabFusion.Marrow.Extenders;
 using LabFusion.Marrow.Messages;
+using LabFusion.Network;
 using LabFusion.Scene;
-
-using Il2CppSLZ.Marrow.PuppetMasta;
 
 namespace LabFusion.Marrow.Patching;
 

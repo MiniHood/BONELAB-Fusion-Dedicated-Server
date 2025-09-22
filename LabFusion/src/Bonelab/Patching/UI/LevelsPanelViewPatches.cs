@@ -1,12 +1,9 @@
 ﻿using HarmonyLib;
-
+using Il2CppSLZ.Bonelab;
+using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Network;
 using LabFusion.Senders;
-using LabFusion.Utilities;
 using LabFusion.UI.Popups;
-
-using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Bonelab;
 
 namespace LabFusion.Bonelab.Patching;
 

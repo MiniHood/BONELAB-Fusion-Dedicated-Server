@@ -1,11 +1,10 @@
-﻿using LabFusion.Data;
+﻿using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Combat;
+using LabFusion.Data;
+using LabFusion.Marrow.Serialization;
+using LabFusion.Network.Serialization;
 using LabFusion.Player;
 using LabFusion.Utilities;
-using LabFusion.Network.Serialization;
-using LabFusion.Marrow.Serialization;
-
-using Il2CppSLZ.Marrow.Combat;
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.Network;
 

@@ -1,22 +1,20 @@
 ﻿using Il2CppSLZ.Marrow.Warehouse;
-
 using LabFusion.Extensions;
 using LabFusion.Marrow;
 using LabFusion.Marrow.Integration;
-using LabFusion.Network;
-using LabFusion.Player;
-using LabFusion.SDK.Achievements;
-using LabFusion.SDK.Points;
-using LabFusion.SDK.Triggers;
-using LabFusion.Senders;
-using LabFusion.Utilities;
-using LabFusion.Scene;
 using LabFusion.Math;
 using LabFusion.Menu;
 using LabFusion.Menu.Data;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Scene;
+using LabFusion.SDK.Achievements;
 using LabFusion.SDK.Metadata;
+using LabFusion.SDK.Points;
+using LabFusion.SDK.Triggers;
+using LabFusion.Senders;
 using LabFusion.UI.Popups;
-
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;

@@ -1,7 +1,7 @@
-﻿using LabFusion.Marrow.Integration;
+﻿using LabFusion.Entities;
+using LabFusion.Marrow.Integration;
 using LabFusion.Player;
 using LabFusion.Utilities;
-using LabFusion.Entities;
 
 namespace LabFusion.SDK.Extenders;
 

@@ -63,7 +63,7 @@ public static class MenuMatchmakingSandbox
         {
             return false;
         }
-        
+
         // Check if we have the lobby's level
         if (!lobby.Metadata.ClientHasLevel)
         {

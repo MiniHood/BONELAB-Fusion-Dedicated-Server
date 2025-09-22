@@ -2,7 +2,7 @@
 
 namespace LabFusion.Entities;
 
-public class EntityPose : INetSerializable   
+public class EntityPose : INetSerializable
 {
     public BodyPose[] bodies;
 
@@ -20,7 +20,7 @@ public class EntityPose : INetSerializable
 
     public void CopyTo(EntityPose target)
     {
-        if (target.bodies.Length != bodies.Length) 
+        if (target.bodies.Length != bodies.Length)
         {
             return;
         }

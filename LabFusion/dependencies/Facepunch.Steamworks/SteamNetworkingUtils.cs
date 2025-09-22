@@ -1,5 +1,5 @@
-﻿using System.Text;
-using Steamworks.Data;
+﻿using Steamworks.Data;
+using System.Text;
 
 namespace Steamworks
 {

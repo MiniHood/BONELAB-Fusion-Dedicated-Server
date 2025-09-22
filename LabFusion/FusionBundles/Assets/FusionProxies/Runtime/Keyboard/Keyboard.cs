@@ -169,7 +169,7 @@ namespace LabFusion.Marrow.Proxies
             _temporaryUppercase = false;
             Uppercase = !Uppercase;
         }
-        
+
         public void Enter()
         {
             OnEnter?.Invoke();
@@ -181,7 +181,7 @@ namespace LabFusion.Marrow.Proxies
         {
             GUIUtility.systemCopyBuffer = Value;
         }
-        
+
         public void Paste()
         {
             string clipboard = GUIUtility.systemCopyBuffer;

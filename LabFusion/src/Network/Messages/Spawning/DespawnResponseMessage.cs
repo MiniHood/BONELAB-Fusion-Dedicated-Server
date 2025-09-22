@@ -1,10 +1,8 @@
-﻿using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow.VFX;
 using LabFusion.Entities;
+using LabFusion.Marrow.Patching;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
-using LabFusion.Marrow.Patching;
-
-using Il2CppSLZ.Marrow.VFX;
 
 namespace LabFusion.Network;
 

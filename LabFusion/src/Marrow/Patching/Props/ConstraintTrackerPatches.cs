@@ -1,11 +1,9 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-using LabFusion.Marrow.Extenders;
-using LabFusion.Scene;
-using LabFusion.Marrow.Messages;
-
 using Il2CppSLZ.Marrow;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Marrow.Messages;
+using LabFusion.Network;
+using LabFusion.Scene;
 
 namespace LabFusion.Marrow.Patching;
 

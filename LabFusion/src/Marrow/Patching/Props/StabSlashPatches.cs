@@ -1,10 +1,7 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Scene;
-
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
-
+using LabFusion.Scene;
 using UnityEngine;
 
 namespace LabFusion.Marrow.Patching;

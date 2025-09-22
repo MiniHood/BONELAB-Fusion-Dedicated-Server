@@ -6,7 +6,6 @@ using Il2CppSLZ.Marrow.Interaction;
 using Il2CppSLZ.Marrow.Utilities;
 
 using LabFusion.Network;
-using LabFusion.Player;
 using LabFusion.Utilities;
 
 using UnityEngine;

@@ -32,12 +32,12 @@ namespace LabFusion.Marrow.Proxies
         {
             GetReferences();
         }
-        
+
         public void GetReferences()
         {
-            if (_hasReferences) 
-            { 
-                return; 
+            if (_hasReferences)
+            {
+                return;
             }
 
             // Level name

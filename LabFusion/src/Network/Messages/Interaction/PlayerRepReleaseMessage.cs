@@ -1,7 +1,5 @@
-﻿using LabFusion.Data;
+﻿using Il2CppSLZ.Marrow.Interaction;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Marrow.Interaction;
 using LabFusion.Network.Serialization;
 
 namespace LabFusion.Network;

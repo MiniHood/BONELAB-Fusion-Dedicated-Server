@@ -1,7 +1,6 @@
 ﻿using Il2CppSLZ.Marrow;
-
-using LabFusion.Utilities;
 using LabFusion.Entities;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Extenders;
 

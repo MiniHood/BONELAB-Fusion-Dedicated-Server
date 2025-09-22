@@ -1,7 +1,6 @@
 #if MELONLOADER
-using MelonLoader;
-
 using Il2CppInterop.Runtime.Attributes;
+using MelonLoader;
 #endif
 
 namespace LabFusion.Marrow.Proxies
@@ -39,7 +38,7 @@ namespace LabFusion.Marrow.Proxies
 
         public Action<int> OnValueChanged;
 
-        public void NextValue() 
+        public void NextValue()
         {
             var newValue = Value + Increment;
 

@@ -1,8 +1,4 @@
-﻿using LabFusion.Menu;
-
-using UnityEngine;
-
-namespace LabFusion.SDK.Achievements
+﻿namespace LabFusion.SDK.Achievements
 {
     public class WarmWelcome : Achievement
     {

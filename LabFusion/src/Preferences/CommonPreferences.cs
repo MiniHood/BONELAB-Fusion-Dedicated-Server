@@ -1,6 +1,6 @@
-﻿using LabFusion.Senders;
+﻿using LabFusion.Network;
 using LabFusion.Preferences.Client;
-using LabFusion.Network;
+using LabFusion.Senders;
 
 namespace LabFusion.Preferences;
 

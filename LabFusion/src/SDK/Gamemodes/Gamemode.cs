@@ -1,11 +1,10 @@
-﻿using LabFusion.Network;
-using LabFusion.Senders;
-using LabFusion.Utilities;
+﻿using LabFusion.Menu.Data;
+using LabFusion.Network;
+using LabFusion.Player;
 using LabFusion.SDK.Metadata;
 using LabFusion.SDK.Triggers;
-using LabFusion.Menu.Data;
-using LabFusion.Player;
-
+using LabFusion.Senders;
+using LabFusion.Utilities;
 using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;
@@ -18,7 +17,7 @@ public abstract class Gamemode
     public static event Action<Gamemode, bool> OnStartedKeyChanged, OnSelectedKeyChanged, OnReadyKeyChanged;
 
     private bool _isStarted = false;
-    
+
     /// <summary>
     /// Returns if this Gamemode has been started and is running.
     /// </summary>
@@ -119,7 +118,7 @@ public abstract class Gamemode
         Metadata.OnMetadataChanged -= OnMetadataChanged;
         Metadata.OnMetadataChanged -= OnInternalMetadataChanged;
         Metadata.OnMetadataRemoved -= OnMetadataRemoved;
-        
+
         // Triggers
         Relay.OnTryInvokeTrigger -= OnTryInvokeTrigger;
         Relay.OnTryInvokeTriggerWithValue -= OnTryInvokeTriggerWithValue;

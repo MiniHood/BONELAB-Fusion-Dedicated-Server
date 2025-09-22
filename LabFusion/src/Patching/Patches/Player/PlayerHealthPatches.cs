@@ -1,15 +1,13 @@
 ﻿using HarmonyLib;
-
+using Il2CppSLZ.Marrow;
 using LabFusion.Data;
-using LabFusion.Network;
-using LabFusion.Utilities;
-using LabFusion.Senders;
-using LabFusion.SDK.Gamemodes;
 using LabFusion.Extensions;
+using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Preferences;
-
-using Il2CppSLZ.Marrow;
+using LabFusion.SDK.Gamemodes;
+using LabFusion.Senders;
+using LabFusion.Utilities;
 
 namespace LabFusion.Patching;
 

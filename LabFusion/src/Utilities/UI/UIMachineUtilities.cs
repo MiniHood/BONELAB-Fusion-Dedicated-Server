@@ -1,18 +1,15 @@
-﻿using LabFusion.Extensions;
-using LabFusion.UI;
+﻿using Il2CppSLZ.Bonelab;
+using Il2CppSLZ.Marrow.Interaction;
+using Il2CppSLZ.Marrow.Warehouse;
+using Il2CppSLZ.Marrow.Zones;
+using Il2CppTMPro;
+using LabFusion.Extensions;
 using LabFusion.Marrow;
 using LabFusion.Scene;
-
+using LabFusion.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
-using Il2CppSLZ.Bonelab;
-
-using Il2CppTMPro;
-using Il2CppSLZ.Marrow.Zones;
-using Il2CppSLZ.Marrow.Interaction;
-using Il2CppSLZ.Marrow.Warehouse;
 
 namespace LabFusion.Utilities;
 
@@ -65,13 +62,15 @@ public static class UIMachineUtilities
 
         zoneEvent.activatorTags.Tags.Add(tagQuery);
 
-        zoneEvent.onZoneEnter.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) => {
+        zoneEvent.onZoneEnter.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) =>
+        {
             canvas.SetActive(true);
 
             LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UITurnOnReference), canvas.transform.position, LocalAudioPlayer.SFXSettings);
         }));
 
-        zoneEvent.onZoneExit.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) => {
+        zoneEvent.onZoneExit.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) =>
+        {
             canvas.SetActive(false);
 
             LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UITurnOffReference), canvas.transform.position, LocalAudioPlayer.SFXSettings);

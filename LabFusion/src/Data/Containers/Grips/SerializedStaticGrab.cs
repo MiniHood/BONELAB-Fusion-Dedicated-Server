@@ -1,9 +1,7 @@
-﻿using LabFusion.Grabbables;
-using LabFusion.Patching;
-
-using Il2CppSLZ.Marrow;
-
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Grabbables;
 using LabFusion.Network.Serialization;
+using LabFusion.Patching;
 
 namespace LabFusion.Data;
 

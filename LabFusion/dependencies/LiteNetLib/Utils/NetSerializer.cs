@@ -1,8 +1,6 @@
-﻿using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Net;
+using System.Reflection;
 using System.Runtime.Serialization;
 
 namespace LiteNetLib.Utils
@@ -224,7 +222,7 @@ namespace LiteNetLib.Utils
                 {
                     var itm = default(TProperty);
                     itm.Deserialize(r);
-                    if(i < listCount)
+                    if (i < listCount)
                         list[i] = itm;
                     else
                         list.Add(itm);
@@ -422,7 +420,7 @@ namespace LiteNetLib.Utils
             protected override void ElementWrite(NetDataWriter w, ref IPEndPoint prop) { w.Put(prop); }
             protected override void ElementRead(NetDataReader r, out IPEndPoint prop) { prop = r.GetNetEndPoint(); }
         }
-        
+
         private class GuidSerializer<T> : FastCallSpecificAuto<T, Guid>
         {
             protected override void ElementWrite(NetDataWriter w, ref Guid guid) { w.Put(guid); }
@@ -496,7 +494,7 @@ namespace LiteNetLib.Utils
                     var s = _serializers[i];
                     if (s.Type == CallType.Basic)
                         s.Read(obj, reader);
-                    else if(s.Type == CallType.Array)
+                    else if (s.Type == CallType.Array)
                         s.ReadArray(obj, reader);
                     else
                         s.ReadList(obj, reader);
@@ -579,7 +577,7 @@ namespace LiteNetLib.Utils
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(Trimming.SerializerMemberTypes)]
 #endif
-            T>()
+        T>()
         {
             if (ClassInfo<T>.Instance != null)
                 return ClassInfo<T>.Instance;

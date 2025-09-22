@@ -41,7 +41,7 @@ namespace LabFusion.Marrow.Proxies
 
         public Action<float> OnValueChanged;
 
-        public void NextValue() 
+        public void NextValue()
         {
             var newValue = Value + Increment;
 

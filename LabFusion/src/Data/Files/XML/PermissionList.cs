@@ -1,7 +1,6 @@
-﻿using System.Xml.Linq;
-
-using LabFusion.Extensions;
+﻿using LabFusion.Extensions;
 using LabFusion.Representation;
+using System.Xml.Linq;
 
 namespace LabFusion.Data;
 

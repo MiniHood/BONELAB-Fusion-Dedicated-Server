@@ -1,7 +1,7 @@
-﻿using LabFusion.Bonelab.Scene;
-using LabFusion.Network.Serialization;
-using LabFusion.Bonelab.Patching;
+﻿using LabFusion.Bonelab.Patching;
+using LabFusion.Bonelab.Scene;
 using LabFusion.Network;
+using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
 using LabFusion.Utilities;
 
@@ -82,7 +82,7 @@ public class HomeEventMessage : ModuleMessageHandler
                     break;
             }
         }
-        catch (Exception e) 
+        catch (Exception e)
         {
             FusionLogger.LogException("handling HomeMessage", e);
         }

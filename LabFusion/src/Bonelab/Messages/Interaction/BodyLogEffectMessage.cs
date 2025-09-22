@@ -1,9 +1,8 @@
-﻿using LabFusion.Entities;
+﻿using Il2CppSLZ.Bonelab;
+using LabFusion.Entities;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
-using LabFusion.Network;
-
-using Il2CppSLZ.Bonelab;
 
 namespace LabFusion.Bonelab.Messages;
 

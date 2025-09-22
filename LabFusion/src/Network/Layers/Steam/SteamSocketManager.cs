@@ -1,5 +1,4 @@
-﻿using LabFusion.Data;
-using LabFusion.Player;
+﻿using LabFusion.Player;
 using LabFusion.Senders;
 
 using Steamworks;

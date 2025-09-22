@@ -1,6 +1,5 @@
 ﻿using LabFusion.Entities;
 using LabFusion.Network.Serialization;
-using LabFusion.Utilities;
 
 namespace LabFusion.Network;
 

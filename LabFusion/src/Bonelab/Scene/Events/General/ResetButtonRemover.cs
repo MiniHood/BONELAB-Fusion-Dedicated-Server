@@ -1,9 +1,7 @@
-﻿using LabFusion.Network;
+﻿using Il2CppSLZ.Marrow.VoidLogic;
 using LabFusion.Marrow.Scene;
-
+using LabFusion.Network;
 using UnityEngine;
-
-using Il2CppSLZ.Marrow.VoidLogic;
 
 namespace LabFusion.Bonelab.Scene;
 

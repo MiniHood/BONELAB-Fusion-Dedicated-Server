@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-
-using Il2CppSLZ.Bonelab;
+﻿using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Interaction;
-
 using LabFusion.Data;
 using LabFusion.Extensions;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.SDK.Achievements;
 using LabFusion.SDK.Scene;
+using UnityEngine;
 
 namespace LabFusion.Bonelab.Scene;
 

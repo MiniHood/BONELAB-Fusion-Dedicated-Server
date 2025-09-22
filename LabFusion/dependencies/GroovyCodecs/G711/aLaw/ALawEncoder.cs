@@ -33,8 +33,6 @@
  * Converted to C# for GroovyG7xx, see https://github.com/jongoochgithub/GroovyCodecs
  */
 
-using System;
-
 namespace GroovyCodecs.G711.aLaw
 {
 

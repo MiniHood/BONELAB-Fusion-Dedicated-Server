@@ -1,16 +1,14 @@
 ﻿using HarmonyLib;
-
+using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Interaction;
+using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Marrow.Messages;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.RPC;
-using LabFusion.Utilities;
-using LabFusion.Entities;
-using LabFusion.Marrow.Messages;
 using LabFusion.Scene;
-using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow.Interaction;
-using Il2CppSLZ.Marrow;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Patching;
 

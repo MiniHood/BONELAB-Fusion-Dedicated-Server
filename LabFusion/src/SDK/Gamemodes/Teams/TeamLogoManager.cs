@@ -58,7 +58,7 @@ public class TeamLogoManager
     {
         _teamManager = teamManager;
 
-        teamManager.OnAssignedToTeam += OnAssignedToTeam; 
+        teamManager.OnAssignedToTeam += OnAssignedToTeam;
         teamManager.OnRemovedFromTeam += OnRemovedFromTeam;
     }
 

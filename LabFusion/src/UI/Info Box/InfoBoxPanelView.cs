@@ -1,9 +1,7 @@
-﻿using LabFusion.SDK.Achievements;
+﻿using Il2CppTMPro;
+using LabFusion.SDK.Achievements;
 using LabFusion.Utilities;
 using MelonLoader;
-
-using Il2CppTMPro;
-
 using UnityEngine;
 using UnityEngine.UI;
 

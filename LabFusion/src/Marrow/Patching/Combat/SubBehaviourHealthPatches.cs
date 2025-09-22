@@ -1,10 +1,8 @@
-﻿using LabFusion.Network;
-using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow.PuppetMasta;
+﻿using HarmonyLib;
 using Il2CppSLZ.Marrow.Combat;
-
-using HarmonyLib;
+using Il2CppSLZ.Marrow.PuppetMasta;
+using LabFusion.Marrow.Extenders;
+using LabFusion.Network;
 
 namespace LabFusion.Marrow.Patching;
 

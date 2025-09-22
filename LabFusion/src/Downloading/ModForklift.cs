@@ -1,9 +1,6 @@
 ﻿using Il2CppSLZ.Marrow.Forklift.Model;
 using Il2CppSLZ.Marrow.Warehouse;
 
-using LabFusion.Utilities;
-using LabFusion.UI.Popups;
-
 namespace LabFusion.Downloading;
 
 public static class ModForklift

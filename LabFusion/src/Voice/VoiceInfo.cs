@@ -15,12 +15,12 @@ public static class VoiceInfo
     /// Returns if the voice manager supports speaking.
     /// </summary>
     public static bool CanTalk => (VoiceManager?.CanTalk).GetValueOrDefault();
-    
+
     /// <summary>
     /// Returns if the voice manager supports listening.
     /// </summary>
     public static bool CanHear => (VoiceManager?.CanHear).GetValueOrDefault();
-    
+
     /// <summary>
     /// Returns an array of all input devices that are available.
     /// </summary>

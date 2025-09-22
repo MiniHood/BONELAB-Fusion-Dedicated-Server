@@ -24,7 +24,7 @@ public class EntityValidationList
 
     public bool Validate(NetworkEntity entity, PlayerID player)
     {
-        foreach (var validator in Validators) 
+        foreach (var validator in Validators)
         {
             if (!validator.Validate(entity, player))
             {

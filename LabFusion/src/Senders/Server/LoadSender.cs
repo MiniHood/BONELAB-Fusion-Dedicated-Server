@@ -1,8 +1,7 @@
-﻿using LabFusion.Network;
-using LabFusion.Player;
-
-using Il2CppSLZ.Marrow.Warehouse;
+﻿using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
+using LabFusion.Player;
 
 namespace LabFusion.Senders;
 

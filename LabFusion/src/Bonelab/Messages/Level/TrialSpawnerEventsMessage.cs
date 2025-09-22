@@ -1,8 +1,8 @@
 ﻿using LabFusion.Bonelab.Patching;
-using LabFusion.Network.Serialization;
 using LabFusion.Data;
-using LabFusion.SDK.Modules;
 using LabFusion.Network;
+using LabFusion.Network.Serialization;
+using LabFusion.SDK.Modules;
 
 namespace LabFusion.Bonelab.Messages;
 

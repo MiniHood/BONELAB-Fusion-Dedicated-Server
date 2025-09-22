@@ -1,12 +1,11 @@
-﻿using LabFusion.Data;
+﻿using Il2CppSLZ.Marrow;
+using LabFusion.Data;
+using LabFusion.Entities;
+using LabFusion.Marrow.Extenders;
 using LabFusion.Network;
+using LabFusion.Patching;
 using LabFusion.Player;
 using LabFusion.Senders;
-using LabFusion.Entities;
-using LabFusion.Patching;
-using LabFusion.Marrow.Extenders;
-
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion.Grabbables;
 

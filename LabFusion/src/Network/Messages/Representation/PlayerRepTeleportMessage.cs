@@ -1,5 +1,4 @@
-﻿using LabFusion.Extensions;
-using LabFusion.Network.Serialization;
+﻿using LabFusion.Network.Serialization;
 using LabFusion.Player;
 using LabFusion.Scene;
 

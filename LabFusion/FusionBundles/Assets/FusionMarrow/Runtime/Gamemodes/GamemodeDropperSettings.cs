@@ -1,8 +1,5 @@
 using UnityEngine;
 
-using System;
-using System.Collections.Generic;
-
 
 #if MELONLOADER
 using MelonLoader;

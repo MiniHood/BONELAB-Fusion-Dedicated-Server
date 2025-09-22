@@ -3,7 +3,6 @@ using LabFusion.Data;
 using LabFusion.Entities;
 using LabFusion.Network.Serialization;
 using LabFusion.Safety;
-using LabFusion.Utilities;
 
 namespace LabFusion.Network;
 

@@ -27,7 +27,7 @@ public class RPCMethodData : INetSerializable
             Parameters = new object[length];
         }
 
-        for (var i = 0; i <  length; i++)
+        for (var i = 0; i < length; i++)
         {
             var value = Parameters[i];
 

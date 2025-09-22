@@ -184,8 +184,8 @@ public abstract class ScoreKeeper<TProperty>
     {
         int totalScore = 0;
 
-        foreach (var variable in _propertyToScore.Values) 
-        { 
+        foreach (var variable in _propertyToScore.Values)
+        {
             totalScore += variable.GetValue();
         }
 

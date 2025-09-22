@@ -1,6 +1,5 @@
 ﻿using LabFusion.Marrow.Integration;
 using LabFusion.Network;
-using LabFusion.Player;
 using LabFusion.Scene;
 using LabFusion.Utilities;
 
@@ -94,7 +93,7 @@ public static class GamemodeHelper
         {
             GameObject markerGameObject = new("Gamemode Marker");
             markerGameObject.transform.position = position;
-            
+
             foreach (var team in teams)
             {
                 var marker = markerGameObject.AddComponent<GamemodeMarker>();

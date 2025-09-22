@@ -1,6 +1,6 @@
-﻿using LabFusion.Marrow.Integration;
+﻿using LabFusion.Entities;
+using LabFusion.Marrow.Integration;
 using LabFusion.Utilities;
-using LabFusion.Entities;
 
 namespace LabFusion.SDK.Extenders;
 

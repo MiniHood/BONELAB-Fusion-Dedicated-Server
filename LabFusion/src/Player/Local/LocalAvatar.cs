@@ -5,12 +5,10 @@ using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Bonelab;
 using LabFusion.Data;
 using LabFusion.Extensions;
-using LabFusion.Marrow;
 using LabFusion.Math;
 using LabFusion.Network;
 using LabFusion.Representation;
 using LabFusion.Senders;
-using LabFusion.Utilities;
 
 using UnityEngine;
 
@@ -205,7 +203,7 @@ public static class LocalAvatar
             newAvatar.transform.localScale = newScale;
         });
     }
-    
+
     /// <summary>
     /// Refreshes the avatar that the Local Player is currently using.
     /// </summary>

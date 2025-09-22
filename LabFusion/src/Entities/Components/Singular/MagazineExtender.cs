@@ -1,10 +1,9 @@
-﻿using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow;
+using Il2CppSLZ.Marrow.Interaction;
+using LabFusion.Marrow.Messages;
 using LabFusion.Network;
 using LabFusion.Player;
-using LabFusion.Marrow.Messages;
-
-using Il2CppSLZ.Marrow;
-using Il2CppSLZ.Marrow.Interaction;
+using LabFusion.Utilities;
 
 namespace LabFusion.Entities;
 

@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-
+﻿using LabFusion.Marrow.Proxies;
 using LabFusion.Menu.Gamemodes;
-using LabFusion.Marrow.Proxies;
 using LabFusion.Network;
 using LabFusion.Preferences.Client;
+using UnityEngine;
 
 namespace LabFusion.Menu;
 

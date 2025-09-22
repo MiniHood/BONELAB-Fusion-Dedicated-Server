@@ -51,7 +51,7 @@ public abstract class VoiceManager : IVoiceManager
             _receiver.Disable();
 
             _receiver = null;
-        } 
+        }
 
         ClearManager();
     }

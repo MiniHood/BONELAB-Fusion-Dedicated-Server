@@ -1,8 +1,8 @@
-﻿using LabFusion.Network;
+﻿using LabFusion.Entities;
 using LabFusion.Marrow.Extenders;
-using LabFusion.SDK.Modules;
-using LabFusion.Entities;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
+using LabFusion.SDK.Modules;
 
 namespace LabFusion.Marrow.Messages;
 

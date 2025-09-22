@@ -60,7 +60,7 @@ public static class Notifier
         QueueNotification(notification);
     }
 
-    public static void Cancel(Notification notification) 
+    public static void Cancel(Notification notification)
     {
         if (_queuedNotifications.Contains(notification))
         {
@@ -78,7 +78,7 @@ public static class Notifier
     {
         var notifications = GetNotificationsByTag(tag);
 
-        foreach (var notification in notifications) 
+        foreach (var notification in notifications)
         {
             Cancel(notification);
         }

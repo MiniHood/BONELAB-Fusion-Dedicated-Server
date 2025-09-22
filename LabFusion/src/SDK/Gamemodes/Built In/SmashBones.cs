@@ -1,30 +1,27 @@
-﻿using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow;
+﻿using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.Combat;
 using Il2CppSLZ.Marrow.Data;
-
-using LabFusion.Marrow.Integration;
+using Il2CppSLZ.Marrow.Warehouse;
+using LabFusion.Data;
+using LabFusion.Entities;
+using LabFusion.Extensions;
 using LabFusion.Marrow;
+using LabFusion.Marrow.Integration;
+using LabFusion.Marrow.Pool;
+using LabFusion.Math;
 using LabFusion.Menu;
 using LabFusion.Menu.Data;
-using LabFusion.Player;
-using LabFusion.Data;
-using LabFusion.Utilities;
-using LabFusion.SDK.Metadata;
-using LabFusion.Entities;
-using LabFusion.Math;
-using LabFusion.SDK.Triggers;
 using LabFusion.Network;
-using LabFusion.Extensions;
-using LabFusion.UI.Popups;
+using LabFusion.Player;
+using LabFusion.SDK.Metadata;
 using LabFusion.SDK.Points;
-using LabFusion.Marrow.Pool;
+using LabFusion.SDK.Triggers;
 using LabFusion.Senders;
-
-using UnityEngine;
-
-using System.Text.Json.Serialization;
+using LabFusion.UI.Popups;
+using LabFusion.Utilities;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using UnityEngine;
 
 namespace LabFusion.SDK.Gamemodes;
 
@@ -357,7 +354,7 @@ public class SmashBones : Gamemode
             var rigManager = RigData.Refs.RigManager;
             var pelvisRb = rigManager.physicsRig.torso._pelvisRb;
             var avatarMass = rigManager.avatar.massTotal;
-            
+
             magnitude *= CalculateMassContribution(avatarMass);
 
             var punchForce = direction * magnitude;
@@ -896,7 +893,7 @@ public class SmashBones : Gamemode
         }
     }
 
-    private static void ApplyAutoRun(RigManager rigManager) 
+    private static void ApplyAutoRun(RigManager rigManager)
     {
         var remapHeptaRig = rigManager.remapHeptaRig;
 

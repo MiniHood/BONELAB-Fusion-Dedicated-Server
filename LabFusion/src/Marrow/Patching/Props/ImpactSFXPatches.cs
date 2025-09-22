@@ -1,10 +1,7 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-
-using UnityEngine;
-
 using Il2CppSLZ.Marrow;
+using LabFusion.Network;
+using UnityEngine;
 
 namespace LabFusion.Marrow.Patching;
 

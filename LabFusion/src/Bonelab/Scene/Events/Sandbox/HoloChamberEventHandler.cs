@@ -1,8 +1,6 @@
 ﻿using Il2CppSLZ.Bonelab;
-
-using UnityEngine;
-
 using LabFusion.SDK.Scene;
+using UnityEngine;
 
 namespace LabFusion.Bonelab.Scene;
 

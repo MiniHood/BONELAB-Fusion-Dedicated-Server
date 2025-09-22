@@ -1,5 +1,4 @@
-﻿using Il2CppSLZ.Marrow.Data;
-using Il2CppSLZ.Marrow.Pool;
+﻿using Il2CppSLZ.Marrow.Pool;
 
 using LabFusion.Marrow;
 using LabFusion.Marrow.Pool;

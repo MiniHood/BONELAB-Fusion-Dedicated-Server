@@ -1,5 +1,3 @@
-using System;
-
 namespace LiteNetLib
 {
     internal sealed class SequencedChannel : BaseChannel
@@ -18,7 +16,7 @@ namespace LiteNetLib
             _id = id;
             _reliable = reliable;
             if (_reliable)
-                _ackPacket = new NetPacket(PacketProperty.Ack, 0) {ChannelId = id};
+                _ackPacket = new NetPacket(PacketProperty.Ack, 0) { ChannelId = id };
         }
 
         protected override bool SendNextPackets()

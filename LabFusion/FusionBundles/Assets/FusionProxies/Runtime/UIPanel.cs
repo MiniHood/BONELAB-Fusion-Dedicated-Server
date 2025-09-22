@@ -1,6 +1,4 @@
 #if MELONLOADER
-using Il2CppInterop.Runtime.Attributes;
-
 using LabFusion.Utilities;
 
 using MelonLoader;

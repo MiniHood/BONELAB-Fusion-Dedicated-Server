@@ -1,11 +1,8 @@
-﻿using System.Collections;
-
-using LabFusion.Utilities;
+﻿using Il2CppSLZ.Marrow.Circuits;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Marrow.Circuits;
-
+using LabFusion.Utilities;
 using MelonLoader;
+using System.Collections;
 
 namespace LabFusion.Marrow.Extenders;
 

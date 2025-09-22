@@ -1,7 +1,7 @@
 ﻿using LabFusion.Network;
-using LabFusion.UI.Popups;
 using LabFusion.Scene;
 using LabFusion.SDK.Metadata;
+using LabFusion.UI.Popups;
 using LabFusion.Utilities;
 
 namespace LabFusion.SDK.Gamemodes;

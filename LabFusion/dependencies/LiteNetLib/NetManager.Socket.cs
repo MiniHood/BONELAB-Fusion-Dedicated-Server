@@ -1,13 +1,10 @@
 ﻿#if UNITY_2018_3_OR_NEWER
 #define UNITY_SOCKET_FIX
 #endif
-using System.Runtime.InteropServices;
-using System;
-using System.Collections.Generic;
+using LiteNetLib.Utils;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using LiteNetLib.Utils;
+using System.Runtime.InteropServices;
 
 namespace LiteNetLib
 {

@@ -145,7 +145,7 @@ public class NetworkProp : IEntityExtender, IMarrowEntityExtender, IEntityUpdata
         }
     }
 
-    private void CopyBodiesToPose() 
+    private void CopyBodiesToPose()
     {
         _receivedPose = false;
 
@@ -265,7 +265,7 @@ public class NetworkProp : IEntityExtender, IMarrowEntityExtender, IEntityUpdata
         var currentPose = _pose.bodies[index];
         var sentPose = _sentPose.bodies[index];
 
-        return (sentPose.position - currentPose.position).sqrMagnitude > MinMoveSqrMagnitude || Quaternion.Angle(sentPose.rotation, currentPose.rotation) > MinMoveAngle; 
+        return (sentPose.position - currentPose.position).sqrMagnitude > MinMoveSqrMagnitude || Quaternion.Angle(sentPose.rotation, currentPose.rotation) > MinMoveAngle;
     }
 
     private void Sleep()

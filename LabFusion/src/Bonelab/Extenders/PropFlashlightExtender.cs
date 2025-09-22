@@ -1,7 +1,6 @@
-﻿using LabFusion.Utilities;
+﻿using Il2CppSLZ.Bonelab;
 using LabFusion.Entities;
-
-using Il2CppSLZ.Bonelab;
+using LabFusion.Utilities;
 
 namespace LabFusion.Bonelab.Extenders;
 

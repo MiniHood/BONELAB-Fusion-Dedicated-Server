@@ -33,7 +33,7 @@ namespace LabFusion.Marrow.Integration
             MultiplayerHooking.OnJoinedServer += OnServerJoined;
             MultiplayerHooking.OnStartedServer += OnServerJoined;
             MultiplayerHooking.OnDisconnected += OnServerLeft;
-            
+
             // If we're already in a server, invoke the UltEvent
             if (HasServer())
             {

@@ -16,7 +16,6 @@ using LabFusion.Entities;
 using LabFusion.Downloading.ModIO;
 using LabFusion.Downloading;
 using LabFusion.Marrow;
-using LabFusion.Menu;
 using LabFusion.SDK.Modules;
 using LabFusion.Bonelab;
 using LabFusion.Representation;
@@ -31,10 +30,7 @@ using LabFusion.Debugging;
 #endif
 
 using MelonLoader;
-
-using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow;
 
 namespace LabFusion;
 
@@ -233,7 +229,7 @@ public class FusionMod : MelonMod
         MultiplayerHooking.InvokeOnMainSceneInitialized();
 
         FusionPlayer.OnMainSceneInitialized();
-        
+
         FusionLogger.Log($"Main scene {sceneName} was initialized.");
 
         // Automatically login if we aren't already
@@ -255,7 +251,7 @@ public class FusionMod : MelonMod
         }
 
 
-        if(NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.Level.Title == "15 - Void G114")
+        if (NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.Level.Title == "15 - Void G114")
         {
             FusionLogger.Log($"Loaded {FusionSceneManager.Level.Title} : {FusionSceneManager.Level.Barcode.ID}");
             NetworkHelper.StartServer();
@@ -277,7 +273,7 @@ public class FusionMod : MelonMod
     {
         ModIOThumbnailDownloader.ClearCache();
     }
-    
+
     private float _despawnTimer = 0f;
     private float _lobbyUpdateTimer = 0f;
 
@@ -330,7 +326,7 @@ public class FusionMod : MelonMod
 
         // Update delayed events at the very end of the frame
         DelayUtilities.OnProcessDelays();
-        
+
         // --------------- Despawn Timer ----------------
         _despawnTimer += deltaTime;
 

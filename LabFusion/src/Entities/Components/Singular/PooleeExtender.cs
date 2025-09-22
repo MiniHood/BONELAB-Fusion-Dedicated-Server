@@ -1,6 +1,5 @@
-﻿using LabFusion.Utilities;
-
-using Il2CppSLZ.Marrow.Pool;
+﻿using Il2CppSLZ.Marrow.Pool;
+using LabFusion.Utilities;
 
 namespace LabFusion.Entities;
 

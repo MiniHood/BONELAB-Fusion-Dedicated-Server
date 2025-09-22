@@ -1,10 +1,9 @@
-﻿using LabFusion.Utilities;
-using LabFusion.Player;
-using LabFusion.Network;
+﻿using Il2CppSLZ.Marrow.PuppetMasta;
 using LabFusion.Entities;
 using LabFusion.Marrow.Messages;
-
-using Il2CppSLZ.Marrow.PuppetMasta;
+using LabFusion.Network;
+using LabFusion.Player;
+using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Extenders;
 

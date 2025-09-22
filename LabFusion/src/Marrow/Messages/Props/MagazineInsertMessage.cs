@@ -1,9 +1,9 @@
-﻿using LabFusion.Marrow.Patching;
+﻿using LabFusion.Entities;
 using LabFusion.Extensions;
-using LabFusion.Entities;
+using LabFusion.Marrow.Patching;
+using LabFusion.Network;
 using LabFusion.Network.Serialization;
 using LabFusion.SDK.Modules;
-using LabFusion.Network;
 using LabFusion.Utilities;
 
 namespace LabFusion.Marrow.Messages;

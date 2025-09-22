@@ -1,11 +1,8 @@
-﻿using UnityEngine;
-
-using MelonLoader;
-
+﻿using Il2CppInterop.Runtime.Attributes;
 using LabFusion.Math;
 using LabFusion.SDK.Achievements;
-
-using Il2CppInterop.Runtime.Attributes;
+using MelonLoader;
+using UnityEngine;
 
 namespace LabFusion.UI;
 

@@ -1,9 +1,9 @@
 ﻿using LabFusion.Extensions;
+using LabFusion.Player;
 using LabFusion.Preferences.Client;
 using LabFusion.Representation;
-using LabFusion.Player;
-using LabFusion.Senders;
 using LabFusion.Safety;
+using LabFusion.Senders;
 
 namespace LabFusion.Network;
 

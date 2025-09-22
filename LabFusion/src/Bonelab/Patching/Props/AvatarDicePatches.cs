@@ -1,9 +1,7 @@
 ﻿using HarmonyLib;
-
-using LabFusion.Network;
-
 using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow;
+using LabFusion.Network;
 
 namespace LabFusion.Bonelab.Patching;
 
