@@ -6,7 +6,7 @@ A multiplayer mod for BONELAB featuring support for all platforms.
 
 ## Setup
 You must have the following
-- Steam
+- (Steam)[https://steamcommunity.com/]
 - Sandboxie Plus
 - Bonelab
 - Flatplayer
@@ -30,7 +30,8 @@ If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and no
 ## Credits
 - BoneLib AutoUpdater: https://github.com/yowchap/BoneLib
 - Testing/Development Credits In Game
-
+- Lakatrazz (Developer of Fusion): https://github.com/Lakatrazz/BONELAB-Fusion
+- 
 ## Licensing
 - The source code of [Facepunch.Steamworks](https://github.com/Facepunch/Facepunch.Steamworks) is used partially under the MIT License. The full license can be found [here](https://github.com/Facepunch/Facepunch.Steamworks/blob/master/LICENSE).
 - The source code of [Steamworks.NET](https://github.com/rlabrecque/Steamworks.NET) is used partially under the MIT License. The full license can be found [here](https://github.com/rlabrecque/Steamworks.NET/blob/master/LICENSE.txt).
