@@ -25,6 +25,7 @@ This is a brief guide on how to setup a server.
 
 
 - Run steam in a sandboxie and login. This will be the account hosting your server, it can host multiple servers.
+- I'd recommend adding `-silent -nobootstrapupdate -nocrashdialog -noverifyfiles` to the end of your path selected as this stops steam rendering reducing resource usage
 <img width="197" height="320" alt="image" src="https://github.com/user-attachments/assets/383e13fc-5a0e-4ec4-a0e8-eaf409c5ecb0" />
 <img width="598" height="429" alt="image" src="https://github.com/user-attachments/assets/e98de366-fe84-4ede-92d3-2ae6a9b9b5e0" />
 <img width="602" height="426" alt="image" src="https://github.com/user-attachments/assets/89ddee36-8ba9-454c-b908-a83687a0f811" />
