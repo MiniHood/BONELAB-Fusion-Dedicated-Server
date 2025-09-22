@@ -5,6 +5,8 @@ A multiplayer mod for BONELAB featuring support for all platforms.
 ![](https://i.imgur.com/1ZpMfei.png)
 
 ## Setup
+### If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
+
 You must have the following
 - [Steam](https://steamcommunity.com/)
 - [Sandboxie Plus](https://sandboxie-plus.com/downloads/)
@@ -24,8 +26,6 @@ This is a brief guide on how to setup a server.
 @echo off
 BONELAB_Steam_Windows64.exe -batchmode -nographics
 ```
-
-### If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
 
 ## Credits
 - BoneLib AutoUpdater: https://github.com/yowchap/BoneLib
