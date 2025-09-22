@@ -75,11 +75,11 @@ public static class GamemodeHelper
     {
         if (FusionPlayer.TryGetSpawnPoint(out var spawn))
         {
-            LocalPlayer.TeleportToPosition(spawn.position);
+            //LocalPlayer.TeleportToPosition(spawn.position);
         }
         else
         {
-            LocalPlayer.TeleportToCheckpoint();
+            //LocalPlayer.TeleportToCheckpoint();
         }
     }
 

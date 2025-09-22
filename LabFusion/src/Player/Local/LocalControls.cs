@@ -27,7 +27,7 @@ public static class LocalControls
 
             if (value)
             {
-                LocalPlayer.ReleaseGrips();
+                //LocalPlayer.ReleaseGrips();
             }
         }
     }

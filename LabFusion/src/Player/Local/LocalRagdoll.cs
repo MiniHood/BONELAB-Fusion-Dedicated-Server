@@ -104,7 +104,7 @@ public static class LocalRagdoll
     private static IEnumerator KnockoutCoroutine(RigManager rigManager, float length, bool blind)
     {
         // Release all grips
-        LocalPlayer.ReleaseGrips();
+        //LocalPlayer.ReleaseGrips();
 
         // Ragdoll the rig
         ToggleRagdoll(true);

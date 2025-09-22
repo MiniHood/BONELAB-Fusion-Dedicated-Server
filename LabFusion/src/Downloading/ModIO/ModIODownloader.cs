@@ -43,12 +43,14 @@ public static class ModIODownloader
 
     public static void UpdateQueue()
     {
+        /*
         if (!IsDownloading && QueuedTransactions.Count > 0)
         {
             BeginDownload(QueuedTransactions.Dequeue());
         }
 
         ModForklift.UpdateForklift();
+        */
     }
 
     public static ModTransaction GetTransaction(int modId)
@@ -80,6 +82,7 @@ public static class ModIODownloader
 
     private static void BeginDownload(ModTransaction transaction)
     {
+        /*
         // Set the active transaction to this one
         _currentTransaction = transaction;
         _isDownloading = true;
@@ -180,7 +183,7 @@ public static class ModIODownloader
             transaction.Callback?.Invoke(DownloadCallbackInfo.FailedCallback);
 
             EndDownload();
-        }
+        }*/
     }
 
     private static IEnumerator CoDownloadWithToken(string token, ModTransaction transaction, ModIOFile modFile, string url)

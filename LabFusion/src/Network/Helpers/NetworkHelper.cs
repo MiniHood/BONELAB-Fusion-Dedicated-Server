@@ -11,6 +11,21 @@ namespace LabFusion.Network;
 /// </summary>
 public static class NetworkHelper
 {
+        /// <summary>
+    /// Checks if the player is currently a host.
+    /// </summary>
+    public static bool IsHost()
+    {
+        var layer = NetworkLayerManager.Layer;
+
+        if (layer == null)
+        {
+            return false;
+        }
+
+        return layer.IsHost;
+    }
+    
     /// <summary>
     /// Starts a server if there is currently none active.
     /// </summary>

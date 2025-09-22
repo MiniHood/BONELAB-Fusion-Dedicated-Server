@@ -93,7 +93,7 @@ public static class LocalAvatar
         AvatarHeight = avatar.height;
         AvatarMass = avatar.massTotal;
 
-        OnAvatarChanged?.InvokeSafe(avatar, barcode, "executing LocalPlayer.OnAvatarChanged");
+        //OnAvatarChanged?.InvokeSafe(avatar, barcode, "executing LocalPlayer.OnAvatarChanged");
     }
 
     private static void OnCheckAvatar(Avatar avatar, string barcode)
@@ -112,8 +112,8 @@ public static class LocalAvatar
         if (crate != null)
         {
             // Apply metadata
-            LocalPlayer.Metadata.AvatarTitle.SetValue(crate.Title);
-            LocalPlayer.Metadata.AvatarModID.SetValue(CrateFilterer.GetModID(crate.Pallet));
+            //LocalPlayer.Metadata.AvatarTitle.SetValue(crate.Title);
+            //LocalPlayer.Metadata.AvatarModID.SetValue(CrateFilterer.GetModID(crate.Pallet));
         }
 
         OnOverrideAvatar(avatar, barcode, crate);

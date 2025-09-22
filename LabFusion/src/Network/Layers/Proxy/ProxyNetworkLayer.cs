@@ -153,7 +153,7 @@ public abstract class ProxyNetworkLayer : NetworkLayer
             case (ulong)MessageTypes.GetUsername:
                 {
                     string username = dataReader.GetString();
-                    LocalPlayer.Username = username;
+                    // LocalPlayer.Username = username;
                 }
                 break;
             case (ulong)MessageTypes.OnDisconnected:

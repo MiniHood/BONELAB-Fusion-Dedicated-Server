@@ -26,12 +26,18 @@ public static class CatchupManager
             return;
         }
 
+        if (entity.OwnerID == null || PlayerIDManager.GetHostID() == null)
+            return;
+
+        if (entity.OwnerID.SmallID == PlayerIDManager.HostSmallID)
+            return;
+
         RequestEntityDataCatchup(entity.OwnerID ?? PlayerIDManager.GetHostID(), entityReference);
     }
 
     public static void RequestEntityDataCatchup(PlayerID ownerID, NetworkEntityReference entityReference)
     {
-        if (ownerID.IsMe)
+        if (ownerID.SmallID == PlayerIDManager.HostSmallID)
         {
             return;
         }

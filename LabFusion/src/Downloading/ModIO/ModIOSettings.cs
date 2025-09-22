@@ -36,6 +36,7 @@ public static class ModIOSettings
 
     public static void LoadToken(Action<string> loadCallback)
     {
+        /*
         if (!string.IsNullOrWhiteSpace(LoadedToken))
         {
             loadCallback?.Invoke(LoadedToken);
@@ -50,6 +51,7 @@ public static class ModIOSettings
         }
 
         MelonCoroutines.Start(CoLoadToken());
+        */
     }
 
     private static IEnumerator CoLoadToken()
@@ -97,11 +99,13 @@ public static class ModIOSettings
 
     private static void EndLoadToken(string token)
     {
+        /*
         _loadedToken = token;
 
         _isLoadingToken = false;
 
         _tokenLoadCallback?.Invoke(token);
         _tokenLoadCallback = null;
+        */
     }
 }

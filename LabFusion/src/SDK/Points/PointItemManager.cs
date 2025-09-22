@@ -145,13 +145,13 @@ public static class PointItemManager
 
     internal static void HookEvents()
     {
-        LocalPlayer.OnLocalRigCreated += OnLocalRigCreated;
+        //LocalPlayer.OnLocalRigCreated += OnLocalRigCreated;
         NetworkPlayer.OnNetworkRigCreated += OnNetworkRigCreated;
     }
 
     internal static void UnhookEvents()
     {
-        LocalPlayer.OnLocalRigCreated -= OnLocalRigCreated;
+        //LocalPlayer.OnLocalRigCreated -= OnLocalRigCreated;
         NetworkPlayer.OnNetworkRigCreated -= OnNetworkRigCreated;
     }
 

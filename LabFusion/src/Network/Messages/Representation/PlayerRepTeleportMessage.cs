@@ -58,6 +58,6 @@ public class PlayerRepTeleportMessage : NativeMessageHandler
         }
 
         // Teleport the player
-        LocalPlayer.TeleportToPosition(data.position, Vector3Extensions.forward);
+        // LocalPlayer.TeleportToPosition(data.position, Vector3Extensions.forward);
     }
 }

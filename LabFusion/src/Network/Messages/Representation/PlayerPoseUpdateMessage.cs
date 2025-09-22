@@ -40,6 +40,9 @@ public class PlayerPoseUpdateMessage : NativeMessageHandler
 
         var playerId = received.Sender.Value;
 
+        if (playerId == PlayerIDManager.HostSmallID)
+            return;
+            
         // Make sure this isn't us
         if (playerId == PlayerIDManager.LocalSmallID)
         {

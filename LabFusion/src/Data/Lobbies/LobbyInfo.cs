@@ -114,15 +114,19 @@ public class LobbyInfo
     [JsonPropertyName("teleportation")]
     public PermissionLevel Teleportation { get; set; }
 
+    public static DateTime ServerStartTime = DateTime.UtcNow;
+
     public void WriteLobby()
     {
+        var uptime = DateTime.UtcNow - ServerStartTime;
+
         // Info
         LobbyId = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
-        LobbyName = SavedServerSettings.ServerName.Value;
-        LobbyDescription = SavedServerSettings.ServerDescription.Value;
+        LobbyName = $"[{uptime:hh}h:{uptime:mm}m:{uptime:ss}s] " + "Dedicated Server Test";
+        LobbyDescription = "This is a test using a modified version of FusionLab. Join the dedicated server development discord: https://discord.gg/jSw8Qrkmwn\nThis server cleans every 5 minutes.\n- HowNiceOfYou";
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = LocalPlayer.Username;
+        LobbyHostName = FusionMod.ServerName;
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
@@ -149,24 +153,24 @@ public class LobbyInfo
         TimeBetweenGamemodeRounds = GamemodeRoundManager.Settings.TimeBetweenRounds;
 
         // Settings
-        NameTags = SavedServerSettings.NameTags.Value;
+        NameTags = true; // SavedServerSettings.NameTags.Value;
         Privacy = SavedServerSettings.Privacy.Value;
         SlowMoMode = SavedServerSettings.SlowMoMode.Value;
         MaxPlayers = SavedServerSettings.MaxPlayers.Value;
-        VoiceChat = SavedServerSettings.VoiceChat.Value;
+        VoiceChat = true; // SavedServerSettings.VoiceChat.Value;
         PlayerConstraining = SavedServerSettings.PlayerConstraining.Value;
         Mortality = SavedServerSettings.Mortality.Value;
-        FriendlyFire = SavedServerSettings.FriendlyFire.Value;
-        Knockout = SavedServerSettings.Knockout.Value;
+        FriendlyFire = true; // SavedServerSettings.FriendlyFire.Value;
+        Knockout = false; // SavedServerSettings.Knockout.Value;
         KnockoutLength = SavedServerSettings.KnockoutLength.Value;
         MaxAvatarHeight = SavedServerSettings.MaxAvatarHeight.Value;
 
         // Permissions
         DevTools = SavedServerSettings.DevTools.Value;
-        Constrainer = SavedServerSettings.Constrainer.Value;
-        CustomAvatars = SavedServerSettings.CustomAvatars.Value;
-        Kicking = SavedServerSettings.Kicking.Value;
-        Banning = SavedServerSettings.Banning.Value;
-        Teleportation = SavedServerSettings.Teleportation.Value;
+        Constrainer = PermissionLevel.OWNER; // SavedServerSettings.Constrainer.Value;
+        CustomAvatars = PermissionLevel.DEFAULT; // SavedServerSettings.CustomAvatars.Value;
+        Kicking = PermissionLevel.OWNER; // SavedServerSettings.Kicking.Value;
+        Banning = PermissionLevel.OWNER; // SavedServerSettings.Banning.Value;
+        Teleportation = PermissionLevel.OWNER; // SavedServerSettings.Teleportation.Value;
     }
 }

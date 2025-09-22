@@ -60,17 +60,17 @@ public class ConnectionResponseMessage : NativeMessageHandler
         // Otherwise, create a network player
         else
         {
-            InternalServerHelpers.OnPlayerJoined(data.PlayerID, data.IsInitialJoin);
+            // InternalServerHelpers.OnPlayerJoined(data.PlayerID, data.IsInitialJoin);
 
             var networkPlayer = NetworkPlayerManager.CreateNetworkPlayer(data.PlayerID);
             networkPlayer.AvatarSetter.SwapAvatar(data.AvatarStats, data.AvatarBarcode);
         }
 
         // Update our vitals to everyone
-        if (RigData.HasPlayer)
-        {
-            RigData.OnSendVitals();
-        }
+        //if (RigData.HasPlayer)
+        //{
+        //    RigData.OnSendVitals();
+        //}
 
         // Send catchup messages now that the user is registered
         if (NetworkInfo.IsHost)

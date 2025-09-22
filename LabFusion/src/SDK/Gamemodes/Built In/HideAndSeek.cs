@@ -359,7 +359,7 @@ public class HideAndSeek : Gamemode
         {
             var feetPosition = player.RigRefs.RigManager.physicsRig.feet.transform.position;
 
-            LocalPlayer.TeleportToPosition(feetPosition, Vector3.forward);
+            //LocalPlayer.TeleportToPosition(feetPosition, Vector3.forward);
         }
     }
 
@@ -475,7 +475,7 @@ public class HideAndSeek : Gamemode
 
         Playlist.StartPlaylist();
 
-        LocalPlayer.OnGrab += OnLocalPlayerGrab;
+        //LocalPlayer.OnGrab += OnLocalPlayerGrab;
         LocalControls.DisableSlowMo = true;
 
         if (NetworkInfo.IsHost)
@@ -502,7 +502,7 @@ public class HideAndSeek : Gamemode
 
         Playlist.StopPlaylist();
 
-        LocalPlayer.OnGrab -= OnLocalPlayerGrab;
+        //LocalPlayer.OnGrab -= OnLocalPlayerGrab;
         LocalControls.DisableSlowMo = false;
 
         if (NetworkInfo.IsHost)

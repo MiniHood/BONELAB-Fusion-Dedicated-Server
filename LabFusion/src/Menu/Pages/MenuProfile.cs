@@ -16,10 +16,12 @@ public static class MenuProfile
 
     public static void OnInitializeMelon()
     {
+        /*
         LocalPlayer.OnUsernameChanged += (v) =>
         {
             RefreshName();
         };
+        */
     }
 
     private static void UpdatePlayerIcon(PlayerElement element)

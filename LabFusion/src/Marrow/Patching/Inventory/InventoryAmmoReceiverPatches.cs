@@ -80,6 +80,7 @@ public static class InventoryAmmoReceiverPatches
 
     private static void OnMagazineSpawned(NetworkAssetSpawner.SpawnCallbackInfo info, Handedness handedness)
     {
+        /*
         var magazine = info.Spawned.GetComponent<Magazine>();
         if (magazine == null)
         {
@@ -97,6 +98,7 @@ public static class InventoryAmmoReceiverPatches
         var data = new MagazineClaimData() { OwnerID = PlayerIDManager.LocalSmallID, EntityID = info.Entity.ID, Handedness = handedness };
 
         MessageRelay.RelayModule<MagazineClaimMessage, MagazineClaimData>(data, CommonMessageRoutes.ReliableToOtherClients);
+        */
     }
 
     [HarmonyPrefix]

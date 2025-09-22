@@ -44,7 +44,7 @@ public class HomeEventHandler : GamemodeLevelEventHandler
             // In a server, teleport the player to the top of the lift so they don't spawn underneath it if its synced
             if (NetworkInfo.HasServer)
             {
-                LocalPlayer.TeleportToPosition(new Vector3(-9.030009f, -5.142975f, -71.18999f), Vector3Extensions.forward);
+                // LocalPlayer.TeleportToPosition(new Vector3(-9.030009f, -5.142975f, -71.18999f), Vector3Extensions.forward);
             }
 
             TaxiController = GameObject.FindObjectOfType<TaxiController>(true);

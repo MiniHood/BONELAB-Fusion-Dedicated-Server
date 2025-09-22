@@ -129,6 +129,7 @@ public static class InternalServerHelpers
         // Send notification
         if (playerId.TryGetDisplayName(out var name))
         {
+            FusionLogger.Log($"Player {name} has left the server.");
             NetworkNotifications.SendPlayerLeftNotification(name);
         }
 

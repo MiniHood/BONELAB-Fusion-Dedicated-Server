@@ -32,15 +32,15 @@ public static class FusionPermissions
 {
     public static void OnInitializeMelon()
     {
-        LocalPlayer.Metadata.PermissionLevel.SetValue(PermissionLevel.DEFAULT.ToString());
+        //LocalPlayer.Metadata.PermissionLevel.SetValue(PermissionLevel.DEFAULT.ToString());
 
-        LocalPlayer.OnApplyInitialMetadata += OnUpdateInitialMetadata;
+        //LocalPlayer.OnApplyInitialMetadata += OnUpdateInitialMetadata;
     }
 
     private static void OnUpdateInitialMetadata()
     {
         var permissionLevel = NetworkInfo.IsHost ? PermissionLevel.OWNER.ToString() : PermissionLevel.DEFAULT.ToString();
-        LocalPlayer.Metadata.PermissionLevel.SetValue(permissionLevel);
+        //LocalPlayer.Metadata.PermissionLevel.SetValue(permissionLevel);
     }
 
     public static void FetchPermissionLevel(ulong longId, out PermissionLevel level, out Color color)

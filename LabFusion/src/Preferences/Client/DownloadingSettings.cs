@@ -22,13 +22,13 @@ public class DownloadingSettings
 
     public void CreatePrefs(MelonPreferences_Category category)
     {
-        DownloadSpawnables = new FusionPref<bool>(category, "Download Spawnables", true, PrefUpdateMode.IGNORE);
-        DownloadAvatars = new FusionPref<bool>(category, "Download Avatars", true, PrefUpdateMode.IGNORE);
-        DownloadLevels = new FusionPref<bool>(category, "Download Levels", true, PrefUpdateMode.IGNORE);
+        DownloadSpawnables = new FusionPref<bool>(category, "Download Spawnables", false, PrefUpdateMode.IGNORE);
+        DownloadAvatars = new FusionPref<bool>(category, "Download Avatars", false, PrefUpdateMode.IGNORE);
+        DownloadLevels = new FusionPref<bool>(category, "Download Levels", false, PrefUpdateMode.IGNORE);
 
         KeepDownloadedMods = new FusionPref<bool>(category, "Keep Downloaded Mods", false, PrefUpdateMode.IGNORE);
 
-        NotifyDownloads = new FusionPref<bool>(category, "Notify Downloads", true, PrefUpdateMode.IGNORE);
+        NotifyDownloads = new FusionPref<bool>(category, "Notify Downloads", false, PrefUpdateMode.IGNORE);
 
         MaxFileSize = new FusionPref<int>(category, "Max File Size", DefaultMaxFileSize, PrefUpdateMode.IGNORE);
         MaxLevelSize = new FusionPref<int>(category, "Max Level Size", DefaultMaxLevelSize, PrefUpdateMode.IGNORE);
