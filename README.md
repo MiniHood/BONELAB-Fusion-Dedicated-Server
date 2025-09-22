@@ -27,27 +27,6 @@ BONELAB_Steam_Windows64.exe -batchmode -nographics
 
 If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
 
-## Documentation
-For installation, source code setup, documentation, help with Marrow SDK integration, and more, check out [the wiki](https://github.com/Lakatrazz/BONELAB-Fusion/wiki).
-
-## Networking
-This mod is networked and built around Steam, but the networking system can be swapped out using a Networking Layer.
-
-## Modules
-Fusion supports a system called "Modules". This allows other code mods to add on and sync their own events in Fusion.
-Fusion also has an SDK for integrating features into Marrow™ SDK items, maps, and more.
-
-## Lists
-Fusion pulls a few lists from another [GitHub repository](https://github.com/Lakatrazz/Fusion-Lists/) so that certain limits can be remotely updated.
-
-These lists include:
-- Global Ban List
-- Profanity List
-- Global Mod Blacklist
-
-Note that additions to these lists are only for extreme cases. If you would like to see the criteria required to be added to these lists, or view what is currently on these
-lists, you can [visit the repository.](https://github.com/Lakatrazz/Fusion-Lists/)
-
 ## Credits
 - BoneLib AutoUpdater: https://github.com/yowchap/BoneLib
 - Testing/Development Credits In Game
