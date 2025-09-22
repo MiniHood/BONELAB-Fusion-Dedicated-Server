@@ -5,7 +5,7 @@ A multiplayer mod for BONELAB featuring support for all platforms.
 ![](https://i.imgur.com/1ZpMfei.png)
 
 ## Setup
-### If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
+### If any issues occur, please discuss this in https://discord.gg/MV3PDGaqfx and not the main bonelab fusion discord :)
 
 You must have the following
 - [Steam](https://steamcommunity.com/)
