@@ -6,10 +6,10 @@ A multiplayer mod for BONELAB featuring support for all platforms.
 
 ## Setup
 You must have the following
-- (Steam)[https://steamcommunity.com/]
-- Sandboxie Plus
-- Bonelab
-- Flatplayer
+- [Steam](https://steamcommunity.com/)
+- [Sandboxie Plus](https://sandboxie-plus.com/downloads/)
+- [Bonelab](https://store.steampowered.com/app/1592190/BONELAB/)
+- [Flatplayer](https://thunderstore.io/c/bonelab/p/LlamasHere/FlatPlayer/)
 
 This is a brief guide on how to setup a server.
 - Create a new bonelab directory with bonelab inside of it just for this. This will be the directory for hosting your server. Set it up as you would normal bonelab. I didn't like the hassle so I used a pirated copy of bonelab for the server.
@@ -25,7 +25,7 @@ This is a brief guide on how to setup a server.
 BONELAB_Steam_Windows64.exe -batchmode -nographics
 ```
 
-If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
+### If any issues occur, please discuss this in https://discord.gg/jSw8Qrkmwn and not the main bonelab fusion discord :)
 
 ## Credits
 - BoneLib AutoUpdater: https://github.com/yowchap/BoneLib
