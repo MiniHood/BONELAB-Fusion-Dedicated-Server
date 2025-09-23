@@ -238,19 +238,6 @@ public class FusionMod : MelonMod
             await Task.Delay(500);
             await _client.SendMessageAsync("Hello server!");
         }
-
-        // create bidrectional communication with manager
-
-
-        // Create Server
-        //NetworkHelper.StartServer();
-
-        // Force enable radial menu
-        //RigData.Refs.RigManager.ControllerRig.TryCast<OpenControllerRig>().quickmenuEnabled = true;
-        //PlayerRefs.Instance.PlayerBodyVitals.quickmenuEnabled = true;
-
-        // Create the Fusion Menu
-        //MenuCreator.CreateMenu();
     }
 
     private void OnLoadingBegin()
