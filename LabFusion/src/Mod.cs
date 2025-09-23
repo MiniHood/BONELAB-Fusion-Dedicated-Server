@@ -233,7 +233,7 @@ public class FusionMod : MelonMod
             NetworkHelper.StartServer();
             FusionLogger.Log($"Started Server ({NetworkHelper.GetServerCode()})");
             _client = new FusionClient(ServerName, NetworkHelper.GetServerCode());
-            await _client.RegisterAsync();
+            _ = _client.EnsureRegisteredAsync();
             _ = _client.StartListeningAsync();
             await Task.Delay(500);
             await _client.SendMessageAsync("Hello server!");
