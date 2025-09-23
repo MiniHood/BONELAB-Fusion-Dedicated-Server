@@ -38,12 +38,6 @@ public class PlayerVoiceChatMessage : NativeMessageHandler
     {
         var data = received.ReadData<PlayerVoiceChatData>();
 
-        // Check if voice chat is active
-        if (VoiceInfo.IsDeafened)
-        {
-            return;
-        }
-
         // Read the voice chat
         var id = PlayerIDManager.GetPlayerID(data.smallId);
 

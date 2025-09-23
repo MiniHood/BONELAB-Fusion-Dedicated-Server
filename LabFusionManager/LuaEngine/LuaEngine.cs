@@ -2,10 +2,7 @@
 
 public static class LuaEngine
 {
-    private static Script _lua;
-
-    public static Script Lua() => _lua;
-
+    public static Script _lua;
     public static void Init()
     {
         _lua = new Script();

@@ -1,8 +1,8 @@
 ﻿using MoonSharp.Interpreter;
 
 // Init lua engine
-UserData.RegisterType<LuaServerAPI>();
-LuaEngine.Lua().Globals["api"] = new LuaServerAPI();
+//UserData.RegisterType<LuaServerAPI>();
+//LuaEngine._lua.Globals["api"] = new LuaServerAPI();
 
 // start pipes and server
 _ = ServerManager.Instance.StartRegistrationPipeAsync();

@@ -27,11 +27,6 @@ public static class VoiceInfo
     public static string[] InputDevices => VoiceManager != null ? VoiceManager.InputDevices : Array.Empty<string>();
 
     /// <summary>
-    /// Returns if the mute icon is enabled.
-    /// </summary>
-    public static bool ShowMuteIndicator => NetworkInfo.HasServer && ClientSettings.VoiceChat.Muted.Value && ClientSettings.VoiceChat.MutedIndicator.Value;
-
-    /// <summary>
     /// Returns the microphone amplitude for this frame.
     /// </summary>
     public static float VoiceAmplitude => (VoiceManager?.GetReceiver()?.GetVoiceAmplitude()).GetValueOrDefault();
@@ -40,34 +35,6 @@ public static class VoiceInfo
     /// Returns if we have voice activity for this frame.
     /// </summary>
     public static bool HasVoiceActivity => (VoiceManager?.GetReceiver()?.HasVoiceActivity()).GetValueOrDefault();
-
-    /// <summary>
-    /// Returns if the player can't speak.
-    /// </summary>
-    public static bool IsMuted
-    {
-        get
-        {
-            return ClientSettings.VoiceChat.Muted.Value || IsDeafened;
-        }
-    }
-
-    /// <summary>
-    /// Returns if voice chat is currently disabled, either via deafening or the server setting.
-    /// </summary>
-    public static bool IsDeafened
-    {
-        get
-        {
-            // Disable voice in loading screens
-            if (FusionSceneManager.IsLoading())
-            {
-                return true;
-            }
-
-            return ClientSettings.VoiceChat.Deafened.Value || !ServerVoiceEnabled;
-        }
-    }
 
     /// <summary>
     /// Returns if voice chat is enabled on the server's end.

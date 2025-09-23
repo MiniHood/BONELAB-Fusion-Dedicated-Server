@@ -57,14 +57,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
     private RigPuppet _puppet = null;
     public RigPuppet Puppet => _puppet;
 
-    private RigNameTag _nametag = null;
-
-    private RigIcon _icon = null;
-    public RigIcon Icon => _icon;
-
-    private RigHeadUI _headUI = null;
-    public RigHeadUI HeadUI => _headUI;
-
     private RigArt _art = null;
     private RigPhysics _physics = null;
 
@@ -74,20 +66,8 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
     private RigAvatarSetter _avatarSetter = null;
     public RigAvatarSetter AvatarSetter => _avatarSetter;
 
-    private RigHealthBar _healthBar = null;
-    public RigHealthBar HealthBar => _healthBar;
-
-    private RigLivesBar _livesBar = null;
-    public RigLivesBar LivesBar => _livesBar;
-
-    private RigVoiceSource _voiceSource = null;
-    public RigVoiceSource VoiceSource => _voiceSource;
-
     private bool _isPhysicsRigDirty = false;
     private Queue<PhysicsRigStateData> _physicsRigStates = new();
-
-    private bool _isSettingsDirty = false;
-    private bool _isServerDirty = false;
 
     public SerializedPlayerSettings playerSettings = null;
 
@@ -171,37 +151,7 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
         _puppet = new();
 
-        _nametag = new()
-        {
-            CrownVisible = playerId.IsHost,
-        };
-
-        _headUI = new();
-
-        _icon = new()
-        {
-            Visible = false,
-        };
-
-        _healthBar = new()
-        {
-            Visible = false,
-        };
-
-        _livesBar = new()
-        {
-            Visible = false,
-        };
-
         _avatarSetter = new(networkEntity);
-        _avatarSetter.OnAvatarChanged += UpdateAvatarSettings;
-
-        // Register the default head UI elements so they're automatically spawned in
-        HeadUI.RegisterElement(_nametag);
-        HeadUI.RegisterElement(_avatarSetter.ProgressBar);
-        HeadUI.RegisterElement(_icon);
-        HeadUI.RegisterElement(_healthBar);
-        HeadUI.RegisterElement(_livesBar);
 
         networkEntity.HookOnRegistered(OnPlayerRegistered);
         networkEntity.OnEntityUnregistered += OnPlayerUnregistered;
@@ -277,9 +227,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
     private void OnPuppetCreated(RigManager rigManager)
     {
-        // Spawn the head ui
-        _headUI.Spawn();
-
         // Mark our rig dirty for setting updates
         MarkDirty();
 
@@ -297,9 +244,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
     public void MarkDirty()
     {
         AvatarSetter.SetDirty();
-
-        _isSettingsDirty = true;
-        _isServerDirty = true;
 
         _isPhysicsRigDirty = true;
         _physicsRigStates.Clear();
@@ -389,11 +333,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
         {
             _puppet.DestroyPuppet();
         }
-
-        _nametag.Despawn();
-
-        // Despawn the head UI
-        _headUI.Despawn();
     }
 
     private void OnMetadataChanged(string key, string value)
@@ -408,18 +347,10 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
         {
             _username = name;
         }
-
-        // Update nametag
-        if (!NetworkEntity.IsOwner)
-        {
-            _nametag.Username = Username;
-        }
     }
 
     private void OnServerSettingsChanged()
     {
-        _isServerDirty = true;
-
         OnMetadataChanged();
     }
 
@@ -432,19 +363,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
     public void SetSettings(SerializedPlayerSettings settings)
     {
         playerSettings = settings;
-        _isSettingsDirty = true;
-    }
-
-    private void UpdateAvatarSettings()
-    {
-        if (HasRig)
-        {
-            _nametag.UpdateText();
-
-            HeadUI.UpdateScale(RigRefs.RigManager);
-
-            VoiceSource?.SetVoiceRange(RigRefs.RigManager.avatar.height);
-        }
     }
 
     private void OnPlayerDestroyed()
@@ -488,9 +406,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
         _networkEntity = null;
         _playerID = null;
 
-        VoiceSource?.DestroyVoiceSource();
-        _voiceSource = null;
-
         OnUnregisterUpdates();
     }
 
@@ -523,15 +438,11 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
         if (NetworkEntity.IsOwner)
         {
             OnOwnedUpdate();
-
-            JawFlapper.UpdateJaw(VoiceInfo.VoiceAmplitude, deltaTime);
         }
         else
         {
             OnHandUpdate(RigRefs.LeftHand);
             OnHandUpdate(RigRefs.RightHand);
-
-            VoiceSource?.UpdateVoiceSource(DistanceSqr, deltaTime);
 
             remapRig._crouchTarget = RigPose.CrouchTarget;
             remapRig._feetOffset = RigPose.FeetOffset;
@@ -563,8 +474,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
             return;
         }
 
-        _headUI.UpdateTransform(RigRefs.RigManager);
-
         // Update the player if its dirty and has an avatar
         var rm = RigRefs.RigManager;
 
@@ -584,36 +493,12 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
             _isPhysicsRigDirty = false;
         }
 
-        // Update settings
-        if (_isSettingsDirty)
-        {
-            if (playerSettings != null)
-            {
-                // Make sure the alpha is 1 so that people cannot create invisible names
-                var color = playerSettings.nametagColor;
-                color.a = 1f;
-                _nametag.Color = color;
-            }
-
-            _isSettingsDirty = false;
-        }
-
-        // Update server side settings
-        if (_isServerDirty)
-        {
-            UpdateNametagVisibility();
-
-            _isServerDirty = false;
-        }
-
         // Update distance value
         DistanceSqr = (RigRefs.Head.position - RigData.Refs.Head.position).sqrMagnitude;
     }
 
     private void OnCullExtras()
     {
-        _headUI.Visible = false;
-
         if (HasRig)
         {
             _art.CullArt(true);
@@ -623,18 +508,11 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
     private void OnUncullExtras()
     {
-        _headUI.Visible = true;
-
         if (HasRig)
         {
             _art.CullArt(false);
             _physics.CullPhysics(false);
         }
-    }
-
-    private void UpdateNametagVisibility()
-    {
-        _nametag.Visible = CommonPreferences.NameTags && FusionOverrides.ValidateNametag(PlayerID);
     }
 
     public void OnEntityCull(bool isInactive)
@@ -803,10 +681,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
         // Update the playspace rotation
         RigSkeleton.trackedPlayspace.rotation = RigPose.TrackedPlayspace.Expand();
 
-        // Update the health
-        HealthBar.Health = pose.Health;
-        HealthBar.MaxHealth = pose.MaxHealth;
-
         RigSkeleton.health.curr_Health = pose.Health;
         RigSkeleton.health.max_Health = pose.MaxHealth;
     }
@@ -868,10 +742,6 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
             // Match the current cull state
             OnEntityCull(MarrowEntity.IsCulled);
-
-            // Create voice source
-            _voiceSource = new RigVoiceSource(JawFlapper, rigManager.physicsRig.headSfx.mouthSrc.transform);
-            _voiceSource.CreateVoiceSource(PlayerID.SmallID);
         }
 
         // Run events

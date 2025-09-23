@@ -53,20 +53,6 @@ public static class LaserCursorUtilities
             drawBezierCurve.lineSteps = 12;
             drawBezierCurve.linePercentageFill = 0.73f;
 
-            // Create the prismatic SFX
-            var prismaticSFX = sfx.gameObject.AddComponent<PrismaticSFX>();
-            prismaticSFX.velocityTran = sfx.transform;
-            prismaticSFX.sourceTran = sfx.transform;
-            prismaticSFX.minSpeed = 0.2f;
-            prismaticSFX.maxSpeed = 4f;
-            prismaticSFX.sourceMinDistance = 1f;
-            prismaticSFX.pitchMod = 1f;
-            prismaticSFX.loopClips = true;
-
-            AudioLoader.LoadMonoDisc(FusionMonoDiscReferences.LaserPrismaticSFXReference, (clip) => { prismaticSFX.modulatedClips = new AudioClip[] { clip }; });
-
-            prismaticSFX.SpatialBlend = 0.98f;
-
             // Fill out the laser cursor
             cursor.cursorStart = ray_start;
             cursor.cursorEnd = ray_end;
@@ -80,11 +66,6 @@ public static class LaserCursorUtilities
             cursor.pulseLength = 0.2f;
             cursor.pulseAceleration = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
-            AudioLoader.LoadMonoDisc(FusionMonoDiscReferences.LaserPulseReference, (clip) => { cursor.pulseSound = new AudioClip[] { clip }; });
-            AudioLoader.LoadMonoDisc(FusionMonoDiscReferences.LaserRaySpawnReference, (clip) => { cursor.raySpawn = new AudioClip[] { clip }; });
-            AudioLoader.LoadMonoDisc(FusionMonoDiscReferences.LaserRayDespawnReference, (clip) => { cursor.rayDespawn = new AudioClip[] { clip }; });
-
-            cursor.prismaticSFX = prismaticSFX;
             cursor.spatialBlend = 1f;
             cursor._sourceVolume = 0.3f;
             cursor._sourceRadius = 1f;

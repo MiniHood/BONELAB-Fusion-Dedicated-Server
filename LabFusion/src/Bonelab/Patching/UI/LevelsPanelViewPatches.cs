@@ -3,7 +3,6 @@ using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Network;
 using LabFusion.Senders;
-using LabFusion.UI.Popups;
 
 namespace LabFusion.Bonelab.Patching;
 
@@ -22,15 +21,6 @@ public class LevelsPanelViewPatches
                 // Send level request
                 LevelCrate crate = __instance._levelCrates[idx + (__instance._currentPage * __instance.items.Count)];
                 LoadSender.SendLevelRequest(crate);
-
-                // Notify the user they've requested a level
-                Notifier.Send(new Notification()
-                {
-                    Title = "Requested Level",
-                    Message = $"Sent a level request for {crate.Title}!",
-                    SaveToMenu = false,
-                    ShowPopup = true,
-                });
 
                 return false;
             }

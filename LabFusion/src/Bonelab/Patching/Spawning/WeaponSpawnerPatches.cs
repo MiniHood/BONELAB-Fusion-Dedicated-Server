@@ -112,10 +112,6 @@ public static class WeaponSpawnerPatches
 
         if (__instance.pooleeDict.Count >= __instance.weaponLimit)
         {
-            LocalAudioPlayer.PlayAtPoint(__instance.overLimitClip, __instance.defSpawn.position, new AudioPlayerSettings()
-            {
-                Mixer = LocalAudioPlayer.HardInteraction
-            });
             return false;
         }
 
@@ -206,12 +202,6 @@ public static class WeaponSpawnerPatches
         WeaponSpawner.OnCountUpdated?.Invoke(new Vector2(spawner.pooleeDict.Count, spawner.weaponLimit));
 
         var position = spawned.transform.position;
-
-        // SFX and VFX
-        LocalAudioPlayer.PlayAtPoint(spawner.spawnClip, position, new AudioPlayerSettings()
-        {
-            Mixer = LocalAudioPlayer.HardInteraction
-        });
 
         LocalAssetSpawner.Spawn(spawner.spawnFXSpawnable, position, Quaternion.identity, null);
     }

@@ -96,7 +96,7 @@ public static partial class FusionSceneManager
 
     }
 
-    private static void Internal_UpdateDelayedLoadStatus()
+    private static async void Internal_UpdateDelayedLoadStatus()
     {
         if (_isLoading)
         {
@@ -111,7 +111,7 @@ public static partial class FusionSceneManager
         else if (_isDelayedLoading)
         {
             _isDelayedLoading = false;
-            FusionMod.OnMainSceneInitializeDelayed();
+            await FusionMod.OnMainSceneInitializeDelayed();
 
             // Invoke the level load hook
             _onDelayedLevelLoad?.InvokeSafe("executing OnDelayedLevelLoad hook");

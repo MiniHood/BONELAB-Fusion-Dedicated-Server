@@ -33,14 +33,9 @@ public class RigAvatarSetter
 
     private NetworkEntity _entity = null;
 
-    private readonly RigProgressBar _progressBar = new();
-    public RigProgressBar ProgressBar => _progressBar;
-
     public RigAvatarSetter(NetworkEntity entity)
     {
         _entity = entity;
-
-        ProgressBar.Visible = false;
     }
 
     public void SwapAvatar(SerializedAvatarStats stats, string barcode)
@@ -78,24 +73,13 @@ public class RigAvatarSetter
         {
             Target = owner,
             Barcode = barcode,
-            BeginDownloadCallback = OnAvatarBeginDownload,
             FinishDownloadCallback = OnAvatarDownloaded,
             MaxBytes = maxBytes,
-            Reporter = ProgressBar,
         });
-    }
-
-    private void OnAvatarBeginDownload(NetworkModRequester.ModCallbackInfo info)
-    {
-        // Now that we know the download has been queued, we can show the progress bar
-        ProgressBar.Report(0f);
-        ProgressBar.Visible = true;
     }
 
     private void OnAvatarDownloaded(DownloadCallbackInfo info)
     {
-        ProgressBar.Visible = false;
-
         if (info.result != ModResult.SUCCEEDED)
         {
             FusionLogger.Warn($"Failed downloading avatar for rig {_entity.ID}!");

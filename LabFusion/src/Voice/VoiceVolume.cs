@@ -18,7 +18,7 @@ public static class VoiceVolume
     {
         float globalVolumePercent = Audio3dManager.audio_GlobalVolume * 0.1f;
         float sfxVolumePercent = Audio3dManager.audio_SFXVolume * 0.1f;
-        float voiceVolumePercent = ClientSettings.VoiceChat.GlobalVolume.Value;
+        float voiceVolumePercent = 100 * 0.1f;
 
         float volumePercent = globalVolumePercent * sfxVolumePercent * voiceVolumePercent;
 

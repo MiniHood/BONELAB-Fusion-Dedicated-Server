@@ -1,7 +1,6 @@
 ﻿using LabFusion.Player;
 using LabFusion.Preferences.Client;
 using LabFusion.Senders;
-using LabFusion.UI.Popups;
 using LabFusion.Utilities;
 using LabFusion.Voice;
 using LabFusion.Voice.Unity;
@@ -307,15 +306,6 @@ public abstract class ProxyNetworkLayer : NetworkLayer
         if (serverConnection == null)
         {
             FusionLogger.Warn("Attempting to send data to a null server peer! Is the proxy active?");
-            Notifier.Send(new Notification()
-            {
-                SaveToMenu = false,
-                ShowPopup = true,
-                PopupLength = 4,
-                Title = "Connection Failed",
-                Message = "Failed to send data to the proxy, is FusionHelper running on your computer?",
-                Type = NotificationType.ERROR
-            });
             return;
         }
 

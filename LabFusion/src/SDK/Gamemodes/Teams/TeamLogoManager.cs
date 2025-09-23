@@ -89,8 +89,6 @@ public class TeamLogoManager
 
             if (team == null)
             {
-                networkPlayer.Icon.Texture = null;
-                networkPlayer.Icon.Visible = false;
                 continue;
             }
 
@@ -98,16 +96,11 @@ public class TeamLogoManager
 
             if (logo == null)
             {
-                networkPlayer.Icon.Texture = null;
-                networkPlayer.Icon.Visible = false;
                 continue;
             }
 
             bool teammate = TeamManager.GetLocalTeam() == team;
             bool visible = (teammate && ShowTeammateLogos) || (!teammate && ShowOpponentLogos);
-
-            networkPlayer.Icon.Texture = logo;
-            networkPlayer.Icon.Visible = visible;
         }
     }
 

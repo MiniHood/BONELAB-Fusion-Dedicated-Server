@@ -5,7 +5,7 @@ using LabFusion.Extensions;
 using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.Scene;
-using LabFusion.UI.Popups;
+
 using UnityEngine;
 
 namespace LabFusion.Utilities;
@@ -67,15 +67,6 @@ public static class FusionPlayer
         }
 
         SceneStreamer.Reload();
-
-        Notifier.Send(new Notification()
-        {
-            ShowPopup = true,
-            Title = "Whoops! Sorry about that!",
-            Type = NotificationType.WARNING,
-            Message = "The scene was reloaded due to being sent far out of bounds.",
-            PopupLength = 6f,
-        });
     }
 
     /// <summary>

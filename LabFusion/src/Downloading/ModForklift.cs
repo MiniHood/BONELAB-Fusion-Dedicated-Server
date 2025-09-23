@@ -58,12 +58,6 @@ public static class ModForklift
                 }
             }
 
-            // Send download notification
-            if (pallet != null)
-            {
-                DownloadNotifications.SendDownloadNotification(pallet.Title);
-            }
-
             // Invoke complete callback
             var info = new DownloadCallbackInfo()
             {

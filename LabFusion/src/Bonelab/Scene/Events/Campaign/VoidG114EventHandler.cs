@@ -1,6 +1,5 @@
 ﻿using LabFusion.SDK.Points;
 using LabFusion.SDK.Scene;
-using LabFusion.UI;
 using UnityEngine;
 
 namespace LabFusion.Bonelab.Scene;
@@ -44,12 +43,6 @@ public class VoidG114EventHandler : GamemodeLevelEventHandler
 
         // Point shop
         PointShopHelper.SpawnBitMart(PointShopPosition, PointShopRotation);
-
-        // Info box
-        InfoBoxHelper.SpawnInfoBoard(InfoBoxPosition, InfoBoxRotation);
-
-        // Cup board
-        CupBoardHelper.SpawnAchievementBoard(CupBoardPosition, CupBoardRotation);
     }
 
     private static void CreateSupportCube()

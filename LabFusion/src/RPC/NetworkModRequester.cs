@@ -38,8 +38,6 @@ public static class NetworkModRequester
 
         public long? MaxBytes;
 
-        public IProgress<float> Reporter;
-
         public bool HighPriority;
     }
 
@@ -124,7 +122,6 @@ public static class NetworkModRequester
                 Temporary = temporary,
                 Callback = installInfo.FinishDownloadCallback,
                 MaxBytes = installInfo.MaxBytes,
-                Reporter = installInfo.Reporter,
             });
         }
     }

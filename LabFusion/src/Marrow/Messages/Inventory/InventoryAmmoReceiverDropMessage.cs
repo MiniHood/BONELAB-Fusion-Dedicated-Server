@@ -39,13 +39,5 @@ public class InventoryAmmoReceiverDropMessage : ModuleMessageHandler
         {
             return;
         }
-
-        var ammoReceiver = ammoReceiverExtender.Component;
-
-        LocalAudioPlayer.PlayAtPoint(ammoReceiver.grabClips, ammoReceiver.transform.position, new AudioPlayerSettings()
-        {
-            Mixer = LocalAudioPlayer.SoftInteraction,
-            Volume = 0.2f,
-        });
     }
 }

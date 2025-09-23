@@ -27,11 +27,6 @@ public class BouncingStrong : Achievement
         MultiplayerHooking.OnPlayerAction -= OnPlayerAction;
     }
 
-    protected override void OnComplete()
-    {
-        LocalAudioPlayer.Play2dOneShot(new AudioReference(FusionMonoDiscReferences.FistfightFusionReference), LocalAudioPlayer.MusicSettings);
-    }
-
     private void OnPlayerAction(PlayerID player, PlayerActionType type, PlayerID otherPlayer)
     {
         // Make sure there's other players

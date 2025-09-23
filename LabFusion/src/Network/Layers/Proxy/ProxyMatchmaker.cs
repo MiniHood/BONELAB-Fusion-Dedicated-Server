@@ -1,5 +1,4 @@
-﻿using LabFusion.UI.Popups;
-using LabFusion.Utilities;
+﻿using LabFusion.Utilities;
 using MelonLoader;
 using System.Collections;
 
@@ -25,17 +24,6 @@ public sealed class ProxyMatchmaker : IMatchmaker
         throw new NotImplementedException();
     }
 
-    private static void SendTimeOutNotification()
-    {
-        Notifier.Send(new Notification()
-        {
-            Title = "Timed Out",
-            Message = "Requesting Lobby IDs took too long.",
-            ShowPopup = true,
-            SaveToMenu = false,
-        });
-    }
-
     private IEnumerator FindLobbies(Action<IMatchmaker.MatchmakerCallbackInfo> callback)
     {
         // Fetch lobbies
@@ -51,7 +39,6 @@ public sealed class ProxyMatchmaker : IMatchmaker
 
             if (timeTaken >= 20f)
             {
-                SendTimeOutNotification();
                 yield break;
             }
         }
@@ -74,7 +61,6 @@ public sealed class ProxyMatchmaker : IMatchmaker
 
                 if (timeTaken >= 20f)
                 {
-                    SendTimeOutNotification();
                     yield break;
                 }
             }

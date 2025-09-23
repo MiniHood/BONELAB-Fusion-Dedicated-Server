@@ -31,9 +31,6 @@ public static class ClientSettings
 
     // Description settings
     public static FusionPref<string> Description { get; internal set; }
-
-    public static VoiceChatSettings VoiceChat { get; private set; }
-
     public static DownloadingSettings Downloading { get; private set; }
 
     public static SafetySettings Safety { get; private set; }
@@ -74,9 +71,6 @@ public static class ClientSettings
         {
             //LocalPlayer.Metadata.Description.SetValue(v);
         };
-
-        VoiceChat = new VoiceChatSettings();
-        VoiceChat.CreatePrefs(category);
 
         Downloading = new DownloadingSettings();
         Downloading.CreatePrefs(category);

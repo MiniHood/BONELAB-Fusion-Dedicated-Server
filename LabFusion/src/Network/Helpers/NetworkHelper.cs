@@ -2,7 +2,6 @@
 using LabFusion.Player;
 using LabFusion.Representation;
 using LabFusion.Senders;
-using LabFusion.UI.Popups;
 
 namespace LabFusion.Network;
 
@@ -100,17 +99,6 @@ public static class NetworkHelper
             if (!id.TryGetDisplayName(out var name))
                 name = "Wacky Willy";
 
-            Notifier.Send(new Notification()
-            {
-                Title = "Failed to Kick User",
-
-                Message = $"{name} has denied your kick request.",
-
-                SaveToMenu = false,
-                ShowPopup = true,
-                Type = NotificationType.ERROR,
-            });
-
             return;
         }
 
@@ -128,17 +116,6 @@ public static class NetworkHelper
         {
             if (!id.TryGetDisplayName(out var name))
                 name = "Wacky Willy";
-
-            Notifier.Send(new Notification()
-            {
-                Title = "Failed to Ban User",
-
-                Message = $"{name} has denied your ban request.",
-
-                SaveToMenu = false,
-                ShowPopup = true,
-                Type = NotificationType.ERROR,
-            });
 
             return;
         }

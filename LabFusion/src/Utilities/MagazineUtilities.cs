@@ -25,12 +25,6 @@ public static class MagazineUtilities
 
         magazine.Initialize(cart, AmmoInventory.Instance.GetCartridgeCount(cart));
         magazine.Claim();
-
-        LocalAudioPlayer.PlayAtPoint(ammoReceiver.grabClips, ammoReceiver.transform.position, new AudioPlayerSettings()
-        {
-            Mixer = LocalAudioPlayer.SoftInteraction,
-            Volume = 0.2f,
-        });
     }
 
     public static void GrabMagazine(Magazine magazine, NetworkPlayer player, Handedness handedness)

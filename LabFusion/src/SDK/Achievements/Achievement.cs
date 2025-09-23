@@ -1,5 +1,4 @@
 ﻿using LabFusion.Extensions;
-using LabFusion.Menu;
 using LabFusion.SDK.Points;
 using LabFusion.XML;
 
@@ -28,9 +27,6 @@ public abstract class Achievement : IXMLPackable
 
     // The barcode pointing to the achievement
     public virtual string Barcode => $"{Title}.Achievement";
-
-    // The preview image of the achievement in the menu. (Optional)
-    public virtual Texture Logo => MenuResources.GetAchievementIcon(Title);
 
     // Whether or not the achievement has been completed.
     public bool IsComplete => CompletedTasks >= MaxTasks;

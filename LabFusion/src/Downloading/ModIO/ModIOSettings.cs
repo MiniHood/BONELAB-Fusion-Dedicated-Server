@@ -19,9 +19,6 @@ public static class ModIOSettings
 
     private static bool _isLoadingToken = false;
     public static bool IsLoadingToken => _isLoadingToken;
-
-    private static Action<string> _tokenLoadCallback = null;
-
     public static string FormatFilePath(int modId, int fileId)
     {
         return $"{GameApiPath}{modId}/files/{fileId}";

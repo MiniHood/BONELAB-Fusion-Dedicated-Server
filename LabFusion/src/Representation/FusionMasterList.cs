@@ -43,7 +43,7 @@ public static class FusionMasterList
 
     public static FusionMasterResult VerifyPlayer(ulong id, string name)
     {
-        if (id == null || name == null)
+        if (id == 0 || name == null)
             return FusionMasterResult.IMPERSONATOR;
 
         if (NetworkLayerManager.Layer is SteamNetworkLayer)

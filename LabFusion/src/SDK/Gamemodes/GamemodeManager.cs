@@ -1,7 +1,7 @@
 ﻿using LabFusion.Network;
 using LabFusion.Scene;
 using LabFusion.SDK.Metadata;
-using LabFusion.UI.Popups;
+
 using LabFusion.Utilities;
 
 namespace LabFusion.SDK.Gamemodes;
@@ -38,9 +38,6 @@ public static class GamemodeManager
             }
 
             OnGamemodeChanged.InvokeSafe(value, "executing hook OnGamemodeChanged");
-
-            SendGamemodeChangeNotification();
-
 #if DEBUG
             FusionLogger.Log($"Active Gamemode changed to {(value != null ? value.Title : "none")}!");
 #endif
@@ -120,38 +117,6 @@ public static class GamemodeManager
             gamemode.Metadata.ForceSetLocalMetadata(GamemodeKeys.ReadyKey, bool.FalseString);
             gamemode.Metadata.ForceSetLocalMetadata(GamemodeKeys.StartedKey, bool.FalseString);
             gamemode.Metadata.ForceSetLocalMetadata(GamemodeKeys.SelectedKey, bool.FalseString);
-        }
-    }
-
-    private static void SendGamemodeChangeNotification()
-    {
-        Notifier.Cancel(NotificationTag);
-
-        if (ActiveGamemode != null)
-        {
-            Notifier.Send(new Notification()
-            {
-                Message = $"{ActiveGamemode.Title} is selected! Waiting until conditions are met...",
-                Title = "Gamemode Selected",
-                Tag = NotificationTag,
-                Type = NotificationType.INFORMATION,
-                ShowPopup = true,
-                SaveToMenu = false,
-                PopupLength = 1.5f,
-            });
-        }
-        else
-        {
-            Notifier.Send(new Notification()
-            {
-                Message = "The server is now in Sandbox mode!",
-                Title = "Gamemode Deselected",
-                Tag = NotificationTag,
-                Type = NotificationType.INFORMATION,
-                ShowPopup = true,
-                SaveToMenu = false,
-                PopupLength = 1.5f,
-            });
         }
     }
 
@@ -244,22 +209,6 @@ public static class GamemodeManager
 
     private static void StartReadyTimer()
     {
-        if (ActiveGamemode != null)
-        {
-            Notifier.Cancel(NotificationTag);
-
-            Notifier.Send(new Notification()
-            {
-                Message = $"{ActiveGamemode.Title} is ready! Starting in {GetInitialStartTime()} seconds!",
-                Title = "Gamemode Ready",
-                Tag = NotificationTag,
-                Type = NotificationType.SUCCESS,
-                ShowPopup = true,
-                SaveToMenu = false,
-                PopupLength = 2f,
-            });
-        }
-
         _startTimerActive = true;
 
         StartTimer = GetInitialStartTime();
@@ -267,21 +216,6 @@ public static class GamemodeManager
 
     private static void StopReadyTimer()
     {
-        if (ActiveGamemode != null)
-        {
-            Notifier.Cancel(NotificationTag);
-
-            Notifier.Send(new Notification()
-            {
-                Message = $"{ActiveGamemode.Title} is no longer ready.",
-                Title = "Gamemode Unready",
-                Tag = NotificationTag,
-                Type = NotificationType.ERROR,
-                ShowPopup = true,
-                PopupLength = 2f,
-            });
-        }
-
         _startTimerActive = false;
 
         StartTimer = GetInitialStartTime();

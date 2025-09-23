@@ -5,8 +5,6 @@ using LabFusion.Downloading;
 using LabFusion.Downloading.ModIO;
 using LabFusion.Marrow;
 using LabFusion.Marrow.Patching;
-using LabFusion.Marrow.Proxies;
-using LabFusion.Menu;
 using LabFusion.Preferences.Client;
 using LabFusion.RPC;
 using LabFusion.Utilities;
@@ -23,16 +21,10 @@ public static class LevelDownloaderManager
         public Action OnDownloadSucceeded, OnDownloadFailed, OnDownloadCanceled;
     }
 
-    private static bool _initializedDownloadUI = false;
-    private static bool _downloadingLevel = false;
-    private static ModIOFile _downloadingFile = new(-1);
-    private static string _downloadingBarcode = null;
     private static LevelDownloadInfo _downloadingInfo;
 
     public static void OnInitializeMelon()
     {
-        MultiplayerHooking.OnUpdate += OnUpdate;
-
         MultiplayerHooking.OnDisconnected += OnDisconnect;
     }
 
@@ -44,7 +36,6 @@ public static class LevelDownloaderManager
 
     public static void DownloadLevel(LevelDownloadInfo info)
     {
-        _downloadingBarcode = info.LevelBarcode;
         _downloadingInfo = info;
 
         // Get the maximum amount of bytes that we download before cancelling, to make sure the level isn't too big
@@ -64,10 +55,6 @@ public static class LevelDownloaderManager
 
     private static void OnDownloadBegin(NetworkModRequester.ModCallbackInfo info)
     {
-        _initializedDownloadUI = false;
-        _downloadingLevel = true;
-        _downloadingFile = info.ModFile;
-
         NetworkSceneManager.Purgatory = true;
 
         LoadWaitingScene();
@@ -76,9 +63,6 @@ public static class LevelDownloaderManager
     private static void OnDownloadFinished(DownloadCallbackInfo info)
     {
         NetworkSceneManager.Purgatory = false;
-
-        _downloadingLevel = false;
-        _downloadingFile = new ModIOFile(-1);
 
         if (info.result == ModResult.CANCELED)
         {
@@ -102,56 +86,5 @@ public static class LevelDownloaderManager
         SceneStreamer.Load(new Barcode(FusionLevelReferences.LoadDownloadingReference.Barcode));
 
         SceneStreamerPatches.IgnorePatches = false;
-    }
-
-    private static void OnUpdate()
-    {
-        if (!_downloadingLevel || ModIODownloader.CurrentTransaction == null)
-        {
-            return;
-        }
-
-        float progress = ModIODownloader.CurrentTransaction.Progress;
-
-        var ui = LevelDownloadUI.Instance;
-
-        if (ui == null)
-        {
-            return;
-        }
-
-        if (!_initializedDownloadUI)
-        {
-            MenuButtonHelper.PopulateTexts(ui.gameObject);
-
-            ui.LevelTitleText.text = $"DOWNLOADING {_downloadingBarcode}";
-
-            SetUIIcon(ui);
-
-            _initializedDownloadUI = true;
-        }
-
-        ui.ProgressBarSlider.value = progress;
-        ui.ProgressBarText.text = $"{progress * 100f}%";
-
-        if (progress >= 1f)
-        {
-            ui.LevelTitleText.text = "DOWNLOAD COMPLETE";
-        }
-    }
-
-    private static void SetUIIcon(LevelDownloadUI ui)
-    {
-        var levelIcon = MenuResources.GetLevelIcon(MenuResources.ModsIconTitle);
-
-        ui.LevelIcon.texture = levelIcon;
-
-        if (_downloadingFile.ModID != -1)
-        {
-            ModIOThumbnailDownloader.GetThumbnail(_downloadingFile.ModID, (texture) =>
-            {
-                ui.LevelIcon.texture = texture;
-            });
-        }
     }
 }

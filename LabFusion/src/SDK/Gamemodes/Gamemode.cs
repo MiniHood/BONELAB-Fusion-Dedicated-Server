@@ -1,5 +1,4 @@
-﻿using LabFusion.Menu.Data;
-using LabFusion.Network;
+﻿using LabFusion.Network;
 using LabFusion.Player;
 using LabFusion.SDK.Metadata;
 using LabFusion.SDK.Triggers;
@@ -240,14 +239,6 @@ public abstract class Gamemode
         }
 
         OnPlayerLeft(playerId);
-    }
-
-    public virtual GroupElementData CreateSettingsGroup()
-    {
-        return new GroupElementData()
-        {
-            Title = Title,
-        };
     }
 
     /// <summary>

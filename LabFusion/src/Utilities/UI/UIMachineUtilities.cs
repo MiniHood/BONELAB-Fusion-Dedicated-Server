@@ -6,7 +6,6 @@ using Il2CppTMPro;
 using LabFusion.Extensions;
 using LabFusion.Marrow;
 using LabFusion.Scene;
-using LabFusion.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -62,20 +61,6 @@ public static class UIMachineUtilities
 
         zoneEvent.activatorTags.Tags.Add(tagQuery);
 
-        zoneEvent.onZoneEnter.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) =>
-        {
-            canvas.SetActive(true);
-
-            LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UITurnOnReference), canvas.transform.position, LocalAudioPlayer.SFXSettings);
-        }));
-
-        zoneEvent.onZoneExit.add_DynamicCalls((Il2CppSystem.Action<MarrowEntity>)((e) =>
-        {
-            canvas.SetActive(false);
-
-            LocalAudioPlayer.PlayAtPoint(new AudioReference(FusionMonoDiscReferences.UITurnOffReference), canvas.transform.position, LocalAudioPlayer.SFXSettings);
-        }));
-
         trigger.SetActive(true);
     }
 
@@ -84,19 +69,6 @@ public static class UIMachineUtilities
         foreach (var text in root.GetComponentsInChildren<TMP_Text>(true))
         {
             text.font = PersistentAssetCreator.Font;
-        }
-    }
-
-    public static void AddButtonTriggers(Transform root)
-    {
-        foreach (var button in root.GetComponentsInChildren<Button>(true))
-        {
-            var collider = button.GetComponentInChildren<Collider>(true);
-            if (collider != null)
-            {
-                var interactor = collider.gameObject.AddComponent<FusionUITrigger>();
-                interactor.button = button;
-            }
         }
     }
 

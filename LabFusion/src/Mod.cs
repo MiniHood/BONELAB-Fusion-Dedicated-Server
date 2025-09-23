@@ -22,7 +22,6 @@ using LabFusion.Representation;
 using LabFusion.Player;
 using LabFusion.SDK;
 using LabFusion.RPC;
-using LabFusion.UI.Popups;
 using LabFusion.Safety;
 
 #if DEBUG
@@ -68,8 +67,6 @@ public class FusionMod : MelonMod
 
     public static FusionMod Instance { get; private set; }
     public static Assembly FusionAssembly { get; private set; }
-
-    private static bool _hasAutoUpdater = false;
 
     private static int _nextSyncableSendRate = 1;
     private static FusionClient _client;
@@ -123,8 +120,6 @@ public class FusionMod : MelonMod
         NetworkEntityManager.OnInitializeManager();
         NetworkPlayerManager.OnInitializeManager();
 
-        PopupManager.OnInitializeMelon();
-
         GamemodeManager.OnInitializeMelon();
         GamemodeConditionsChecker.OnInitializeMelon();
         GamemodeRoundManager.OnInitializeMelon();
@@ -169,23 +164,6 @@ public class FusionMod : MelonMod
     {
         PersistentAssetCreator.OnLateInitializeMelon();
         PlayerAdditionsHelper.OnInitializeMelon();
-
-#if RELEASE
-        // Check if the auto updater is installed
-        _hasAutoUpdater = MelonPlugin.RegisteredMelons.Any((p) => p.Info.Name.Contains("LabFusion Updater"));
-
-        if (!_hasAutoUpdater)
-        {
-            Notifier.Send(new Notification()
-            {
-                SaveToMenu = false,
-                ShowPopup = true,
-                Message = "You do not have the Fusion AutoUpdater installed in your plugins folder!" +
-                "\nIt is recommended to install it in order to stay up to date.",
-                Type = NotificationType.WARNING,
-            });
-        }
-#endif
     }
 
     public override void OnDeinitializeMelon()
@@ -198,9 +176,6 @@ public class FusionMod : MelonMod
 
         // Unhook assembly loads
         PointItemManager.UnhookEvents();
-
-        // Undo game changes
-        PlayerAdditionsHelper.OnDeinitializeMelon();
 
         // Free APIs
         SteamAPILoader.OnFreeSteamAPI();
@@ -301,9 +276,6 @@ public class FusionMod : MelonMod
         // Update the level loading checks
         FusionSceneManager.Internal_UpdateScene();
 
-        // Update popups
-        PopupManager.OnUpdate();
-
         // Update network players
         float deltaTime = TimeUtilities.DeltaTime;
 
@@ -321,9 +293,6 @@ public class FusionMod : MelonMod
         }
 
         FusionPlayer.OnUpdate();
-
-        // Update and push all network messages
-        VoiceHelper.OnVoiceChatUpdate();
 
         InternalLayerHelpers.OnUpdateLayer();
 

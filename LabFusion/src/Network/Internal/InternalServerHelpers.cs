@@ -44,8 +44,6 @@ public static class InternalServerHelpers
         // Update hooks
         MultiplayerHooking.InvokeOnStartedServer();
 
-        NetworkNotifications.SendStartedServerNotification();
-
         // Unlock achievement
         if (AchievementManager.TryGetAchievement<HeadOfHouse>(out var achievement))
         {
@@ -67,8 +65,6 @@ public static class InternalServerHelpers
         // Update hooks
         MultiplayerHooking.InvokeOnJoinedServer();
 
-        NetworkNotifications.SendJoinedServerNotification();
-
         // Unlock achievement
         if (AchievementManager.TryGetAchievement<WarmWelcome>(out var achievement))
             achievement.IncrementTask();
@@ -85,8 +81,6 @@ public static class InternalServerHelpers
 
         // Update hooks
         MultiplayerHooking.InvokeOnDisconnected();
-
-        NetworkNotifications.SendDisconnectedNotification(reason);
     }
 
     /// <summary>
@@ -109,7 +103,6 @@ public static class InternalServerHelpers
         if (isInitialJoin && id.TryGetDisplayName(out var name))
         {
             FusionLogger.Log($"Player {name} has joined the server.");
-            NetworkNotifications.SendPlayerJoinedNotification(name);
         }
     }
 
@@ -129,7 +122,6 @@ public static class InternalServerHelpers
         if (playerId.TryGetDisplayName(out var name))
         {
             FusionLogger.Log($"Player {name} has left the server.");
-            NetworkNotifications.SendPlayerLeftNotification(name);
         }
 
         DisposeUser(playerId);

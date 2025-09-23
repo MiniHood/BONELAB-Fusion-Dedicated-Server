@@ -117,19 +117,8 @@ public abstract class VoiceManager : IVoiceManager
             return;
         }
 
-        bool voiceEnabled = NetworkInfo.HasServer && !VoiceInfo.IsMuted;
-
-        // Only disable voice when state changes to not conflict with other uses of the microphone
-        if (voiceEnabled)
-        {
-            _receiver.UpdateVoice(true);
-            _hasDisabledVoice = false;
-        }
-        else if (!_hasDisabledVoice)
-        {
-            _receiver.UpdateVoice(false);
-            _hasDisabledVoice = true;
-        }
+        _receiver.UpdateVoice(true);
+        _hasDisabledVoice = false;
 
         if (_receiver.HasVoiceActivity())
         {

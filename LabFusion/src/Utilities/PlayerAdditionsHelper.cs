@@ -26,21 +26,12 @@ public static class PlayerAdditionsHelper
         //MuteUIHelper.OnInitializeMelon();
     }
 
-    public static void OnDeinitializeMelon()
-    {
-        // Invoke extras
-        MuteUIHelper.OnDeinitializeMelon();
-    }
-
     public static void OnEnterServer(RigManager manager)
     {
         if (manager == null)
         {
             return;
         }
-
-        // Create mute icon
-        MuteUIHelper.OnCreateMuteUI(manager);
 
         // Setup impact properties
         PersistentAssetCreator.SetupImpactProperties(manager);
@@ -77,9 +68,6 @@ public static class PlayerAdditionsHelper
         {
             return;
         }
-
-        // Disable mute icons
-        MuteUIHelper.OnDestroyMuteUI();
 
         // Remove impact properties
         manager.physicsRig._impactProperties = new Il2CppReferenceArray<ImpactProperties>(0);

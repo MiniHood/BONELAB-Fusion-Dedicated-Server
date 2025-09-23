@@ -2,7 +2,6 @@
 using Il2CppSLZ.Marrow.Warehouse;
 using LabFusion.Network.Serialization;
 using LabFusion.Player;
-using LabFusion.UI.Popups;
 using LabFusion.Utilities;
 using UnityEngine;
 
@@ -56,6 +55,8 @@ public class LevelRequestMessage : NativeMessageHandler
         // Get player and their username
         var id = PlayerIDManager.GetPlayerID(data.smallId);
 
+        // To revamp
+        /*
         if (id != null && id.TryGetDisplayName(out var name))
         {
             Notifier.Send(new Notification()
@@ -70,6 +71,6 @@ public class LevelRequestMessage : NativeMessageHandler
                     SceneStreamer.Load(new Barcode(data.barcode));
                 },
             });
-        }
+        }*/
     }
 }
