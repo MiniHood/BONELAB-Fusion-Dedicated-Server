@@ -57,7 +57,7 @@ public class FusionMod : MelonMod
 
     public const string GameDeveloper = "Stress Level Zero";
     public const string GameName = "BONELAB";
-    public const string ServerName = "LabFusion Dedicated Server Test";
+    public const string ServerName = "dc.gg/plus";
 
     public static readonly Version Version = new(FusionVersion.VersionMajor, FusionVersion.VersionMinor, FusionVersion.VersionPatch);
 

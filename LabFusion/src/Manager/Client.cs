@@ -1,7 +1,9 @@
 ﻿using LabFusion.Network;
 using LabFusion.Utilities;
+using System.Diagnostics;
 using System.IO.Pipes;
 using System.Text;
+using UnityEngine;
 
 public class FusionClient
 {
@@ -11,7 +13,7 @@ public class FusionClient
     private string _clientPipeName;
     private string _serverPipeName;
     private Dictionary<string, Func<List<string>, Task<object>>> _asyncCommands = new();
-
+    
     public FusionClient(string displayName, string uniqueId)
     {
         DisplayName = displayName;
@@ -19,14 +21,7 @@ public class FusionClient
         _clientPipeName = $"LabFusionClientPipe_{uniqueId}";
         _serverPipeName = "LabFusionServerPipe";
 
-        RegisterCommand("getPlayers", async args =>
-        {
-            var players = LobbyInfoManager.LobbyInfo.PlayerList.Players
-                .Select(playerId => playerId.Username)
-                .ToList();
-
-            return (object)players;
-        });
+        CommandManager.Init(this);
     }
 
     public async Task RegisterAsync()
@@ -34,7 +29,9 @@ public class FusionClient
         using var pipe = new NamedPipeClientStream(".", "LabFusionRegistrationPipe", PipeDirection.InOut);
         await pipe.ConnectAsync();
 
-        string message = $"{DisplayName}:{UniqueId}:{_clientPipeName}";
+        int procID = Process.GetCurrentProcess().Id;
+
+        string message = $"{DisplayName}:{UniqueId}:{_clientPipeName}:{procID}";
         byte[] buffer = Encoding.UTF8.GetBytes(message);
         await pipe.WriteAsync(buffer, 0, buffer.Length);
 
@@ -76,9 +73,9 @@ public class FusionClient
             string commandName = split[0];
             var args = new List<string>(split.Length > 1 ? split[1..] : Array.Empty<string>());
 
-            if (_asyncCommands.TryGetValue(commandName, out var asyncCommand))
+            if (CommandManager.TryExecute(commandName, args, out var resultTask))
             {
-                var result = await asyncCommand(args);
+                var result = await resultTask;
                 string json = System.Text.Json.JsonSerializer.Serialize(result);
                 byte[] responseBytes = Encoding.UTF8.GetBytes(json);
                 await pipeServer.WriteAsync(responseBytes, 0, responseBytes.Length);
