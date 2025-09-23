@@ -1,6 +1,4 @@
-﻿using System.Windows.Input;
-
-public class ServerCLI
+﻿public class ServerCLI
 {
     private static List<string> _log = new();
 
