@@ -105,8 +105,6 @@ public class FusionClient
                 byte[] responseBytes = Encoding.UTF8.GetBytes("Command received!");
                 await pipeServer.WriteAsync(responseBytes, 0, responseBytes.Length);
             }
-
-            pipeServer.Disconnect();
         }
     }
 
