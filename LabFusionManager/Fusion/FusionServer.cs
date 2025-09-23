@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO.Pipes;
+using System.Security.Principal;
 using System.Text;
 
 public class FusionServer
@@ -17,22 +18,6 @@ public class FusionServer
         DisplayName = displayName;
         ClientPipeName = clientPipeName;
         ProcessID = procID;
-    }
-
-    public async Task<List<string>> RequestPlayersAsync()
-    {
-        using var pipeClient = new NamedPipeClientStream(".", ClientPipeName, PipeDirection.InOut);
-        await pipeClient.ConnectAsync();
-
-        byte[] buffer = Encoding.UTF8.GetBytes("getPlayers");
-        await pipeClient.WriteAsync(buffer, 0, buffer.Length);
-
-        byte[] responseBuffer = new byte[4096];
-        int bytesRead = await pipeClient.ReadAsync(responseBuffer, 0, responseBuffer.Length);
-        string json = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
-
-        var players = System.Text.Json.JsonSerializer.Deserialize<List<string>>(json);
-        return players;
     }
 
     public async Task<bool> PingAsync()
@@ -67,17 +52,27 @@ public class FusionServer
 
     public async Task SendMessageToClientAsync(string message)
     {
-        using var clientPipe = new NamedPipeClientStream(".", ClientPipeName, PipeDirection.InOut);
+        using var clientPipe = new NamedPipeClientStream(".", ClientPipeName, PipeDirection.InOut,
+            PipeOptions.Asynchronous, TokenImpersonationLevel.Impersonation);
         await clientPipe.ConnectAsync();
+        clientPipe.ReadMode = PipeTransmissionMode.Message;
 
-        byte[] buffer = Encoding.UTF8.GetBytes(message);
+        var buffer = Encoding.UTF8.GetBytes(message);
         await clientPipe.WriteAsync(buffer, 0, buffer.Length);
+        await clientPipe.FlushAsync();
 
-        byte[] responseBuffer = new byte[256];
-        int bytesRead = await clientPipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
-        string response = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
-        Console.WriteLine($"[Server] Client {DisplayName} responded: {response}");
+        var repBuffer = new byte[1024];
+        using var ms = new MemoryStream();
+        do
+        {
+            int bytesRead = await clientPipe.ReadAsync(repBuffer, 0, repBuffer.Length);
+            ms.Write(repBuffer, 0, bytesRead);
+        } while (!clientPipe.IsMessageComplete);
+
+        string response = Encoding.UTF8.GetString(ms.ToArray());
+        ServerCLI.AddLog($"[Server] Client {DisplayName} responded: {response}");
     }
+
 
     public void AutoTrimMemory(long thresholdBytes = 1L * 1024 * 1024 * 1024) // default 1 GB
     {
