@@ -108,10 +108,12 @@ public class FusionClient
         }
     }
 
+
     public async Task SendMessageAsync(string message)
     {
         using var pipeClient = new NamedPipeClientStream(".", _serverPipeName, PipeDirection.InOut);
         await pipeClient.ConnectAsync();
+        pipeClient.ReadMode = PipeTransmissionMode.Message;
 
         byte[] buffer = Encoding.UTF8.GetBytes($"{UniqueId} {message}");
         await pipeClient.WriteAsync(buffer, 0, buffer.Length);
