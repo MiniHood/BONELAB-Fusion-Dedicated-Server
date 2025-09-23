@@ -1,4 +1,5 @@
-﻿using System.IO.Pipes;
+﻿using System.Diagnostics;
+using System.IO.Pipes;
 using System.Text;
 
 public class FusionServer
@@ -6,27 +7,16 @@ public class FusionServer
     public string ClientId { get; private set; }
     public string DisplayName { get; private set; }
     public string ClientPipeName { get; private set; }
+    public int ProcessID { get; private set; }
 
     private bool _isConnected = true;
 
-    public FusionServer(string clientId, string displayName, string clientPipeName)
+    public FusionServer(string clientId, string displayName, string clientPipeName, int procID)
     {
         ClientId = clientId;
         DisplayName = displayName;
         ClientPipeName = clientPipeName;
-
-        ServerCLI.RegisterServerCommand("echo", async (client, args) =>
-        {
-            await client.SendMessageToClientAsync("echo " + string.Join(' ', args));
-        });
-
-        ServerCLI.RegisterServerCommand("getPlayers", async (client, args) =>
-        {
-            var players = await client.RequestPlayersAsync();
-            ServerCLI.AddLog($"Players on {client.DisplayName}: {string.Join(", ", players)}");
-        });
-
-
+        ProcessID = procID;
     }
 
     public async Task<List<string>> RequestPlayersAsync()
@@ -87,5 +77,31 @@ public class FusionServer
         int bytesRead = await clientPipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
         string response = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
         Console.WriteLine($"[Server] Client {DisplayName} responded: {response}");
+    }
+
+    public void AutoTrimMemory(long thresholdBytes = 1L * 1024 * 1024 * 1024) // default 1 GB
+    {
+        try
+        {
+            using var proc = Process.GetProcessById(ProcessID);
+            long workingSet = proc.WorkingSet64;
+
+            if (workingSet > thresholdBytes)
+            {
+                if (TrimMemory())
+                {
+                    ServerCLI.AddLog($"[Trim] {DisplayName} trimmed. Was using {workingSet / (1024 * 1024)} MB.");
+                }
+            }
+        }
+        catch
+        {
+            // ignore if process not found
+        }
+    }
+
+    public bool TrimMemory()
+    {
+        return WorkingSet.TrimProcessMemory(ProcessID);
     }
 }
