@@ -30,18 +30,18 @@ public class FusionClient
         {
             try
             {
-        using var pipe = new NamedPipeClientStream(".", "LabFusionRegistrationPipe", PipeDirection.InOut);
+                using var pipe = new NamedPipeClientStream(".", "LabFusionRegistrationPipe", PipeDirection.InOut);
                 await pipe.ConnectAsync(1000);
 
-        int procID = Process.GetCurrentProcess().Id;
-        string message = $"{DisplayName}:{UniqueId}:{_clientPipeName}:{procID}";
-        byte[] buffer = Encoding.UTF8.GetBytes(message);
-        await pipe.WriteAsync(buffer, 0, buffer.Length);
+                int procID = Process.GetCurrentProcess().Id;
+                string message = $"{DisplayName}:{UniqueId}:{_clientPipeName}:{procID}";
+                byte[] buffer = Encoding.UTF8.GetBytes(message);
+                await pipe.WriteAsync(buffer, 0, buffer.Length);
 
-        byte[] responseBuffer = new byte[256];
-        int bytesRead = await pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
-        string response = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
-        FusionLogger.Log($"[Client {DisplayName}] Registration response: {response}");
+                byte[] responseBuffer = new byte[256];
+                int bytesRead = await pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                string response = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
+                FusionLogger.Log($"[Client {DisplayName}] Registration response: {response}");
 
                 break; 
             }
@@ -50,7 +50,7 @@ public class FusionClient
                 FusionLogger.Log($"[Client {DisplayName}] Registration failed. Retrying in {retryDelayMs}ms...");
                 await Task.Delay(retryDelayMs);
             }
-    }
+        }
     }
 
 
