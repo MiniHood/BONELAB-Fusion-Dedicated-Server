@@ -24,13 +24,16 @@ public class FusionClient
         CommandManager.Init(this);
     }
 
-    public async Task RegisterAsync()
+    public async Task EnsureRegisteredAsync(int retryDelayMs = 2000)
     {
+        while (true)
+        {
+            try
+            {
         using var pipe = new NamedPipeClientStream(".", "LabFusionRegistrationPipe", PipeDirection.InOut);
-        await pipe.ConnectAsync();
+                await pipe.ConnectAsync(1000);
 
         int procID = Process.GetCurrentProcess().Id;
-
         string message = $"{DisplayName}:{UniqueId}:{_clientPipeName}:{procID}";
         byte[] buffer = Encoding.UTF8.GetBytes(message);
         await pipe.WriteAsync(buffer, 0, buffer.Length);
@@ -39,7 +42,18 @@ public class FusionClient
         int bytesRead = await pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
         string response = Encoding.UTF8.GetString(responseBuffer, 0, bytesRead);
         FusionLogger.Log($"[Client {DisplayName}] Registration response: {response}");
+
+                break; 
+            }
+            catch
+            {
+                FusionLogger.Log($"[Client {DisplayName}] Registration failed. Retrying in {retryDelayMs}ms...");
+                await Task.Delay(retryDelayMs);
+            }
     }
+    }
+
+
 
     public void RegisterCommand<T>(string name, Func<List<string>, Task<T>> action)
     {
