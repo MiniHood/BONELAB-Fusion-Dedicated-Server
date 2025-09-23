@@ -67,6 +67,13 @@ public class FusionClient
 
         while (true)
         {
+            using var pipeServer = new NamedPipeServerStream(
+                _clientPipeName,
+                PipeDirection.InOut,
+                1,
+                PipeTransmissionMode.Message,
+                PipeOptions.Asynchronous);
+
             await pipeServer.WaitForConnectionAsync();
 
             byte[] buffer = new byte[1024];
@@ -77,7 +84,6 @@ public class FusionClient
             {
                 byte[] pong = Encoding.UTF8.GetBytes("pong");
                 await pipeServer.WriteAsync(pong, 0, pong.Length);
-                pipeServer.Disconnect();
                 continue;
             }
 
