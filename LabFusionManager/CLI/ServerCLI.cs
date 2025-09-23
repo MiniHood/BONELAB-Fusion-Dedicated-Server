@@ -2,14 +2,6 @@
 {
     private static List<string> _log = new();
 
-    private static Dictionary<string, Func<FusionServer, List<string>, Task>> _serverCommands = new();
-    public static IReadOnlyCollection<string> GetRegisteredCommandNames() => _serverCommands.Keys;
-
-    public static void RegisterServerCommand(string name, Func<FusionServer, List<string>, Task> action)
-    {
-        _serverCommands[name] = action;
-    }
-
     public static async Task StartLiveCommandCLIAsync()
     {
         string currentInput = "";
@@ -42,19 +34,8 @@
             {
                 var client = clients[selectedIndex];
 
-                var split = currentInput.Split(' ');
-                string commandName = split[0];
-                var args = split.Length > 1 ? split[1..].ToList() : new List<string>();
-
-                if (_serverCommands.TryGetValue(commandName, out var serverCommand))
-                {
-                    await serverCommand(client, args);
-                    AddLog($"Sent command '{commandName}' to {client.DisplayName}");
-                }
-                else
-                {
-                    AddLog($"Unknown command: {commandName}");
-                }
+                await client.SendMessageToClientAsync(currentInput);
+                AddLog($"Sent command '{currentInput}' to {client.DisplayName}");
 
                 currentInput = "";
             }

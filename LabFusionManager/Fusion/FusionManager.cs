@@ -26,7 +26,7 @@ public class ServerManager
             string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
             var parts = message.Split(':');
-            if (parts.Length != 3)
+            if (parts.Length != 4)
             {
                 Console.WriteLine("[Manager] Invalid registration message: " + message);
                 continue;
@@ -35,10 +35,11 @@ public class ServerManager
             string displayName = parts[0];
             string uniqueId = parts[1];
             string clientPipe = parts[2];
+            int procID = int.Parse(parts[3]);
 
             if (!_clients.ContainsKey(uniqueId))
             {
-                var server = new FusionServer(uniqueId, displayName, clientPipe);
+                var server = new FusionServer(uniqueId, displayName, clientPipe, procID);
                 _clients.Add(uniqueId, server);
                 Console.WriteLine($"[Manager] Registered client {displayName} ({uniqueId}) with pipe {clientPipe}");
             }
@@ -71,20 +72,25 @@ public class ServerManager
             var splitMessage = clientMessage.Split(' ', 2);
             string commandName = splitMessage[0];
 
-            var allowedCommands = ServerCLI.GetRegisteredCommandNames();
-
             if (_clients.TryGetValue(uniqueId, out var client))
             {
-                if (allowedCommands.Contains(commandName))
-                {
-                    await client.SendMessageToClientAsync(clientMessage);
-                }
-                else
-                {
-                    Console.WriteLine($"[Manager] Blocked unknown command '{commandName}'.");
-                }
+                // we'll do sum with the response here ig
+                await client.SendMessageToClientAsync(clientMessage);
             }
 
+        }
+    }
+
+    public async Task StartMemoryTrimLoopAsync()
+    {
+        while (true)
+        {
+            foreach (var client in _clients.Values.ToList())
+            {
+                client.AutoTrimMemory();
+            }
+
+            await Task.Delay(5000);
         }
     }
 

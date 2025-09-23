@@ -5,11 +5,17 @@
     public List<FusionServer> GetServers() =>
         ServerManager.Instance.GetAllServers().ToList();
 
+    public bool Trim(FusionServer server)
+    {
+        bool result = server.TrimMemory();
+        Log(result
+            ? $"Trimmed memory of {server.DisplayName}"
+            : $"Failed to trim memory of {server.DisplayName}");
+        return result;
+    }
+
     public async Task SendCommand(FusionServer server, string command, params string[] args)
     {
-        if (ServerCLI.GetRegisteredCommandNames().Contains(command))
-            await server.SendMessageToClientAsync(command + " " + string.Join(' ', args));
-        else
-            Log($"Unknown command '{command}'");
+        await server.SendMessageToClientAsync(command + " " + string.Join(' ', args));
     }
 }

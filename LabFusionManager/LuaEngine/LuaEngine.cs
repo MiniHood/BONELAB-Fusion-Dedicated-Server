@@ -3,14 +3,15 @@
 public static class LuaEngine
 {
     public static Script _lua;
+
     public static void Init()
     {
         _lua = new Script();
 
         UserData.RegisterType<FusionServer>();
-        UserData.RegisterType<ServerManager>();
+        UserData.RegisterType<LuaServerAPI>();
 
-        _lua.Globals["serverManager"] = ServerManager.Instance;
+        _lua.Globals["api"] = new LuaServerAPI();
     }
 
     public static DynValue RunScript(string code)
