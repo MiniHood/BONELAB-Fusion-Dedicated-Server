@@ -190,7 +190,7 @@ public class ChangeSettingCommand : IFusionCommand
     public async Task<object> ExecuteAsync(List<string> args)
     {
         if (args.Count < 2)
-            return "Usage: changeSetting <settingName> <value>";
+            return "Usage: changeSetting settingName value";
 
         string key = args[0];
         string value = args[1];
