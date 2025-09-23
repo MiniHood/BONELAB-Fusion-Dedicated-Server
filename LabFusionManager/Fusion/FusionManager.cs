@@ -72,10 +72,10 @@ public class ServerManager
             var splitMessage = clientMessage.Split(' ', 2);
             string commandName = splitMessage[0];
 
+
             if (_clients.TryGetValue(uniqueId, out var client))
             {
-                // we'll do sum with the response here ig
-                await client.SendMessageToClientAsync(clientMessage);
+                await client.SendMessageToClientAsync("Recieved");
             }
 
         }
@@ -90,7 +90,7 @@ public class ServerManager
                 client.AutoTrimMemory();
             }
 
-            await Task.Delay(5000);
+            await Task.Delay(1000);
         }
     }
 
