@@ -62,7 +62,6 @@ public class FusionClient
 
     public async Task StartListeningAsync()
     {
-        using var pipeServer = new NamedPipeServerStream(_clientPipeName, PipeDirection.InOut, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
         FusionLogger.Log($"[Client {DisplayName}] Listening on {_clientPipeName}");
 
         while (true)
