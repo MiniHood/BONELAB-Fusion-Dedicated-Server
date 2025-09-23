@@ -105,7 +105,7 @@ public static class InternalServerHelpers
         MultiplayerHooking.InvokeOnPlayerJoined(id);
 
 
-            // Send notification
+        // Send notification
         if (isInitialJoin && id.TryGetDisplayName(out var name))
         {
             FusionLogger.Log($"Player {name} has joined the server.");

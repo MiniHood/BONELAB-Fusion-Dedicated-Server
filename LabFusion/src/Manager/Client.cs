@@ -1,10 +1,6 @@
-﻿using LabFusion.Data;
-using LabFusion.Network;
-using LabFusion.Player;
+﻿using LabFusion.Network;
 using LabFusion.Utilities;
-using Steamworks.Data;
 using System.IO.Pipes;
-using System.Linq;
 using System.Text;
 
 public class FusionClient

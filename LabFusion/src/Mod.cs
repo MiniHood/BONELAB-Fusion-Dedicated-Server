@@ -31,7 +31,6 @@ using LabFusion.Debugging;
 
 using MelonLoader;
 using Il2CppSLZ.Marrow.Warehouse;
-using System.Threading.Tasks;
 
 namespace LabFusion;
 
@@ -266,7 +265,7 @@ public class FusionMod : MelonMod
         }
 
         // create bidrectional communication with manager
-        
+
 
         // Create Server
         //NetworkHelper.StartServer();

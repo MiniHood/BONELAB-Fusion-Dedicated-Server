@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-public class Command
+﻿public class Command
 {
     public string Name { get; private set; }
     public Action<List<string>> Execute { get; private set; }
