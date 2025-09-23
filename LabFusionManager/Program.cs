@@ -5,7 +5,9 @@ UserData.RegisterType<LuaServerAPI>();
 LuaEngine.Lua().Globals["api"] = new LuaServerAPI();
 
 // start pipes and server
-﻿_ = ServerManager.Instance.StartRegistrationPipeAsync();
+_ = ServerManager.Instance.StartRegistrationPipeAsync();
 _ = ServerManager.Instance.StartPingLoopAsync();
 Console.WriteLine("Server Manager ready. Registration pipe open.");
+
+// start CLI
 await ServerCLI.StartLiveCommandCLIAsync();
