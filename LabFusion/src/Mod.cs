@@ -31,6 +31,7 @@ using LabFusion.Debugging;
 
 using MelonLoader;
 using Il2CppSLZ.Marrow.Warehouse;
+using System.Threading.Tasks;
 
 namespace LabFusion;
 
@@ -72,6 +73,7 @@ public class FusionMod : MelonMod
     private static bool _hasAutoUpdater = false;
 
     private static int _nextSyncableSendRate = 1;
+    private static FusionClient _client;
 
     public override void OnEarlyInitializeMelon()
     {
@@ -242,7 +244,7 @@ public class FusionMod : MelonMod
 
     }
 
-    public static void OnMainSceneInitializeDelayed()
+    public static async Task OnMainSceneInitializeDelayed()
     {
         // Make sure the rig exists
         if (!RigData.HasPlayer)
@@ -256,7 +258,15 @@ public class FusionMod : MelonMod
             FusionLogger.Log($"Loaded {FusionSceneManager.Level.Title} : {FusionSceneManager.Level.Barcode.ID}");
             NetworkHelper.StartServer();
             FusionLogger.Log($"Started Server ({NetworkHelper.GetServerCode()})");
+            _client = new FusionClient(ServerName, NetworkHelper.GetServerCode());
+            await _client.RegisterAsync();
+            _ = _client.StartListeningAsync();
+            await Task.Delay(500);
+            await _client.SendMessageAsync("Hello server!");
         }
+
+        // create bidrectional communication with manager
+        
 
         // Create Server
         //NetworkHelper.StartServer();
