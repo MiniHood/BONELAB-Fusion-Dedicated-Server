@@ -9,7 +9,6 @@ using LabFusion.Preferences;
 using LabFusion.SDK.Gamemodes;
 using LabFusion.SDK.Points;
 using LabFusion.SDK.Achievements;
-using LabFusion.Voice;
 using LabFusion.SDK.Lobbies;
 using LabFusion.SDK.Cosmetics;
 using LabFusion.Entities;
@@ -24,12 +23,22 @@ using LabFusion.SDK;
 using LabFusion.RPC;
 using LabFusion.Safety;
 
+using Il2CppSLZ.Marrow;
+
+using Il2CppSLZ.Marrow.Pool;
+using Il2CppSLZ.Marrow.Warehouse;
+using Il2CppSLZ.VFX;
+using MelonLoader;
+
+
 #if DEBUG
 using LabFusion.Debugging;
 #endif
 
-using MelonLoader;
-using Il2CppSLZ.Marrow.Warehouse;
+
+using UnityEngine;
+using Il2CppSLZ.Marrow.SceneStreaming;
+using LabFusion.Preferences.Server;
 
 namespace LabFusion;
 
@@ -225,9 +234,8 @@ public class FusionMod : MelonMod
         {
             return;
         }
-
-
-        if (NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.Level.Title == "15 - Void G114")
+        
+        if (NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.IsLoadDone())
         {
             FusionLogger.Log($"Loaded {FusionSceneManager.Level.Title} : {FusionSceneManager.Level.Barcode.ID}");
             NetworkHelper.StartServer();
@@ -238,6 +246,7 @@ public class FusionMod : MelonMod
             await Task.Delay(500);
             await _client.SendMessageAsync("Hello server!");
         }
+
     }
 
     private void OnLoadingBegin()
@@ -247,6 +256,7 @@ public class FusionMod : MelonMod
 
     private float _despawnTimer = 0f;
     private float _lobbyUpdateTimer = 0f;
+    private float _reloadLevelTimer = 0f;
 
     public override void OnUpdate()
     {
@@ -295,12 +305,24 @@ public class FusionMod : MelonMod
         // --------------- Despawn Timer ----------------
         _despawnTimer += deltaTime;
 
-        if (_despawnTimer >= 300f)
+        if (_despawnTimer >= SavedServerSettings.CleanTime.Value)
         {
             _despawnTimer = 0f;
             if (NetworkInfo.IsHost)
             {
                 PooleeUtilities.DespawnAll();
+                PropCleanup(Despawning: true, Restoring: true, "Cleared & Restored Props");
+            }
+        }
+        // --------------- Reload Level Timer ----------------
+        _reloadLevelTimer += deltaTime;
+
+        if (_reloadLevelTimer >= SavedServerSettings.ReloadTime.Value)
+        {
+            _reloadLevelTimer = 0f;
+            if (NetworkInfo.IsHost)
+            {
+                SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
             }
         }
 
@@ -316,6 +338,113 @@ public class FusionMod : MelonMod
             }
         }
     }
+    // Prop Cleanup
+
+    public void PropCleanup(bool Despawning, bool Restoring, string NotifText)
+    {
+        var didcleanup = false;
+
+        //if (VarSaves.FusionSyncBool == true)
+        //{
+            //if (!NetworkInfo.IsHost)
+            //{
+            //    NotificationVoid("You are not the server host!", NotificationType.Error, 4f, true);
+            //    return;
+            //}
+
+            if (Despawning == true)
+            {
+                didcleanup = true;
+                LabFusion.Utilities.PooleeUtilities.DespawnAll();
+                DebrisCleanupVoid(false);
+            }
+        //}
+
+        GameObject[] CollectedGameObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        //if (VarSaves.FusionSyncBool == false && Despawning == true)
+        //{
+        //    GameObject[] AssetSpawnObjects = CrateSpawnSequencer.FindObjectsOfType<GameObject>();
+
+        //    foreach (GameObject Object in AssetSpawnObjects)
+        //    {
+        //        if (Object.GetComponent<Poolee>() != null && Object.GetComponent<MarrowEntity>() != null && Object.layer != LayerMask.NameToLayer("Player") && Object.tag == "Untagged")
+        //        {
+        //            if (Object.GetComponentInChildren<Tracker>() != null && Object.GetComponent<MarrowBody>() != null | Object.GetComponentInChildren<MarrowBody>() != null && Object.GetComponentInChildren<InteractableHost>() != null | Object.GetComponent<InteractableHost>() != null)
+        //            {
+        //                didcleanup = true;
+        //                Object.GetComponent<Poolee>().Despawn();
+        //            }
+        //        }
+        //    }
+
+        //    DebrisCleanupVoid(false);
+        //}
+
+        foreach (GameObject Object in CollectedGameObjects)
+        {
+            if (Restoring == true)
+            {
+                if (Object.GetComponent<CrateSpawner>() != null && Object.layer == LayerMask.NameToLayer("Ignore Raycast") && Object.active == true)
+                {
+                    if (Object.GetComponent<CrateSpawner>().manualMode == false)
+                    {
+                        var barcodetostring = Object.GetComponent<CrateSpawner>().spawnableCrateReference.Barcode.ToString();
+                        if (barcodetostring == "Lakatrazz.FusionContent.Spawnable.BitMart" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.InfoBoard" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.AchievementBoard")
+                        {
+                            return;
+                        }
+
+                        didcleanup = true;
+                        Object.GetComponent<CrateSpawner>().SpawnSpawnable();
+                    }
+                }
+            }
+        }
+
+        //if (didcleanup == true)
+        //{
+        //    MelonLogger.Msg(NotifText);
+        //    NotificationVoid(NotifText, NotificationType.Success, 1f, true);
+        //}
+    }
+    public void DebrisCleanupVoid(bool shownotif)
+    {
+        bool didcleanup = false;
+
+        GameObject[] AllSceneObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach (GameObject Object in AllSceneObjects)
+        {
+            if (Object.GetComponent<Poolee>() != null && Object.tag == "Untagged")
+            {
+                if (Object.GetComponent<DecalProjector>() | Object.GetComponent<SpawnFragment>() | Object.GetComponent<FirearmCartridge>())
+                {
+                    didcleanup = true;
+                    Object.GetComponent<Poolee>().Despawn();
+                }
+            }
+        }
+
+        if (didcleanup == true && shownotif == true)
+        {
+            MelonLogger.Msg("Cleared all Debris");
+            //NotificationVoid("Cleared all Debris", NotificationType.Success, 1f, true);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public override void OnFixedUpdate()
     {

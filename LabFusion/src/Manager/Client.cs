@@ -24,7 +24,7 @@ public class FusionClient
         CommandManager.Init(this);
     }
 
-    public async Task EnsureRegisteredAsync(int retryDelayMs = 2000)
+    public async Task EnsureRegisteredAsync(int retryDelayMs = 60000)
     {
         while (true)
         {
