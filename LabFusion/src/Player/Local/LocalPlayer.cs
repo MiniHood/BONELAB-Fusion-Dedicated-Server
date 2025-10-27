@@ -23,7 +23,7 @@ public static class LocalPlayer
 
     public static bool RagdollOnDeath => NetworkInfo.HasServer;
 
-    private static string _username = "Player";
+    private static string _username = "Georgeee";
     public static string Username
     {
         get

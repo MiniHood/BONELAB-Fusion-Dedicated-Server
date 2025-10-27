@@ -38,6 +38,9 @@ public static class SavedServerSettings
     public static FusionPref<PermissionLevel> Kicking { get; private set; }
     public static FusionPref<PermissionLevel> Banning { get; private set; }
     public static FusionPref<PermissionLevel> Teleportation { get; private set; }
+    public static FusionPref<int> CleanTime { get; private set; }
+    public static FusionPref<int> ReloadTime { get; private set; }
+    public static FusionPref<string> ServerHostName { get; private set; }
 
     public static event Action OnSavedServerSettingsChanged;
 
@@ -72,6 +75,13 @@ public static class SavedServerSettings
         Banning = new FusionPref<PermissionLevel>(category, "Banning Allowed", PermissionLevel.OPERATOR, updateMode);
 
         Teleportation = new FusionPref<PermissionLevel>(category, "Teleportation", PermissionLevel.OPERATOR, updateMode);
+
+        //Clean & Reload
+        CleanTime = new FusionPref<int>(category, "Clean time", 1200, updateMode);
+        ReloadTime = new FusionPref<int>(category, "Reload time", 2400, updateMode);
+
+        //ServerName
+        ServerHostName = new FusionPref<string>(category, "Host Name", "dc.gg/plus", updateMode);
     }
 
     public static void PushSettingsUpdate()
