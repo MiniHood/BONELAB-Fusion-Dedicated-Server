@@ -123,10 +123,10 @@ public class LobbyInfo
         // Info
         LobbyId = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
-        LobbyName = $"[{uptime:mm}m:{uptime:ss}s] " + "Dedicated Server Test";
-        LobbyDescription = "Join the dedicated server development discord: https://dc.gg/plus\nThis server cleans every 5 minutes.\n- HowNiceOfYou";
+        LobbyName = $"[{uptime:hh}:{uptime:mm}] " + SavedServerSettings.ServerName.Value;
+        LobbyDescription = SavedServerSettings.ServerDescription.Value;
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = FusionMod.ServerName;
+        LobbyHostName = SavedServerSettings.ServerHostName.Value;
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
@@ -161,16 +161,16 @@ public class LobbyInfo
         PlayerConstraining = SavedServerSettings.PlayerConstraining.Value;
         Mortality = SavedServerSettings.Mortality.Value;
         FriendlyFire = true; // SavedServerSettings.FriendlyFire.Value;
-        Knockout = false; // SavedServerSettings.Knockout.Value;
+        Knockout = SavedServerSettings.Knockout.Value;
         KnockoutLength = SavedServerSettings.KnockoutLength.Value;
         MaxAvatarHeight = SavedServerSettings.MaxAvatarHeight.Value;
 
         // Permissions
         DevTools = SavedServerSettings.DevTools.Value;
-        Constrainer = PermissionLevel.OWNER; // SavedServerSettings.Constrainer.Value;
-        CustomAvatars = PermissionLevel.DEFAULT; // SavedServerSettings.CustomAvatars.Value;
-        Kicking = PermissionLevel.OWNER; // SavedServerSettings.Kicking.Value;
-        Banning = PermissionLevel.OWNER; // SavedServerSettings.Banning.Value;
-        Teleportation = PermissionLevel.OWNER; // SavedServerSettings.Teleportation.Value;
+        Constrainer = SavedServerSettings.Constrainer.Value;
+        CustomAvatars = SavedServerSettings.CustomAvatars.Value;
+        Kicking = SavedServerSettings.Kicking.Value;
+        Banning = SavedServerSettings.Banning.Value;
+        Teleportation = SavedServerSettings.Teleportation.Value;
     }
 }

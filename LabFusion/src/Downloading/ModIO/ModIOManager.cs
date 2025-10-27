@@ -14,7 +14,6 @@ public static class ModIOManager
 {
     public static ModIOModTarget GetTargetFromListing(ModListing listing)
     {
-        /*
         if (listing == null)
         {
             return null;
@@ -29,7 +28,7 @@ public static class ModIOManager
                 return modIOTarget;
             }
         }
-        */
+        
         return null;
 
     }
