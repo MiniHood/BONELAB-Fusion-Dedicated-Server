@@ -13,7 +13,7 @@ public class SteamLobby : NetworkLobby
 
     public override void SetMetadata(string key, string value)
     {
-        // value ??= string.Empty;
+        value ??= string.Empty;//<<<This was changed to try get code joining to work>>> 
 
         _lobby.SetData(key, value);
         SaveKey(key);

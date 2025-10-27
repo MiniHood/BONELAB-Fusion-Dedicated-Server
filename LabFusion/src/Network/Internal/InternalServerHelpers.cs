@@ -2,6 +2,7 @@
 using LabFusion.Entities;
 using LabFusion.Player;
 using LabFusion.Preferences;
+using LabFusion.Preferences.Server;
 using LabFusion.SDK.Achievements;
 using LabFusion.SDK.Points;
 using LabFusion.Utilities;
@@ -98,13 +99,25 @@ public static class InternalServerHelpers
         // Update hooks
         MultiplayerHooking.InvokeOnPlayerJoined(id);
 
-
-        // Send notification
-        if (isInitialJoin && id.TryGetDisplayName(out var name))
-        {
-            FusionLogger.Log($"Player {name} has joined the server.");
-        }
+        //logPlayerJoined(id, isInitialJoin);//This didn't endup working
     }
+    //async static Task logPlayerJoined(PlayerID id, bool isInitialJoin)
+    //{
+    //    var i = 5;
+    //    while (i > 0)
+    //    {
+    //        if(isInitialJoin&& id.TryGetDisplayName(out var name))
+    //        {
+    //            FusionLogger.Log($"Player {id.PlatformID}:{name} has joined the server.({PlayerIDManager.PlayerCount - 1}/{SavedServerSettings.MaxPlayers.Value})");
+    //            return;
+    //        }
+    //        else
+    //        {
+    //            await Task.Delay(5000);//Wait 5 seconds before trying to print log
+    //        }
+    //    }
+        
+    //}
 
     /// <summary>
     /// Cleans up a single user after they have left.
@@ -121,7 +134,7 @@ public static class InternalServerHelpers
         // Send notification
         if (playerId.TryGetDisplayName(out var name))
         {
-            FusionLogger.Log($"Player {name} has left the server.");
+            FusionLogger.Log($"Player {longId}:{name} has left the server.({PlayerIDManager.PlayerCount-2}/{SavedServerSettings.MaxPlayers.Value})");
         }
 
         DisposeUser(playerId);
