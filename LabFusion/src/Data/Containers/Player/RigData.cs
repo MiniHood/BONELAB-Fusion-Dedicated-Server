@@ -57,12 +57,12 @@ public static class RigData
         Refs.RigManager.remapHeptaRig.onPlayerJump += (Il2CppSystem.Action)OnJump;
 
         // Notify hooks
-        LocalPlayer.OnLocalRigCreated?.InvokeSafe(manager, "executing OnLocalRigCreated hook");
+        // LocalPlayer.OnLocalRigCreated?.InvokeSafe(manager, "executing OnLocalRigCreated hook");
 
         // Update avatar
         if (manager._avatar != null)
         {
-            LocalAvatar.InvokeAvatarChanged(manager._avatar, manager.AvatarCrate.Barcode.ID);
+            // LocalAvatar.InvokeAvatarChanged(manager._avatar, manager.AvatarCrate.Barcode.ID);
         }
     }
 

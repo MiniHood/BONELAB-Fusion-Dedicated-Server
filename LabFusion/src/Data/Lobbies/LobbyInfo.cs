@@ -114,15 +114,18 @@ public class LobbyInfo
     [JsonPropertyName("teleportation")]
     public PermissionLevel Teleportation { get; set; } = PermissionLevel.DEFAULT;
 
+    public static DateTime ServerStartTime = DateTime.UtcNow;
+
     public void WriteLobby()
     {
+        var uptime = DateTime.UtcNow - ServerStartTime;
         // Info
         LobbyID = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
-        LobbyName = SavedServerSettings.ServerName.Value;
-        LobbyDescription = SavedServerSettings.ServerDescription.Value;
+        LobbyName = $"[{uptime:hh}h:{uptime:mm}m:{uptime:ss}s] " + "Dedicated Server Test";
+        LobbyDescription = "This is a test using a modified version of FusionLab. Join the dedicated server development discord: https://discord.gg/jSw8Qrkmwn\nThis server cleans every hour.\n- Duck-Face";
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = LocalPlayer.Username;
+        LobbyHostName = FusionMod.ServerName;
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
