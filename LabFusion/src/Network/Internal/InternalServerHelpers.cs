@@ -110,8 +110,7 @@ public static class InternalServerHelpers
         // Send notification
         if (isInitialJoin && id.TryGetDisplayName(out var name))
         {
-            FusionLogger.Log($"Player {name} has joined the server.");
-            FusionLogger.Log($"PLACEHOLDER Player {id.PlatformID} has joined the server.");
+            
             NetworkNotifications.SendPlayerJoinedNotification(name);
         }
     }
@@ -131,7 +130,7 @@ public static class InternalServerHelpers
         // Send notification
         if (playerId.TryGetDisplayName(out var name))
         {
-            FusionLogger.Log($"Player {name} has left the server.");
+            FusionLogger.Log($"Player {{longId}}:{{name}} has left the server.({{PlayerIDManager.PlayerCount-2}}/{{SavedServerSettings.MaxPlayers.Value}})");
             NetworkNotifications.SendPlayerLeftNotification(name);
         }
 

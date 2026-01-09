@@ -1,7 +1,8 @@
-﻿using LabFusion.Player;
-using LabFusion.Utilities;
+﻿using Il2CppSystem.Buffers;
+using LabFusion.Player;
 using LabFusion.UI.Popups;
-
+using LabFusion.Utilities;
+using LabFusion.Representation;
 using Il2CppSLZ.Marrow.SceneStreaming;
 using Il2CppSLZ.Marrow.Warehouse;
 
@@ -53,19 +54,18 @@ public class LevelRequestMessage : NativeMessageHandler
 
         // Get player and their username
         var id = PlayerIDManager.GetPlayerID(sender.Value);
-        var level = new PermissionLevel();
-        var color = new Color();
-        FusionPermissions.FetchPermissionLevel(id.PlatformID,out level,out color);
+
+        FusionPermissions.FetchPermissionLevel(id.PlatformID, out var level, out _);
         if (id != null && level == PermissionLevel.OWNER)
         {
 
-            SceneStreamer.Load(new Barcode(data.barcode));
+            SceneStreamer.Load(new Barcode(data.Barcode));
         }
         else {
-            MelonLogger.Error($"Fusion Server User: {id.PlatformID} Level: {level} is trying to request {data.barcode} ");
+            FusionLogger.Error($"Fusion Server User: {id.PlatformID} Level: {level} is trying to request {data.Barcode} ");
         }
-        if (id == null) { MelonLogger.Error($"Fusion Server ID was Null User: {id.PlatformID} Level: {level} is trying to request {data.barcode} "); }
-        if (level == PermissionLevel.OWNER) { MelonLogger.Error($"Fusion Server Permission was owner User: {id.PlatformID} Level: {level} is trying to request {data.barcode} "); }
+        if (id == null) { FusionLogger.Error($"Fusion Server ID was Null User: {id.PlatformID} Level: {level} is trying to request {data.Barcode} "); }
+        if (level == PermissionLevel.OWNER) { FusionLogger.Error($"Fusion Server Permission was owner User: {id.PlatformID} Level: {level} is trying to request {data.Barcode} "); }
         /* if (id != null && id.TryGetDisplayName(out var name))
         {
             Notifier.Send(new Notification()

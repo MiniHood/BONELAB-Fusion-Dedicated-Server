@@ -125,7 +125,7 @@ public class LobbyInfo
     ? $"[{uptime:dd}:{uptime:hh}:{uptime:mm}] "
     : $"[{uptime:hh}:{uptime:mm}] ";
         // Info
-        LobbyId = PlayerIDManager.LocalPlatformID;
+        LobbyID = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
         LobbyName = stamp + SavedServerSettings.ServerName.Value;//$"[{uptime:hh}:{uptime:mm}] "
         LobbyDescription = SavedServerSettings.ServerDescription.Value;
@@ -146,9 +146,9 @@ public class LobbyInfo
         
         LevelBarcode = FusionSceneManager.Barcode;
 
-        LevelModId = CrateFilterer.GetModID(FusionSceneManager.Level.Pallet);
+        LevelModID = CrateFilterer.GetModID(FusionSceneManager.Level.Pallet);
         LevelTitle = FusionSceneManager.Title;
-        if (LevelModId > 0 )
+        if (LevelModID > 0 )
         {
             LevelTitle = "* " + LevelTitle + " *";
         }

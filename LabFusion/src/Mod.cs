@@ -15,7 +15,7 @@ using LabFusion.SDK.Cosmetics;
 using LabFusion.Entities;
 using LabFusion.Downloading.ModIO;
 using LabFusion.Downloading;
-using LabFusion.Menu;
+using LabFusion.Preferences.Server;
 using LabFusion.SDK.Modules;
 using LabFusion.Representation;
 using LabFusion.Player;
@@ -23,6 +23,7 @@ using LabFusion.RPC;
 using LabFusion.UI.Popups;
 using LabFusion.Safety;
 using LabFusion.Support;
+using Il2CppSLZ.Marrow.SceneStreaming;
 
 #if DEBUG
 using LabFusion.Debugging;
@@ -269,6 +270,7 @@ public class FusionMod : MelonMod
 
     private float _despawnTimer = 0f;
     private float _lobbyUpdateTimer = 0f;
+    private float _reloadLevelTimer = 0f;
     public override void OnUpdate()
     {
         // Reset byte counts
@@ -349,7 +351,7 @@ public class FusionMod : MelonMod
             {
                 LobbyInfoManager.PushLobbyUpdate();
             }
-
+        }
     }
 
     public override void OnFixedUpdate()
