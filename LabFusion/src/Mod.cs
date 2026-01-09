@@ -315,17 +315,29 @@ public class FusionMod : MelonMod
 
         // Update delayed events at the very end of the frame
         DelayUtilities.OnProcessDelays();
+        if (SavedServerSettings.CleanTime.Value!=0){
         // --------------- Despawn Timer ----------------
         _despawnTimer += deltaTime;
 
-        if (_despawnTimer >= 3600f)
+        if (_despawnTimer >= SavedServerSettings.CleanTime.Value)
         {
             _despawnTimer = 0f;
             if (NetworkInfo.IsHost)
             {
                 PooleeUtilities.DespawnAll();
             }
-        }
+        }}
+        if (SavedServerSettings.ReloadTime.Value!=0){
+        // --------------- Reload Level Timer ----------------
+        _reloadLevelTimer += deltaTime;
+
+        if (_reloadLevelTimer >= SavedServerSettings.ReloadTime.Value)
+        {
+            _reloadLevelTimer = 0f;
+            
+                SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
+            
+        }}
 
         // Update lobby every 5 seconds
         _lobbyUpdateTimer += deltaTime;
