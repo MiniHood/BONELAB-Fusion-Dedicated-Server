@@ -8,6 +8,8 @@ using LabFusion.SDK.Gamemodes;
 using LabFusion.Senders;
 
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+using static Il2CppSLZ.Bonelab.BonelabProgressionHelper;
 
 namespace LabFusion.Data;
 
@@ -119,13 +121,16 @@ public class LobbyInfo
     public void WriteLobby()
     {
         var uptime = DateTime.UtcNow - ServerStartTime;
+        string stamp = uptime.TotalDays >= 1
+    ? $"[{uptime:dd}:{uptime:hh}:{uptime:mm}] "
+    : $"[{uptime:hh}:{uptime:mm}] ";
         // Info
-        LobbyID = PlayerIDManager.LocalPlatformID;
+        LobbyId = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
-        LobbyName = $"[{uptime:hh}h:{uptime:mm}m:{uptime:ss}s] " + "Dedicated Server Test";
-        LobbyDescription = "This is a test using a modified version of FusionLab. Join the dedicated server development discord: https://discord.gg/jSw8Qrkmwn\nThis server cleans every hour.\n- Duck-Face";
+        LobbyName = stamp + SavedServerSettings.ServerName.Value;//$"[{uptime:hh}:{uptime:mm}] "
+        LobbyDescription = SavedServerSettings.ServerDescription.Value;
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = FusionMod.ServerName;
+        LobbyHostName = SavedServerSettings.ServerHostName.Value;
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
@@ -133,12 +138,20 @@ public class LobbyInfo
         playerList.WritePlayers();
         PlayerList = playerList;
 
+
+
+
+
         // Location
-        LevelTitle = FusionSceneManager.Title;
+        
         LevelBarcode = FusionSceneManager.Barcode;
 
-        LevelModID = CrateFilterer.GetModID(FusionSceneManager.Level.Pallet);
-
+        LevelModId = CrateFilterer.GetModID(FusionSceneManager.Level.Pallet);
+        LevelTitle = FusionSceneManager.Title;
+        if (LevelModId > 0 )
+        {
+            LevelTitle = "* " + LevelTitle + " *";
+        }
         // Gamemode
         GamemodeTitle = string.Empty;
         GamemodeBarcode = string.Empty;
@@ -152,14 +165,14 @@ public class LobbyInfo
         TimeBetweenGamemodeRounds = GamemodeRoundManager.Settings.TimeBetweenRounds;
 
         // Settings
-        NameTags = SavedServerSettings.NameTags.Value;
+        NameTags = true; // SavedServerSettings.NameTags.Value;
         Privacy = SavedServerSettings.Privacy.Value;
         SlowMoMode = SavedServerSettings.SlowMoMode.Value;
         MaxPlayers = SavedServerSettings.MaxPlayers.Value;
-        VoiceChat = SavedServerSettings.VoiceChat.Value;
+        VoiceChat = true; // SavedServerSettings.VoiceChat.Value;
         PlayerConstraining = SavedServerSettings.PlayerConstraining.Value;
         Mortality = SavedServerSettings.Mortality.Value;
-        FriendlyFire = SavedServerSettings.FriendlyFire.Value;
+        FriendlyFire = true; // SavedServerSettings.FriendlyFire.Value;
         Knockout = SavedServerSettings.Knockout.Value;
         KnockoutLength = SavedServerSettings.KnockoutLength.Value;
         MaxAvatarHeight = SavedServerSettings.MaxAvatarHeight.Value;
