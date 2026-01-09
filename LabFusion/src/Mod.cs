@@ -245,7 +245,7 @@ public class FusionMod : MelonMod
         {
             return;
         }
-        if(NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.Level.Title == "15 - Void G114")
+        if(NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.IsLoadDone())
         {
             FusionLogger.Log($"Loaded {FusionSceneManager.Level.Title} : {FusionSceneManager.Level.Barcode.ID}");
             NetworkHelper.StartServer();
