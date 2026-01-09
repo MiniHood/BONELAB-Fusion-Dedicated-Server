@@ -53,8 +53,20 @@ public class LevelRequestMessage : NativeMessageHandler
 
         // Get player and their username
         var id = PlayerIDManager.GetPlayerID(sender.Value);
+        var level = new PermissionLevel();
+        var color = new Color();
+        FusionPermissions.FetchPermissionLevel(id.PlatformID,out level,out color);
+        if (id != null && level == PermissionLevel.OWNER)
+        {
 
-        if (id != null && id.TryGetDisplayName(out var name))
+            SceneStreamer.Load(new Barcode(data.barcode));
+        }
+        else {
+            MelonLogger.Error($"Fusion Server User: {id.PlatformID} Level: {level} is trying to request {data.barcode} ");
+        }
+        if (id == null) { MelonLogger.Error($"Fusion Server ID was Null User: {id.PlatformID} Level: {level} is trying to request {data.barcode} "); }
+        if (level == PermissionLevel.OWNER) { MelonLogger.Error($"Fusion Server Permission was owner User: {id.PlatformID} Level: {level} is trying to request {data.barcode} "); }
+        /* if (id != null && id.TryGetDisplayName(out var name))
         {
             Notifier.Send(new Notification()
             {
@@ -68,6 +80,6 @@ public class LevelRequestMessage : NativeMessageHandler
                     SceneStreamer.Load(new Barcode(data.Barcode));
                 },
             });
-        }
+        } */
     }
 }
