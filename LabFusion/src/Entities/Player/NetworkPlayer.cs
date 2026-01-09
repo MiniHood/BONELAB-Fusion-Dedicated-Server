@@ -789,6 +789,9 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
         RigPose.ReadSkeleton(RigSkeleton);
 
+        if (_playerID.SmallID == PlayerIDManager.HostSmallID || PlayerIDManager.LocalSmallID == PlayerIDManager.HostSmallID)
+            return;
+
         var data = PlayerPoseUpdateData.Create(RigPose);
 
         MessageRelay.RelayNative(data, NativeMessageTag.PlayerPoseUpdate, CommonMessageRoutes.UnreliableToOtherClients);
@@ -965,7 +968,8 @@ public class NetworkPlayer : IEntityExtender, IMarrowEntityExtender, IEntityUpda
 
         _onReadyCallback?.InvokeSafe("executing NetworkPlayer.OnReadyCallback");
         _onReadyCallback = null;
-
+        if (rigManager.IsLocalPlayer())
+            return;
         // If this isn't us, then catch up any data
         if (!NetworkEntity.IsOwner)
         {

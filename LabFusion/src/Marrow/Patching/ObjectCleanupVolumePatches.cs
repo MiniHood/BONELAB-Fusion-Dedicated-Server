@@ -55,6 +55,6 @@ public static class ObjectCleanupVolumePatches
         }
 
         // Instead of killing the player (doesn't work with immortality), teleport them to spawn
-        LocalPlayer.TeleportToCheckpoint();
+        // LocalPlayer.TeleportToCheckpoint();
     }
 }

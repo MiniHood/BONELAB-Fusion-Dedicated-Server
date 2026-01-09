@@ -86,7 +86,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
             ConnectionSender.SendConnectionDeny(platformID, "You attempted to join, but the server detects you as already in it?");
             return;
         }
-
+        
         // If the connection request is invalid, deny it
         if (!data.IsValid)
         {
@@ -146,9 +146,10 @@ public class ConnectionRequestMessage : NativeMessageHandler
         if (NetworkHelper.IsBanned(platformID))
         {
             ConnectionSender.SendConnectionDeny(platformID, "Banned from Server");
+            FusionLogger.Warn($"[AntiGrief] Banned connection: PlatformID={platformID}");
             return;
         }
-
+        FusionLogger.Warn($"[AntiGrief] Incoming connection: PlatformID={platformID}");
         // Check for global banning
         var globalBanInfo = GlobalBanManager.GetBanInfo(new PlatformInfo(platformID));
 
@@ -197,6 +198,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
 
             if (id.SmallID == PlayerIDManager.HostSmallID)
             {
+                continue;
                 barcode = RigData.RigAvatarId;
                 stats = RigData.RigAvatarStats;
             }
@@ -209,7 +211,8 @@ public class ConnectionRequestMessage : NativeMessageHandler
             {
                 continue;
             }
-
+            id.TryGetDisplayName(out var name);
+            FusionLogger.Warn($"[AntiGrief] Name: {name}");
             ConnectionSender.SendPlayerCatchup(platformID, id, barcode, stats);
         }
 

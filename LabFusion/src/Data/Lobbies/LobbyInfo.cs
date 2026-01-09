@@ -8,6 +8,8 @@ using LabFusion.SDK.Gamemodes;
 using LabFusion.Senders;
 
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
+using static Il2CppSLZ.Bonelab.BonelabProgressionHelper;
 
 namespace LabFusion.Data;
 
@@ -114,15 +116,21 @@ public class LobbyInfo
     [JsonPropertyName("teleportation")]
     public PermissionLevel Teleportation { get; set; } = PermissionLevel.DEFAULT;
 
+    public static DateTime ServerStartTime = DateTime.UtcNow;
+
     public void WriteLobby()
     {
+        var uptime = DateTime.UtcNow - ServerStartTime;
+        string stamp = uptime.TotalDays >= 1
+    ? $"[{uptime:dd}:{uptime:hh}:{uptime:mm}] "
+    : $"[{uptime:hh}:{uptime:mm}] ";
         // Info
         LobbyID = PlayerIDManager.LocalPlatformID;
         LobbyCode = NetworkHelper.GetServerCode();
-        LobbyName = SavedServerSettings.ServerName.Value;
+        LobbyName = stamp + SavedServerSettings.ServerName.Value;//$"[{uptime:hh}:{uptime:mm}] "
         LobbyDescription = SavedServerSettings.ServerDescription.Value;
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = LocalPlayer.Username;
+        LobbyHostName = SavedServerSettings.ServerHostName.Value;
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
@@ -130,12 +138,20 @@ public class LobbyInfo
         playerList.WritePlayers();
         PlayerList = playerList;
 
+
+
+
+
         // Location
-        LevelTitle = FusionSceneManager.Title;
+        
         LevelBarcode = FusionSceneManager.Barcode;
 
         LevelModID = CrateFilterer.GetModID(FusionSceneManager.Level.Pallet);
-
+        LevelTitle = FusionSceneManager.Title;
+        if (LevelModID > 0 )
+        {
+            LevelTitle = "* " + LevelTitle + " *";
+        }
         // Gamemode
         GamemodeTitle = string.Empty;
         GamemodeBarcode = string.Empty;
@@ -149,14 +165,14 @@ public class LobbyInfo
         TimeBetweenGamemodeRounds = GamemodeRoundManager.Settings.TimeBetweenRounds;
 
         // Settings
-        NameTags = SavedServerSettings.NameTags.Value;
+        NameTags = true; // SavedServerSettings.NameTags.Value;
         Privacy = SavedServerSettings.Privacy.Value;
         SlowMoMode = SavedServerSettings.SlowMoMode.Value;
         MaxPlayers = SavedServerSettings.MaxPlayers.Value;
-        VoiceChat = SavedServerSettings.VoiceChat.Value;
+        VoiceChat = true; // SavedServerSettings.VoiceChat.Value;
         PlayerConstraining = SavedServerSettings.PlayerConstraining.Value;
         Mortality = SavedServerSettings.Mortality.Value;
-        FriendlyFire = SavedServerSettings.FriendlyFire.Value;
+        FriendlyFire = true; // SavedServerSettings.FriendlyFire.Value;
         Knockout = SavedServerSettings.Knockout.Value;
         KnockoutLength = SavedServerSettings.KnockoutLength.Value;
         MaxAvatarHeight = SavedServerSettings.MaxAvatarHeight.Value;
