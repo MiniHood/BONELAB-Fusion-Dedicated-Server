@@ -34,6 +34,7 @@ public static class HeadSFXPatches
     [HarmonyPrefix]
     public static void DyingVocal(HeadSFX __instance)
     {
+        return;
         // If there's no server, ignore
         if (!NetworkInfo.HasServer)
         {
@@ -67,6 +68,7 @@ public static class HeadSFXPatches
     [HarmonyPrefix]
     public static void DeathVocal(HeadSFX __instance)
     {
+        return;
         // If there's no server, ignore
         if (!NetworkInfo.HasServer)
         {
@@ -121,6 +123,7 @@ public static class HealthPatches
     [HarmonyPatch(nameof(Health.Respawn))]
     public static void Respawn(Health __instance)
     {
+        return;
         if (!__instance._rigManager.IsLocalPlayer())
         {
             return;
@@ -156,6 +159,7 @@ public static class PlayerHealthPatches
     [HarmonyPatch(nameof(Player_Health.ApplyKillDamage))]
     public static void ApplyKillDamagePostfix(Player_Health __instance)
     {
+        return;
         if (!NetworkInfo.HasServer)
         {
             return;
@@ -178,6 +182,7 @@ public static class PlayerHealthPatches
     [HarmonyPatch(nameof(Player_Health.Dying))]
     public static void Dying(Player_Health __instance)
     {
+        return;
         if (!NetworkInfo.HasServer)
         {
             return;
@@ -198,6 +203,7 @@ public static class PlayerHealthPatches
     [HarmonyPatch(nameof(Player_Health.LifeSavingDamgeDealt))]
     public static void LifeSavingDamgeDealt(Player_Health __instance)
     {
+        return;
         if (__instance._rigManager.IsLocalPlayer() && LocalPlayer.RagdollOnDeath)
         {
             LocalRagdoll.ToggleRagdoll(false);

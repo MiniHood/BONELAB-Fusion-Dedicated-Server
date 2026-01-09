@@ -122,6 +122,7 @@ public class GripExtender : EntityComponentArrayExtender<Grip>
 
     private static void OnEntityDataCatchup(Grip grip, NetworkEntity entity, PlayerID player)
     {
+        /*
         var localPlayer = LocalPlayer.GetNetworkPlayer();
 
         if (localPlayer == null)
@@ -149,5 +150,6 @@ public class GripExtender : EntityComponentArrayExtender<Grip>
                 });
             }
         }
+        */
     }
 }

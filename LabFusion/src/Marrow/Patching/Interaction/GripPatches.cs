@@ -99,7 +99,7 @@ public static class GripPatches
 
         try
         {
-            LocalPlayer.OnGrab?.Invoke(hand, __instance);
+            // LocalPlayer.OnGrab?.Invoke(hand, __instance);
         }
         catch (Exception e)
         {
@@ -134,7 +134,7 @@ public static class GripPatches
 
         try
         {
-            LocalPlayer.OnRelease?.Invoke(hand, grip);
+            // LocalPlayer.OnRelease?.Invoke(hand, grip);
         }
         catch (Exception e)
         {

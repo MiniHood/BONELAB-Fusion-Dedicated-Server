@@ -60,7 +60,7 @@ public class ConnectionResponseMessage : NativeMessageHandler
         // Otherwise, create a network player
         else
         {
-            InternalServerHelpers.OnPlayerJoined(data.PlayerID, data.IsInitialJoin);
+            // InternalServerHelpers.OnPlayerJoined(data.PlayerID, data.IsInitialJoin);
 
             var networkPlayer = NetworkPlayerManager.CreateNetworkPlayer(data.PlayerID);
             networkPlayer.AvatarSetter.SwapAvatar(data.AvatarStats, data.AvatarBarcode);

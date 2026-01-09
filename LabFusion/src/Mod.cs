@@ -59,7 +59,7 @@ public class FusionMod : MelonMod
     public const string ModAuthor = "Lakatrazz";
 
     public const string GameDeveloper = "Stress Level Zero";
-
+    public const string ServerName = "LabFusion Dedicated Server Test";
     public static readonly Version Version = new(FusionVersion.VersionMajor, FusionVersion.VersionMinor, FusionVersion.VersionPatch);
 
     public static string Changelog { get; internal set; } = null;
@@ -99,7 +99,7 @@ public class FusionMod : MelonMod
 
         // Initialize player
         LocalPlayer.OnInitializeMelon();
-        VoiceSourceManager.OnInitializeMelon();
+        // VoiceSourceManager.OnInitializeMelon();
 
         // Register base modules
         InitializeBaseModules();
@@ -140,7 +140,7 @@ public class FusionMod : MelonMod
 
         LobbyInfoManager.OnInitialize();
 
-        MenuCreator.OnInitializeMelon();
+        // MenuCreator.OnInitializeMelon();
 
         // Initialize level loading
         FusionSceneManager.Internal_OnInitializeMelon();
@@ -227,6 +227,15 @@ public class FusionMod : MelonMod
         MultiplayerHooking.InvokeOnMainSceneInitialized();
 
         FusionPlayer.OnMainSceneInitialized();
+        FusionLogger.Log($"Main scene {sceneName} was initialized.");
+
+        // Automatically login if we aren't already
+        if (!NetworkLayerManager.LoggedIn)
+        {
+            NetworkLayer Layer = NetworkLayerManager.GetTargetLayer();
+            NetworkLayerManager.LogIn(Layer);
+            FusionLogger.Log($"Logged into {Layer.Title}");
+        }
     }
 
     public static void OnMainSceneInitializeDelayed()
@@ -236,13 +245,21 @@ public class FusionMod : MelonMod
         {
             return;
         }
+        if(NetworkLayerManager.LoggedIn && !NetworkHelper.IsHost() && FusionSceneManager.Level.Title == "15 - Void G114")
+        {
+            FusionLogger.Log($"Loaded {FusionSceneManager.Level.Title} : {FusionSceneManager.Level.Barcode.ID}");
+            NetworkHelper.StartServer();
+            FusionLogger.Log($"Started Server ({NetworkHelper.GetServerCode()})");
+        }
 
+        // Create Server
+        //NetworkHelper.StartServer();
         // Force enable radial menu
-        RigData.Refs.RigManager.ControllerRig.TryCast<OpenControllerRig>().quickmenuEnabled = true;
-        PlayerRefs.Instance.PlayerBodyVitals.quickmenuEnabled = true;
+        // RigData.Refs.RigManager.ControllerRig.TryCast<OpenControllerRig>().quickmenuEnabled = true;
+        // PlayerRefs.Instance.PlayerBodyVitals.quickmenuEnabled = true;
 
         // Create the Fusion Menu
-        MenuCreator.CreateMenu();
+        // MenuCreator.CreateMenu();
     }
 
     private void OnLoadingBegin()
@@ -250,6 +267,8 @@ public class FusionMod : MelonMod
         ModIOThumbnailDownloader.ClearCache();
     }
 
+    private float _despawnTimer = 0f;
+    private float _lobbyUpdateTimer = 0f;
     public override void OnUpdate()
     {
         // Reset byte counts
@@ -296,13 +315,36 @@ public class FusionMod : MelonMod
 
         // Update delayed events at the very end of the frame
         DelayUtilities.OnProcessDelays();
+        // --------------- Despawn Timer ----------------
+        _despawnTimer += deltaTime;
+
+        if (_despawnTimer >= 3600f)
+        {
+            _despawnTimer = 0f;
+            if (NetworkInfo.IsHost)
+            {
+                PooleeUtilities.DespawnAll();
+            }
+        }
+
+        // Update lobby every 5 seconds
+        _lobbyUpdateTimer += deltaTime;
+        if (_lobbyUpdateTimer >= 5f)
+        {
+            _lobbyUpdateTimer = 0f;
+
+            if (NetworkInfo.IsHost)
+            {
+                LobbyInfoManager.PushLobbyUpdate();
+            }
+
     }
 
     public override void OnFixedUpdate()
     {
         TimeUtilities.OnEarlyFixedUpdate();
 
-        LocalPlayer.OnFixedUpdate();
+        // LocalPlayer.OnFixedUpdate();
 
         PDController.OnFixedUpdate();
 

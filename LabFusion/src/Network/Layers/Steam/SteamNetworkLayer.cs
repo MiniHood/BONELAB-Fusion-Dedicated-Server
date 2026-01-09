@@ -67,7 +67,7 @@ public abstract class SteamNetworkLayer : NetworkLayer
         // Get steam information
         SteamId = SteamClient.SteamId;
         PlayerIDManager.SetLongID(SteamId.Value);
-        LocalPlayer.Username = GetUsername(SteamId.Value);
+        // LocalPlayer.Username = GetUsername(SteamId.Value);
 
         FusionLogger.Log($"Steamworks initialized with SteamID {SteamId} and ApplicationID {ApplicationID}!");
 
@@ -362,6 +362,8 @@ public abstract class SteamNetworkLayer : NetworkLayer
 
     private void OnPlayerJoin(PlayerID id)
     {
+        if(id.TryGetDisplayName(out var name))
+            FusionLogger.Log($"Player {name} has joined the server.");
         if (VoiceManager == null)
         {
             return;
