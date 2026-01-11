@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-
+using UnityEngine;
 using LabFusion.Data;
 using LabFusion.Network;
 using LabFusion.Utilities;
@@ -31,9 +31,8 @@ using LabFusion.Debugging;
 
 using MelonLoader;
 
-using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
-using Il2CppSLZ.Marrow;
+
 
 namespace LabFusion;
 
@@ -271,8 +270,11 @@ public class FusionMod : MelonMod
     private float _despawnTimer = 0f;
     private float _lobbyUpdateTimer = 0f;
     private float _reloadLevelTimer = 0f;
+    public static float _restartGameTimer = 0f;
     public override void OnUpdate()
     {
+        
+        
         // Reset byte counts
         NetworkInfo.BytesDown = 0;
         NetworkInfo.BytesUp = 0;
@@ -351,6 +353,14 @@ public class FusionMod : MelonMod
             {
                 LobbyInfoManager.PushLobbyUpdate();
             }
+        }
+        // --------------- Restart Game Timer ----------------
+        _restartGameTimer += deltaTime;
+        // Every 45 Minutes it will check for the server being offline, once no players have been in the loby for that time period.
+        if (_restartGameTimer >= 2700f)
+        {
+         if (NetworkLayerManager.Layer == null || !NetworkInfo.HasServer || NetworkInfo.IsClient) if(PlayerIDManager.PlayerCount<2)Application.Quit();
+         if (NetworkLayerManager.Layer != null && NetworkInfo.HasServer && NetworkInfo.IsHost && PlayerIDManager.PlayerCount>1) _restartGameTimer = 0f;
         }
     }
 
