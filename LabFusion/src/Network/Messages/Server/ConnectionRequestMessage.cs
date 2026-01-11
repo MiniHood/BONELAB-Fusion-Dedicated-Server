@@ -150,6 +150,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
             return;
         }
         FusionLogger.Warn($"[AntiGrief] Incoming connection: PlatformID={platformID}");
+        if (PlayerIDManager.PlayerCount > 1) { FusionMod._restartGameTimer = 0;}
         // Check for global banning
         var globalBanInfo = GlobalBanManager.GetBanInfo(new PlatformInfo(platformID));
 
