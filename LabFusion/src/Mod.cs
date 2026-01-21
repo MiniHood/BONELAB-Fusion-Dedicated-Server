@@ -23,7 +23,10 @@ using LabFusion.RPC;
 using LabFusion.UI.Popups;
 using LabFusion.Safety;
 using LabFusion.Support;
+using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.SceneStreaming;
+using Il2CppSLZ.Marrow.Pool;
+using Il2CppSLZ.VFX;
 
 #if DEBUG
 using LabFusion.Debugging;
