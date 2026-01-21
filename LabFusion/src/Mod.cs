@@ -363,6 +363,106 @@ public class FusionMod : MelonMod
          if (NetworkLayerManager.Layer != null && NetworkInfo.HasServer && NetworkInfo.IsHost && PlayerIDManager.PlayerCount>1) _restartGameTimer = 0f;
         }
     }
+    // Prop Cleanup
+
+    public static void PropCleanup(bool Despawning, bool Restoring, string NotifText)
+    {
+        var didcleanup = false;
+
+        //if (VarSaves.FusionSyncBool == true)
+        //{
+            //if (!NetworkInfo.IsHost)
+            //{
+            //    NotificationVoid("You are not the server host!", NotificationType.Error, 4f, true);
+            //    return;
+            //}
+
+            if (Despawning == true)
+            {
+                didcleanup = true;
+                PooleeUtilities.DespawnAll();
+                DebrisCleanupVoid(false);
+            }
+        //}
+
+        GameObject[] CollectedGameObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        //if (VarSaves.FusionSyncBool == false && Despawning == true)
+        //{
+        //    GameObject[] AssetSpawnObjects = CrateSpawnSequencer.FindObjectsOfType<GameObject>();
+
+        //    foreach (GameObject Object in AssetSpawnObjects)
+        //    {
+        //        if (Object.GetComponent<Poolee>() != null && Object.GetComponent<MarrowEntity>() != null && Object.layer != LayerMask.NameToLayer("Player") && Object.tag == "Untagged")
+        //        {
+        //            if (Object.GetComponentInChildren<Tracker>() != null && Object.GetComponent<MarrowBody>() != null | Object.GetComponentInChildren<MarrowBody>() != null && Object.GetComponentInChildren<InteractableHost>() != null | Object.GetComponent<InteractableHost>() != null)
+        //            {
+        //                didcleanup = true;
+        //                Object.GetComponent<Poolee>().Despawn();
+        //            }
+        //        }
+        //    }
+
+        //    DebrisCleanupVoid(false);
+        //}
+
+        foreach (GameObject Object in CollectedGameObjects)
+        {
+            if (Restoring == true)
+            {
+                if (Object.GetComponent<CrateSpawner>() != null && Object.layer == LayerMask.NameToLayer("Ignore Raycast") && Object.active == true)
+                {
+                    if (Object.GetComponent<CrateSpawner>().manualMode == false)
+                    {
+                        var barcodetostring = Object.GetComponent<CrateSpawner>().spawnableCrateReference.Barcode.ToString();
+                        if (barcodetostring == "Lakatrazz.FusionContent.Spawnable.BitMart" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.InfoBoard" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.AchievementBoard")
+                        {
+                            return;
+                        }
+
+                        didcleanup = true;
+                        Object.GetComponent<CrateSpawner>().SpawnSpawnable();
+                    }
+                }
+            }
+        }
+
+        if (didcleanup == true)
+        {
+            MelonLogger.Msg(NotifText);
+            //NotificationVoid(NotifText, NotificationType.Success, 1f, true);
+        }
+    }
+    public static void DebrisCleanupVoid(bool shownotif)
+    {
+        bool didcleanup = false;
+
+        GameObject[] AllSceneObjects = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach (GameObject Object in AllSceneObjects)
+        {
+            if (Object.GetComponent<Poolee>() != null && Object.tag == "Untagged")
+            {
+                if (Object.GetComponent<DecalProjector>() | Object.GetComponent<SpawnFragment>() | Object.GetComponent<FirearmCartridge>())
+                {
+                    didcleanup = true;
+                    Object.GetComponent<Poolee>().Despawn();
+                }
+            }
+        }
+
+        if (didcleanup == true && shownotif == true)
+        {
+            MelonLogger.Msg("Cleared all Debris");
+            //NotificationVoid("Cleared all Debris", NotificationType.Success, 1f, true);
+        }
+    }
+
+
+
+
+
+
 
     public override void OnFixedUpdate()
     {
