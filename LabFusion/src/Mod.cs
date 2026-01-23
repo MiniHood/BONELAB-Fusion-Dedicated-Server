@@ -438,9 +438,8 @@ bool CheckAllPlayersPermissions()
 
         if (!NetworkPlayerManager.TryGetPlayer(pid.SmallID, out var player) || player == null)
             continue;
-
-        if (FusionPermissions.FetchPermissionLevel(player.PlatformID, out var level, out _) &&
-            level >= PermissionLevel.OWNER)
+        FusionPermissions.FetchPermissionLevel(player.PlayerID.PlatformID, out var level, out _);
+        if(level >= PermissionLevel.OWNER)
             return false;
     }
 
