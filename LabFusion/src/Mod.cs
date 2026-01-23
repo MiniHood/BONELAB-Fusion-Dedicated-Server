@@ -331,7 +331,7 @@ public class FusionMod : MelonMod
             _despawnTimer = 0f;
             if (NetworkInfo.IsHost)
             {
-                PooleeUtilities.DespawnAll();
+                if(CheckAllPlayersPermissions())PooleeUtilities.DespawnAll();
             }
         }}
         if (SavedServerSettings.ReloadTime.Value!=0){
@@ -342,8 +342,7 @@ public class FusionMod : MelonMod
         {
             _reloadLevelTimer = 0f;
             
-                SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
-            
+            if(CheckAllPlayersPermissions())SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
         }}
 
         // Update lobby every 5 seconds
@@ -371,43 +370,14 @@ public class FusionMod : MelonMod
     public static void PropCleanup(bool Despawning, bool Restoring, string NotifText)
     {
         var didcleanup = false;
-
-        //if (VarSaves.FusionSyncBool == true)
-        //{
-            //if (!NetworkInfo.IsHost)
-            //{
-            //    NotificationVoid("You are not the server host!", NotificationType.Error, 4f, true);
-            //    return;
-            //}
-
-            if (Despawning == true)
+        if (Despawning == true)
             {
                 didcleanup = true;
                 PooleeUtilities.DespawnAll();
                 DebrisCleanupVoid(false);
             }
-        //}
 
         GameObject[] CollectedGameObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        //if (VarSaves.FusionSyncBool == false && Despawning == true)
-        //{
-        //    GameObject[] AssetSpawnObjects = CrateSpawnSequencer.FindObjectsOfType<GameObject>();
-
-        //    foreach (GameObject Object in AssetSpawnObjects)
-        //    {
-        //        if (Object.GetComponent<Poolee>() != null && Object.GetComponent<MarrowEntity>() != null && Object.layer != LayerMask.NameToLayer("Player") && Object.tag == "Untagged")
-        //        {
-        //            if (Object.GetComponentInChildren<Tracker>() != null && Object.GetComponent<MarrowBody>() != null | Object.GetComponentInChildren<MarrowBody>() != null && Object.GetComponentInChildren<InteractableHost>() != null | Object.GetComponent<InteractableHost>() != null)
-        //            {
-        //                didcleanup = true;
-        //                Object.GetComponent<Poolee>().Despawn();
-        //            }
-        //        }
-        //    }
-
-        //    DebrisCleanupVoid(false);
-        //}
 
         foreach (GameObject Object in CollectedGameObjects)
         {
@@ -433,7 +403,6 @@ public class FusionMod : MelonMod
         if (didcleanup == true)
         {
             MelonLogger.Msg(NotifText);
-            //NotificationVoid(NotifText, NotificationType.Success, 1f, true);
         }
     }
     public static void DebrisCleanupVoid(bool shownotif)
@@ -457,9 +426,28 @@ public class FusionMod : MelonMod
         if (didcleanup == true && shownotif == true)
         {
             MelonLogger.Msg("Cleared all Debris");
-            //NotificationVoid("Cleared all Debris", NotificationType.Success, 1f, true);
         }
     }
+
+bool CheckAllPlayersPermissions()
+{
+    foreach (var pid in PlayerIDManager.PlayerIDs)
+    {
+        if (pid.IsHost)
+            continue;
+
+        if (!NetworkPlayerManager.TryGetPlayer(pid.SmallID, out var player) || player == null)
+            continue;
+
+        if (FusionPermissions.FetchPermissionLevel(player.PlatformID, out var level, out _) &&
+            level >= PermissionLevel.OWNER)
+            return false;
+    }
+
+    return true;
+}
+
+
 
 
 
