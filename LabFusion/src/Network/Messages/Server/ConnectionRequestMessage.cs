@@ -8,6 +8,7 @@ using LabFusion.Senders;
 using LabFusion.Entities;
 using LabFusion.Network.Serialization;
 using LabFusion.Safety;
+using Il2CppSteamworks.Data;
 
 namespace LabFusion.Network;
 
@@ -93,9 +94,9 @@ public class ConnectionRequestMessage : NativeMessageHandler
             ConnectionSender.SendConnectionDeny(platformID, "Connection request was invalid. You are likely on mismatching versions.");
             return;
         }
-
+        
         // Check if theres too many players
-        if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
+        if (!IsOwner(platformID)) if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
         {
             ConnectionSender.SendConnectionDeny(platformID, "Server is full! Wait for someone to leave.");
             return;
@@ -175,6 +176,18 @@ public class ConnectionRequestMessage : NativeMessageHandler
 
         // All checks have succeeded, let the player into the server
         OnConnectionAllowed(playerId, platformID, data);
+    }
+    private bool IsOwner(ulong platformID)
+    {
+        PermissionLevel level = PermissionLevel.DEFAULT;
+        foreach (var tuple in PermissionList.PermittedUsers)
+        {
+            if (tuple.Item1 == platformID)
+            {
+                level = tuple.Item3;
+            }
+        }
+        return level == PermissionLevel.OWNER;
     }
 
     private static void OnConnectionAllowed(PlayerID playerID, ulong platformID, ConnectionRequestData data)
