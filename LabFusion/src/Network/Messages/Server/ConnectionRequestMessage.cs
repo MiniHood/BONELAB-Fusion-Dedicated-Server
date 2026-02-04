@@ -212,7 +212,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
 
             if (id.SmallID == PlayerIDManager.HostSmallID)
             {
-                continue;
+                // continue;
                 barcode = RigData.RigAvatarId;
                 stats = RigData.RigAvatarStats;
             }

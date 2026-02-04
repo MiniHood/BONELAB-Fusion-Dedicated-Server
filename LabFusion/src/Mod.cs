@@ -458,7 +458,7 @@ bool CheckAllPlayersPermissions()
     {
         TimeUtilities.OnEarlyFixedUpdate();
 
-        // LocalPlayer.OnFixedUpdate();
+        LocalPlayer.OnFixedUpdate();
 
         PDController.OnFixedUpdate();
 
