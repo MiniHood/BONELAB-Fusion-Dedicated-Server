@@ -79,7 +79,7 @@ public class PermissionCommandRequestMessage : NativeMessageHandler
 
                 if (otherPlayer != null && FusionPermissions.HasSufficientPermissions(level, LobbyInfoManager.LobbyInfo.Banning))
                 {
-                    NetworkHelper.BanUser(otherPlayer);
+                    NetworkHelper.BanUserUpdated(otherPlayer,playerID);
                 }
                 break;
             case PermissionCommandType.TELEPORT_TO_THEM:

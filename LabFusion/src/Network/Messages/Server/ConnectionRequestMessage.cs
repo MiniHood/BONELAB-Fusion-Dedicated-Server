@@ -96,7 +96,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
         }
         
         // Check if theres too many players
-        if (!IsOwner(platformID)) if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
+        if (!IsHighPriviledge(platformID)) if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
         {
             ConnectionSender.SendConnectionDeny(platformID, "Server is full! Wait for someone to leave.");
             return;
@@ -177,7 +177,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
         // All checks have succeeded, let the player into the server
         OnConnectionAllowed(playerId, platformID, data);
     }
-    private bool IsOwner(ulong platformID)
+    private bool IsHighPriviledge(ulong platformID)
     {
         PermissionLevel level = PermissionLevel.DEFAULT;
         foreach (var tuple in PermissionList.PermittedUsers)
@@ -187,7 +187,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
                 level = tuple.Item3;
             }
         }
-        return level == PermissionLevel.OWNER;
+        return level >= PermissionLevel.OPERATOR;
     }
 
     private static void OnConnectionAllowed(PlayerID playerID, ulong platformID, ConnectionRequestData data)
