@@ -19,13 +19,13 @@ public static class PlayerAdditionsHelper
         MultiplayerHooking.OnJoinedServer += () => { OnEnterServer(RigData.Refs.RigManager); };
         MultiplayerHooking.OnStartedServer += () => { OnEnterServer(RigData.Refs.RigManager); };
         MultiplayerHooking.OnDisconnected += () => { OnExitServer(RigData.Refs.RigManager); };
-        /* LocalPlayer.OnLocalRigCreated += (rig) =>
+        LocalPlayer.OnLocalRigCreated += (rig) =>
         {
             if (NetworkInfo.HasServer)
             {
                 OnEnterServer(rig);
             }
-        }; */
+        };
 
         // Invoke extras
         // MuteUIHelper.OnInitializeMelon();

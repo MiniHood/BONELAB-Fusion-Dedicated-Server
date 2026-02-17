@@ -145,6 +145,12 @@ public static class NetworkHelper
         BanManager.Ban(new PlayerInfo(id), "Banned");
         ConnectionSender.SendDisconnect(id, "Banned from Server");
     }
+    public static void BanUserUpdated(PlayerID id,PlayerID id2)
+    {
+        
+        BanManager.Ban(new PlayerInfo(id), $"Banned by Player ({id2.PlatformID})");
+        ConnectionSender.SendDisconnect(id, "Banned from Server");
+    }
 
     /// <summary>
     /// Checks if a user is banned.

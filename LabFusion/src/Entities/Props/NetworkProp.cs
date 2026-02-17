@@ -364,6 +364,31 @@ public class NetworkProp : IEntityExtender, IMarrowEntityExtender, IEntityUpdata
 
     private void OnOwnedUpdate(float deltaTime)
     {
+        // Check if the marrow entity is destroyed
+        if (IsMarrowEntityDestroyed())
+        {
+            NetworkEntityManager.IDManager.UnregisterEntity(NetworkEntity);
+            return;
+        }
+
+        // Check for rigidbodies
+        // If we lost all rigidbodies, the prop is dead
+        bool hasRigidbody = false;
+        for (var i = 0; i < _bodies.Length; i++)
+        {
+            if (_bodies[i].HasRigidbody)
+            {
+                hasRigidbody = true;
+                break;
+            }
+        }
+
+        if (!hasRigidbody)
+        {
+            NetworkEntityManager.IDManager.UnregisterEntity(NetworkEntity);
+            return;
+        }
+
         // If we were sleeping last frame, only check so often
         if (IsSleeping && !TimeUtilities.IsMatchingFrame(_sleepCheckInterval, _sleepFrameOffset))
         {

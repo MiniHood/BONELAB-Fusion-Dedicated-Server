@@ -130,7 +130,7 @@ public class LobbyInfo
         LobbyName = stamp + SavedServerSettings.ServerName.Value;//$"[{uptime:hh}:{uptime:mm}] "
         LobbyDescription = SavedServerSettings.ServerDescription.Value;
         LobbyVersion = FusionMod.Version;
-        LobbyHostName = SavedServerSettings.ServerHostName.Value;
+        LobbyHostName = SavedServerSettings.ServerHostName.Value; //LocalPlayer.Username;//
 
         PlayerCount = PlayerIDManager.PlayerCount;
 
