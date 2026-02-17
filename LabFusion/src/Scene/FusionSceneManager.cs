@@ -58,7 +58,7 @@ public static partial class FusionSceneManager
             if (!_wasLoading)
             {
                 LoadSender.SendLoadingState(true);
-                LocalPlayer.Metadata.LevelBarcode.SetValue(Barcode);
+                // LocalPlayer.Metadata.LevelBarcode.SetValue(Barcode);
 
                 // Send level load
                 if (NetworkInfo.IsHost)
@@ -77,7 +77,7 @@ public static partial class FusionSceneManager
             _prevLevelBarcode = Barcode;
 
             LoadSender.SendLoadingState(!HasTargetLoaded());
-            LocalPlayer.Metadata.LevelBarcode.SetValue(Barcode);
+            // LocalPlayer.Metadata.LevelBarcode.SetValue(Barcode);
 
             // Invoke the level load hook
             _onLevelLoad?.InvokeSafe("executing OnLevelLoad hook");

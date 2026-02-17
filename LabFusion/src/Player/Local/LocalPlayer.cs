@@ -52,9 +52,6 @@ public static class LocalPlayer
 
         Metadata.Metadata.OnTrySetMetadata += OnTrySetMetadata;
         Metadata.Metadata.OnTryRemoveMetadata += OnTryRemoveMetadata;
-        // Initialize the username to default
-        Username = _username;
-        Metadata.Nickname.SetValue("");
 
         LocalAvatar.OnInitializeMelon();
         LocalHealth.OnInitializeMelon();

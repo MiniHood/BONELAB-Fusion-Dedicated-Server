@@ -8,7 +8,6 @@ using LabFusion.Senders;
 using LabFusion.Entities;
 using LabFusion.Network.Serialization;
 using LabFusion.Safety;
-using Il2CppSteamworks.Data;
 
 namespace LabFusion.Network;
 
@@ -94,9 +93,9 @@ public class ConnectionRequestMessage : NativeMessageHandler
             ConnectionSender.SendConnectionDeny(platformID, "Connection request was invalid. You are likely on mismatching versions.");
             return;
         }
-        
+
         // Check if theres too many players
-        if (!IsHighPriviledge(platformID)) if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
+        if (PlayerIDManager.PlayerCount >= byte.MaxValue || PlayerIDManager.PlayerCount >= SavedServerSettings.MaxPlayers.Value)
         {
             ConnectionSender.SendConnectionDeny(platformID, "Server is full! Wait for someone to leave.");
             return;
@@ -151,7 +150,6 @@ public class ConnectionRequestMessage : NativeMessageHandler
             return;
         }
         FusionLogger.Warn($"[AntiGrief] Incoming connection: PlatformID={platformID}");
-        if (PlayerIDManager.PlayerCount > 1) { FusionMod._restartGameTimer = 0;}
         // Check for global banning
         var globalBanInfo = GlobalBanManager.GetBanInfo(new PlatformInfo(platformID));
 
@@ -177,18 +175,6 @@ public class ConnectionRequestMessage : NativeMessageHandler
         // All checks have succeeded, let the player into the server
         OnConnectionAllowed(playerId, platformID, data);
     }
-    private bool IsHighPriviledge(ulong platformID)
-    {
-        PermissionLevel level = PermissionLevel.DEFAULT;
-        foreach (var tuple in PermissionList.PermittedUsers)
-        {
-            if (tuple.Item1 == platformID)
-            {
-                level = tuple.Item3;
-            }
-        }
-        return level >= PermissionLevel.OPERATOR;
-    }
 
     private static void OnConnectionAllowed(PlayerID playerID, ulong platformID, ConnectionRequestData data)
     {
@@ -212,7 +198,7 @@ public class ConnectionRequestMessage : NativeMessageHandler
 
             if (id.SmallID == PlayerIDManager.HostSmallID)
             {
-                // continue;
+                continue;
                 barcode = RigData.RigAvatarId;
                 stats = RigData.RigAvatarStats;
             }

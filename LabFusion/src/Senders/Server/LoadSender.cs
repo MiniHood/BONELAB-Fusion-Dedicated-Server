@@ -47,7 +47,7 @@ public static class LoadSender
 
     public static void SendLoadingState(bool isLoading)
     {
-        LocalPlayer.Metadata.Loading.SetValue(isLoading);
+        // LocalPlayer.Metadata.Loading.SetValue(isLoading);
     }
 
     public static void SendLevelLoad(string barcode, string loadBarcode)

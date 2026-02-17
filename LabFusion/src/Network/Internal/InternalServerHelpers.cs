@@ -6,7 +6,6 @@ using LabFusion.SDK.Achievements;
 using LabFusion.SDK.Modules;
 using LabFusion.UI.Popups;
 using LabFusion.Entities;
-using LabFusion.Preferences.Server;
 
 using Il2CppSLZ.Marrow.SceneStreaming;
 
@@ -131,11 +130,10 @@ public static class InternalServerHelpers
         // Send notification
         if (playerId.TryGetDisplayName(out var name))
         {
-            if (PlayerIDManager.PlayerCount > 2) { FusionMod._restartGameTimer = 0; }
-            FusionLogger.Log($"Player {longId}:{name} has left the server.({PlayerIDManager.PlayerCount-2}/{SavedServerSettings.MaxPlayers.Value})");
+            FusionLogger.Log($"Player {{longId}}:{{name}} has left the server.({{PlayerIDManager.PlayerCount-2}}/{{SavedServerSettings.MaxPlayers.Value}})");
             NetworkNotifications.SendPlayerLeftNotification(name);
         }
-        
+
         DisposeUser(playerId);
 
         MultiplayerHooking.InvokeOnPlayerLeft(playerId);

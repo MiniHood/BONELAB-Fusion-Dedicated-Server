@@ -333,9 +333,6 @@
     <Reference Include="Il2CppSLZ.Algorithms">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\Il2CppSLZ.Algorithms.dll</HintPath>
     </Reference>
-	<Reference Include="UnityEngine">
-	  <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\UnityEngine.dll</HintPath>
-	</Reference>
     <Reference Include="Il2CppSLZ.Algorithms.Unity">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\Il2CppSLZ.Algorithms.Unity.dll</HintPath>
     </Reference>
@@ -369,7 +366,6 @@
     <Reference Include="Il2CppUniTask.Addressables">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\Il2CppUniTask.Addressables.dll</HintPath>
     </Reference>
-	  
     <Reference Include="Il2CppUniTask.Linq">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\Il2CppUniTask.Linq.dll</HintPath>
     </Reference>
@@ -424,10 +420,7 @@
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
-	  <Reference Include="UnityEngine.InputLegacyModule">
-		  <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
-	  </Reference>
-	<Reference Include="UnityEngine.JSONSerializeModule">
+    <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>$(BONELAB_DIR)\MelonLoader\Il2CppAssemblies\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">

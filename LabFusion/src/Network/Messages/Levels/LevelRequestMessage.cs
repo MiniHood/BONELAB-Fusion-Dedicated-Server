@@ -7,7 +7,7 @@ using Il2CppSLZ.Marrow.SceneStreaming;
 using Il2CppSLZ.Marrow.Warehouse;
 
 using UnityEngine;
-using LabFusion;
+
 using LabFusion.Network.Serialization;
 
 namespace LabFusion.Network;
@@ -58,11 +58,8 @@ public class LevelRequestMessage : NativeMessageHandler
         FusionPermissions.FetchPermissionLevel(id.PlatformID, out var level, out _);
         if (id != null && level == PermissionLevel.OWNER)
         {
-            if (data.Title==SceneStreamer.Session?.Level?.Title)
-            {
-                FusionMod.PropCleanup(Despawning: true, Restoring: true, "Cleared & Restored Props");
-            }
-            else SceneStreamer.Load(new Barcode(data.Barcode));
+
+            SceneStreamer.Load(new Barcode(data.Barcode));
         }
         else {
             FusionLogger.Error($"Fusion Server User: {id.PlatformID} Level: {level} is trying to request {data.Barcode} ");

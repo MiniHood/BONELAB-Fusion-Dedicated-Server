@@ -43,6 +43,8 @@ public static class FusionMasterList
 
     public static FusionMasterResult VerifyPlayer(ulong id, string name)
     {
+        if (id == null || name == null)
+            return FusionMasterResult.IMPERSONATOR;
         if (NetworkLayerManager.Layer is SteamNetworkLayer)
         {
             return VerifyPlayer(_steamPlayers, id, name);
@@ -53,8 +55,6 @@ public static class FusionMasterList
 
     private static FusionMasterResult VerifyPlayer(MasterPlayer[] players, ulong id, string name)
     {
-        if (string.IsNullOrWhiteSpace(name))
-            return FusionMasterResult.NORMAL;
         for (var i = 0; i < players.Length; i++)
         {
             var player = players[i];
@@ -64,9 +64,6 @@ public static class FusionMasterList
             {
                 return FusionMasterResult.MASTER;
             }
-            // If the player name is invalid, skip
-            if (string.IsNullOrWhiteSpace(player.name))
-                continue;
 
             // Convert names to have no whitespace and in lowercase
             string masterName = Regex.Replace(player.name, @"\s+", "").ToLower().RemoveRichText();

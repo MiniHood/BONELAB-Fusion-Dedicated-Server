@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using UnityEngine;
+
 using LabFusion.Data;
 using LabFusion.Network;
 using LabFusion.Utilities;
@@ -23,10 +23,7 @@ using LabFusion.RPC;
 using LabFusion.UI.Popups;
 using LabFusion.Safety;
 using LabFusion.Support;
-using Il2CppSLZ.Marrow;
 using Il2CppSLZ.Marrow.SceneStreaming;
-using Il2CppSLZ.Marrow.Pool;
-using Il2CppSLZ.VFX;
 
 #if DEBUG
 using LabFusion.Debugging;
@@ -34,8 +31,9 @@ using LabFusion.Debugging;
 
 using MelonLoader;
 
+using Il2CppSLZ.Bonelab;
 using Il2CppSLZ.Marrow.Warehouse;
-
+using Il2CppSLZ.Marrow;
 
 namespace LabFusion;
 
@@ -273,11 +271,8 @@ public class FusionMod : MelonMod
     private float _despawnTimer = 0f;
     private float _lobbyUpdateTimer = 0f;
     private float _reloadLevelTimer = 0f;
-    public static float _restartGameTimer = 0f;
     public override void OnUpdate()
     {
-        
-        
         // Reset byte counts
         NetworkInfo.BytesDown = 0;
         NetworkInfo.BytesUp = 0;
@@ -331,7 +326,7 @@ public class FusionMod : MelonMod
             _despawnTimer = 0f;
             if (NetworkInfo.IsHost)
             {
-                if(CheckAllPlayersPermissions())PooleeUtilities.DespawnAll();
+                PooleeUtilities.DespawnAll();
             }
         }}
         if (SavedServerSettings.ReloadTime.Value!=0){
@@ -342,7 +337,8 @@ public class FusionMod : MelonMod
         {
             _reloadLevelTimer = 0f;
             
-            if(CheckAllPlayersPermissions())SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
+                SceneStreamer.Load(new Barcode(FusionSceneManager.Barcode));
+            
         }}
 
         // Update lobby every 5 seconds
@@ -356,109 +352,13 @@ public class FusionMod : MelonMod
                 LobbyInfoManager.PushLobbyUpdate();
             }
         }
-        // --------------- Restart Game Timer ----------------
-        _restartGameTimer += deltaTime;
-        // Every 45 Minutes it will check for the server being offline, once no players have been in the loby for that time period.
-        if (_restartGameTimer >= 2700f)
-        {
-         if (NetworkLayerManager.Layer == null || !NetworkInfo.HasServer || NetworkInfo.IsClient) if(PlayerIDManager.PlayerCount<2)Application.Quit();
-         if (NetworkLayerManager.Layer != null && NetworkInfo.HasServer && NetworkInfo.IsHost && PlayerIDManager.PlayerCount>1) _restartGameTimer = 0f;
-        }
     }
-    // Prop Cleanup
-
-    public static void PropCleanup(bool Despawning, bool Restoring, string NotifText)
-    {
-        var didcleanup = false;
-        if (Despawning == true)
-            {
-                didcleanup = true;
-                PooleeUtilities.DespawnAll();
-                DebrisCleanupVoid(false);
-            }
-
-        GameObject[] CollectedGameObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        foreach (GameObject Object in CollectedGameObjects)
-        {
-            if (Restoring == true)
-            {
-                if (Object.GetComponent<CrateSpawner>() != null && Object.layer == LayerMask.NameToLayer("Ignore Raycast") && Object.active == true)
-                {
-                    if (Object.GetComponent<CrateSpawner>().manualMode == false)
-                    {
-                        var barcodetostring = Object.GetComponent<CrateSpawner>().spawnableCrateReference.Barcode.ToString();
-                        if (barcodetostring == "Lakatrazz.FusionContent.Spawnable.BitMart" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.InfoBoard" | barcodetostring == "Lakatrazz.FusionContent.Spawnable.AchievementBoard")
-                        {
-                            return;
-                        }
-
-                        didcleanup = true;
-                        Object.GetComponent<CrateSpawner>().SpawnSpawnable();
-                    }
-                }
-            }
-        }
-
-        if (didcleanup == true)
-        {
-            MelonLogger.Msg(NotifText);
-        }
-    }
-    public static void DebrisCleanupVoid(bool shownotif)
-    {
-        bool didcleanup = false;
-
-        GameObject[] AllSceneObjects = GameObject.FindObjectsOfType<GameObject>();
-
-        foreach (GameObject Object in AllSceneObjects)
-        {
-            if (Object.GetComponent<Poolee>() != null && Object.tag == "Untagged")
-            {
-                if (Object.GetComponent<DecalProjector>() | Object.GetComponent<SpawnFragment>() | Object.GetComponent<FirearmCartridge>())
-                {
-                    didcleanup = true;
-                    Object.GetComponent<Poolee>().Despawn();
-                }
-            }
-        }
-
-        if (didcleanup == true && shownotif == true)
-        {
-            MelonLogger.Msg("Cleared all Debris");
-        }
-    }
-
-bool CheckAllPlayersPermissions()
-{
-    foreach (var pid in PlayerIDManager.PlayerIDs)
-    {
-        if (pid.IsHost)
-            continue;
-
-        if (!NetworkPlayerManager.TryGetPlayer(pid.SmallID, out var player) || player == null)
-            continue;
-        FusionPermissions.FetchPermissionLevel(player.PlayerID.PlatformID, out var level, out _);
-        if(level >= PermissionLevel.OWNER)
-            return false;
-    }
-
-    return true;
-}
-
-
-
-
-
-
-
-
 
     public override void OnFixedUpdate()
     {
         TimeUtilities.OnEarlyFixedUpdate();
 
-        LocalPlayer.OnFixedUpdate();
+        // LocalPlayer.OnFixedUpdate();
 
         PDController.OnFixedUpdate();
 

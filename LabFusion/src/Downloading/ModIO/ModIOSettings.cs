@@ -37,7 +37,7 @@ public static class ModIOSettings
     }
 
     public static void LoadToken(Action<string> loadCallback)
-    {
+    {/*
         if (!string.IsNullOrWhiteSpace(LoadedToken))
         {
             loadCallback?.Invoke(LoadedToken);
@@ -52,7 +52,7 @@ public static class ModIOSettings
         }
 
         MelonCoroutines.Start(CoLoadToken());
-   }
+    */}
 
     private static IEnumerator CoLoadToken()
     {
@@ -102,7 +102,7 @@ public static class ModIOSettings
     }
 
     private static void EndLoadToken(string token)
-    {
+    {/*
         _loadedToken = token;
 
         try
@@ -118,5 +118,5 @@ public static class ModIOSettings
         // Make sure that this is set AFTER invoking the callback
         // Otherwise, not sure why, a stack overflow can be caused!
         _isLoadingToken = false;
-   }
+    */}
 }
